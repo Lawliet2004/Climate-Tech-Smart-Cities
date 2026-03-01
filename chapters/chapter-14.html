@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="chapter" content="14">
+    <title>Chapter 14: Hyper-local Air Quality Sensing</title>
+    
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/navigation.css">
+</head>
+<body>
+    <div id="reading-progress"></div>
+
+    <nav class="top-nav">
+        <a href="../index.html" class="top-nav-brand">Climate Tech & Smart Cities</a>
+        <div class="nav-controls">
+            <button class="nav-btn" id="mobile-menu-btn" aria-expanded="false">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+            <a href="../resources.html">Resources</a>
+            <button class="nav-btn" id="search-icon" aria-label="Search">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            </button>
+            <button class="nav-btn" id="dark-mode-toggle" aria-label="Toggle dark mode">
+                <span id="dark-mode-icon">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="chapter-layout">
+        <aside class="left-sidebar sidebar">
+            <nav class="toc-nav">
+                <h3>Chapter Outline</h3>
+                <ul>
+                    <li><a href="#ghg-vs-air">1. GHG vs Component Air Pollution</a></li>
+                    <li><a href="#pm25">2. The Danger of PM2.5</a></li>
+                    <li><a href="#macro-micro">3. Macro vs Micro Sensing</a></li>
+                    <li><a href="#mobile">4. Mobile IoT Networks</a></li>
+                    <li><a href="#justice">5. Environmental Justice Data</a></li>
+                    <li><a href="#quiz">6. Knowledge Check</a></li>
+                </ul>
+                <a href="../index.html" class="chapter-link">&larr; Back to Roadmap</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header>
+                <div style="font-family: 'JetBrains Mono', monospace; color: var(--color-accent-amber); font-weight: 600; margin-bottom: 0.5rem; text-transform: uppercase;">Chapter 14</div>
+                <h1 class="chapter-title">Hyper-local Air Quality Sensing</h1>
+                <div style="color: var(--color-text-muted); font-size: 0.9rem; margin-top: 1rem;">
+                    <span id="reading-time">Reading time: calculating...</span> | Sensor Networks & Public Health
+                </div>
+            </header>
+
+            <div class="content">
+                <h2 id="ghg-vs-air">1. Greenhouse Gases vs Air Pollution</h2>
+                <p>
+                    There is an important distinction between Greenhouse Gases (GHGs) and component Air Pollution.
+                </p>
+                <ul>
+                    <li><strong>GHGs (like CO2):</strong> Mix evenly into the global atmosphere. The location of the emission doesn't matter. A ton of CO2 emitted in New York has the exact same warming effect on the globe as a ton emitted in Beijing. CO2 is invisible, odorless, and harmless to human lungs directly.</li>
+                    <li><strong>Air Pollution (like NO2, SO2, PM2.5):</strong> Highly localized. They linger precisely where they are emitted (next to highways, near coal plants) and directly destroy human cardiovascular and respiratory systems.</li>
+                </ul>
+                <p>
+                    Fortunately, the processes that create CO2 (combustion) usually also create localized air pollution. By decarbonizing a city via Smart Grids and EVs, we simultaneously solve the public health crisis of dirty air.
+                </p>
+
+                <h2 id="pm25">2. The Silent Killer: PM2.5</h2>
+                <p>
+                    The most dangerous form of air pollution is <strong>Particulate Matter 2.5 (PM2.5)</strong>. These are microscopic particles (soot, dust, brake pad wear) less than 2.5 microns wide—about 30 times smaller than a human hair. Because they are so small, they bypass the body's natural defenses, lodging deep in the lungs and entering the bloodstream directly.
+                </p>
+                <p>
+                    The WHO estimates that air pollution—primarily PM2.5—is responsible for over 7 million premature deaths globally every year.
+                </p>
+
+                <h2 id="macro-micro">3. Macro vs. Micro Sensing</h2>
+                <p>
+                    Historically, a major city might have only two or three incredibly expensive ($100,000+) regulatory-grade air quality monitors managed by the EPA. These sensors provide a "Macro" average for the whole city.
+                </p>
+                <p>
+                    However, air quality physically changes from block to block. A neighborhood next to a port dealing with idling diesel trucks will have vastly worse air than a leafy suburb two miles away. Relying on the macro city average hides the suffering of the port neighborhood.
+                </p>
+                <p>
+                    The Smart City model utilizes <strong>Hyper-local Micro-sensors</strong>. Thousands of cheap ($200), low-power IoT sensors are distributed across streetlamps, schools, and bus stops, creating a high-resolution, block-by-block heatmap of a city's air.
+                </p>
+
+                <h2 id="mobile">4. Mobile IoT Networks (Google Street View)</h2>
+                <div class="spotlight-box">
+                    <h3 style="margin-top:0; color:var(--color-primary-forest)">Sensing on the Move</h3>
+                    <p>
+                        Instead of installing a static sensor on every lamppost, organizations like Aclima have partnered with Google to equip the fleet of Google Street View cars with lab-grade air quality equipment.
+                    </p>
+                    <p>
+                        As the cars constantly drive every street in a city to map the roads, they are simultaneously sniffing the air. By applying spatial-temporal ML algorithms to millions of mobile data points, cities can generate flawless, hyper-local pollution maps entirely via edge-computing movement.
+                    </p>
+                </div>
+
+                <h2 id="justice">5. Data as Environmental Justice</h2>
+                <p>
+                    Data is power. Without high-resolution data, marginalized communities cannot prove to City Hall that their air is toxic.
+                </p>
+                <p>
+                    When cheap IoT sensors establish an immutable database proving that a massive fleet warehouse is causing localized asthma rates to spike specifically in low-income neighborhoods, the community can demand rezoning, electric truck mandates, or the rerouting of highway traffic. Software engineers building these sensor dashboard networks are providing the literal evidence required for Environmental Justice lawsuits.
+                </p>
+
+                <hr style="margin: 3rem 0; border: none; border-top: 1px solid var(--color-border);">
+
+                <h2 id="quiz">6. Knowledge Check</h2>
+                <div class="quiz-container" style="background: var(--color-bg-white); padding: 2rem; border-radius: 0.5rem; border: 1px solid var(--color-border);">
+                    <div class="quiz-question" style="margin-bottom: 2rem;">
+                        <p style="font-weight: 600; margin-bottom: 1rem;">1. What is the key physical difference between CO2 and PM2.5?</p>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q1" value="false"> PM2.5 traps solar radiation in the upper atmosphere, while CO2 causes immediate human asthma on the ground.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q1" value="true"> CO2 mixes globally and drives macro climate change; PM2.5 is a highly localized pollutant that directly enters the human bloodstream and causes disease.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q1" value="false"> They are exactly the same thing, just different chemical names.</label>
+                        <div class="explanation" style="display: none; font-size: 0.9em;"><strong>Correct!</strong> While they often share the same source (combustion), CO2 hurts the global climate while PM2.5 hurts localized human health.</div>
+                    </div>
+
+                    <div class="quiz-question" style="margin-bottom: 2rem;">
+                        <p style="font-weight: 600; margin-bottom: 1rem;">2. Why do cities deploy thousands of cheap micro-sensors instead of just relying on three highly accurate $100,000 EPA monitors?</p>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q2" value="false"> Because the EPA monitors run on fossil fuels.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q2" value="true"> Because air quality varies drastically block-by-block based on traffic and industry. A city-wide average hides extreme, localized toxicity (often in poorer neighborhoods).</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q2" value="false"> Because micro-sensors can actively filter and clean the air.</label>
+                        <div class="explanation" style="display: none; font-size: 0.9em;"><strong>Correct!</strong> Hyper-local networks uncover environmental injustice that macro-averages hide.</div>
+                    </div>
+
+                    <button class="btn btn-primary check-answers-btn">Check Answers</button>
+                    <div class="quiz-feedback" style="margin-top: 1rem; font-weight: 600;"></div>
+                </div>
+
+                <nav class="chapter-nav">
+                    <a href="chapter-13.html" class="prev-chapter">
+                        <span class="nav-label">Previous Chapter</span>
+                        <span class="nav-title">&larr; Circular Economy</span>
+                    </a>
+                    <a href="chapter-15.html" class="next-chapter">
+                        <span class="nav-label">Next Chapter</span>
+                        <span class="nav-title">Digital Twins &rarr;</span>
+                    </a>
+                </nav>
+
+                <div style="text-align: center; margin-top: 3rem;">
+                    <button class="btn btn-secondary" id="mark-complete-btn" style="width: 100%;">Mark Chapter Complete</button>
+                </div>
+            </div>
+        </main>
+        
+        <aside class="right-sidebar sidebar">
+            <div class="takeaways-card">
+                <h4>Key Takeaways</h4>
+                <ul>
+                    <li>Solving transport combustion solves two crises simultaneously: global CO2 and localized PM2.5.</li>
+                    <li>Macro city air averages fail to protect marginalized groups living next to industrial zones.</li>
+                    <li>Equipping mobile assets (like Street View cars or city buses) with sensors provides massive geospatial IoT coverage.</li>
+                    <li>Hyper-local data visualization is the foundation of Environmental Justice advocacy.</li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Modals -->
+    <div id="search-modal" style="display: none; position: fixed; inset: 0; background-color: rgba(0,0,0,0.5); z-index: 200; align-items: flex-start; justify-content: center; padding-top: 10vh;">
+        <div style="background-color: var(--color-bg-light); border-radius: 0.5rem; width: 90%; max-width: 600px;">
+            <div style="padding: 1rem; border-bottom: 1px solid var(--color-border); display: flex;">
+                <input type="text" id="search-input" placeholder="Search..." style="flex: 1; border: none; background: transparent; font-size: 1.1rem; outline: none;">
+                <button id="close-search-btn" style="background: none; border: none; cursor: pointer;">ESC</button>
+            </div>
+            <div id="search-results" style="max-height: 60vh; overflow-y: auto;"></div>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/progress.js"></script>
+    <script src="../js/quiz.js"></script>
+    <script src="../js/search.js"></script>
+</body>
+</html>

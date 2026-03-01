@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="chapter" content="5">
+    <title>Chapter 5: AI Fundamentals for Climate</title>
+    
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/navigation.css">
+</head>
+<body>
+    <div id="reading-progress"></div>
+
+    <nav class="top-nav">
+        <a href="../index.html" class="top-nav-brand">Climate Tech & Smart Cities</a>
+        <div class="nav-controls">
+            <button class="nav-btn" id="mobile-menu-btn" aria-expanded="false">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+            <a href="../resources.html">Resources</a>
+            <button class="nav-btn" id="search-icon" aria-label="Search">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            </button>
+            <button class="nav-btn" id="dark-mode-toggle" aria-label="Toggle dark mode">
+                <span id="dark-mode-icon">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="chapter-layout">
+        <aside class="left-sidebar sidebar">
+            <nav class="toc-nav">
+                <h3>Chapter Outline</h3>
+                <ul>
+                    <li><a href="#ml-climate">1. Why ML for Climate?</a></li>
+                    <li><a href="#pinns">2. Physics-Informed Neural Networks</a></li>
+                    <li><a href="#cnns">3. Computer Vision (Satellites)</a></li>
+                    <li><a href="#rl">4. Reinforcement Learning</a></li>
+                    <li><a href="#data-sparsity">5. The Sparse Data Problem</a></li>
+                    <li><a href="#quiz">6. Knowledge Check</a></li>
+                </ul>
+                <a href="../index.html" class="chapter-link">&larr; Back to Roadmap</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header>
+                <div style="font-family: 'JetBrains Mono', monospace; color: var(--color-accent-amber); font-weight: 600; margin-bottom: 0.5rem; text-transform: uppercase;">Chapter 5</div>
+                <h1 class="chapter-title">AI Fundamentals for Climate Tools</h1>
+                <div style="color: var(--color-text-muted); font-size: 0.9rem; margin-top: 1rem;">
+                    <span id="reading-time">Reading time: calculating...</span> | Machine Learning Architecture
+                </div>
+            </header>
+
+            <div class="content">
+                <h2 id="ml-climate">1. Why Machine Learning for Climate?</h2>
+                <p>
+                    Classical software engineering handles deterministic rules well: <code>if energy_price > X, then turn_off_heater()</code>. But the climate, weather, and physical urban environments are non-deterministic, highly noisy, and governed by chaotic differential equations. Machine Learning (ML)—specifically deep neural networks—excels at finding non-linear patterns in massive, noisy datasets where hardcoding rules is mathematically impossible.
+                </p>
+                <p>
+                    However, applying ML to climate is very different from applying ML to recommend movies on Netflix or generate text in ChatGPT.
+                </p>
+
+                <div class="spotlight-box">
+                    <h3 style="margin-top: 0; color: var(--color-primary-forest);">LLMs vs. Climate AI</h3>
+                    <p>
+                        Large Language Models (like GPT-4) operate on discrete human language tokens in a synthetic digital space. If an LLM hallucinates a fact, the impact is usually contained.
+                    </p>
+                    <p>
+                        Climate AI operates on continuous, high-dimensional physical data (temperature, pressure, voltage). It must obey the immutable laws of thermodynamics and fluid dynamics. If a smart grid ML agent hallucinates a high power demand, it could physically overload an electrical substation and cause a blackout. Climate AI requires much stricter physical constraints.
+                    </p>
+                </div>
+
+                <h2 id="pinns">2. Physics-Informed Neural Networks (PINNs)</h2>
+                <p>
+                    Standard deep learning models are "black boxes." They learn mappings from input <em>X</em> to output <em>y</em> entirely based on the training data. If presented with climate scenarios never seen in historical data (like a 50°C heatwave in Canada), they will fail catastrophically because they know nothing about physical reality.
+                </p>
+                <p>
+                    <strong>Physics-Informed Neural Networks (PINNs)</strong> solve this. In a PINN, the loss function is modified. Not only does the model get penalized for incorrect predictions, but it is also heavily penalized if its predictions violate general non-linear partial differential equations (like the Navier-Stokes equations for fluid dynamics). 
+                </p>
+                <p>
+                    By embedding physical laws directly into the neural network architecture, PINNs require less training data, generalize better to extreme future scenarios, and provide guarantees that their outputs won't break the laws of physics.
+                </p>
+
+                <h2 id="cnns">3. Computer Vision for Earth Observation (CNNs/U-Nets)</h2>
+                <p>
+                    We cannot manage what we cannot measure. Satellites (like the Copernicus Sentinel-2) image the entire Earth every few days, generating petabytes of multi-spectral data.
+                </p>
+                <p>
+                    <strong>Convolutional Neural Networks (CNNs)</strong> and <strong>U-Net</strong> architectures are used for image segmentation and classification on these massive datasets. 
+                </p>
+                <ul>
+                    <li><strong>Deforestation Tracking:</strong> CNNs analyze before-and-after satellite tiles to automatically flag illegal logging in the Amazon rainforest in near real-time.</li>
+                    <li><strong>Methane Leak Detection:</strong> Hyperspectral satellite data is fed into ML models to pinpoint the exact oil wells or pipelines leaking invisible methane gas globally.</li>
+                    <li><strong>Building Footprints:</strong> Models extract urban density maps from raw pixels to help cities understand exactly how much solar potential exists on residential rooftops.</li>
+                </ul>
+
+                <h2 id="rl">4. Reinforcement Learning for Physical Control</h2>
+                <p>
+                    While CNNs excel at <em>perception</em>, <strong>Reinforcement Learning (RL)</strong> excels at <em>action</em>. In RL, an "Agent" takes actions in an "Environment" to maximize a "Reward."
+                </p>
+                <p>
+                    RL is heavily utilized in smart energy infrastructure. For example, DeepMind applied RL to Google's own data center cooling systems. The AI agent had to continuously adjust thousands of fans, pumps, and chillers (actions) based on sensor data (environment state) to minimize energy usage (reward) while never letting servers overheat (constraint penalty). The resulting RL model reduced data center cooling energy by an astonishing 40%.
+                </p>
+                <p>
+                    This exact architecture is now being scaled to commercial HVAC systems via startups and smart city protocols.
+                </p>
+
+                <h2 id="data-sparsity">5. The Missing Data Problem</h2>
+                <div class="warning-box">
+                    <strong>Global North Bias</strong><br>
+                    Machine learning requires massive amounts of historical data. The United States and Western Europe have a century of hyper-dense weather station data and advanced sensor networks. Because of this, our AI flood prediction and crop yield models are highly accurate there.
+                    <br><br>
+                    Conversely, the Global South (particularly much of Africa and Southeast Asia) suffers from severe data sparsity. Deploying purely data-driven AI models trained on Western data to predict climate impacts in the Global South often leads to dangerous inaccuracies. Overcoming this "data silence" requires transfer learning, PINNs, and aggressive deployment of cheap IoT sensors globally.
+                </div>
+
+                <hr style="margin: 3rem 0; border: none; border-top: 1px solid var(--color-border);">
+
+                <h2 id="quiz">6. Knowledge Check</h2>
+                <div class="quiz-container" style="background: var(--color-bg-white); padding: 2rem; border-radius: 0.5rem; border: 1px solid var(--color-border);">
+                    <div class="quiz-question" style="margin-bottom: 2rem;">
+                        <p style="font-weight: 600; margin-bottom: 1rem;">1. Why are Physics-Informed Neural Networks (PINNs) crucial for climate modeling compared to standard deep learning models?</p>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q1" value="false"> They require more computing power, which cloud providers prefer.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q1" value="true"> They penalize the network for violating known physical laws (like fluid dynamics), ensuring predictions remain physically possible even in unprecedented extreme conditions.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q1" value="false"> They completely replace the need for any historical training data.</label>
+                        <div class="explanation" style="display: none; font-size: 0.9em;"><strong>Correct!</strong> Standard neural nets don't know physics, so they fail on never-before-seen extreme events. PINNs embed those physics into the loss function.</div>
+                    </div>
+
+                    <div class="quiz-question" style="margin-bottom: 2rem;">
+                        <p style="font-weight: 600; margin-bottom: 1rem;">2. Which machine learning paradigm is best suited for an AI taking continuous actions to optimize a building's HVAC system?</p>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q2" value="false"> Convolutional Neural Networks (CNNs)</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q2" value="false"> Generative Adversarial Networks (GANs)</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q2" value="true"> Reinforcement Learning (RL)</label>
+                        <div class="explanation" style="display: none; font-size: 0.9em;"><strong>Correct!</strong> RL agents interact dynamically with environments to maximize a long-term reward (like minimizing energy).</div>
+                    </div>
+
+                    <button class="btn btn-primary check-answers-btn">Check Answers</button>
+                    <div class="quiz-feedback" style="margin-top: 1rem; font-weight: 600;"></div>
+                </div>
+
+                <nav class="chapter-nav">
+                    <a href="chapter-4.html" class="prev-chapter">
+                        <span class="nav-label">Previous Chapter</span>
+                        <span class="nav-title">&larr; What Are Smart Cities</span>
+                    </a>
+                    <a href="chapter-6.html" class="next-chapter">
+                        <span class="nav-label">Next Chapter</span>
+                        <span class="nav-title">AI for Climate Modeling &rarr;</span>
+                    </a>
+                </nav>
+
+                <div style="text-align: center; margin-top: 3rem;">
+                    <button class="btn btn-secondary" id="mark-complete-btn" style="width: 100%;">Mark Chapter Complete</button>
+                </div>
+            </div>
+        </main>
+
+        <aside class="right-sidebar sidebar">
+            <div class="takeaways-card">
+                <h4>Key Takeaways</h4>
+                <ul>
+                    <li>Climate AI must obey thermodynamics, contrasting sharply with unstructured LLMs.</li>
+                    <li>Physics-Informed Neural Networks (PINNs) merge domain knowledge/equations with deep learning.</li>
+                    <li>CNNs dominate Earth observation and satellite image analysis.</li>
+                    <li>Reinforcement Learning (RL) is used for active physical control (HVAC, power grids).</li>
+                    <li>Historical data scarcity in the Global South biases predictive AI models.</li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Details Modal -->
+    <div id="search-modal" style="display: none; position: fixed; inset: 0; background-color: rgba(0,0,0,0.5); z-index: 200; align-items: flex-start; justify-content: center; padding-top: 10vh;">
+        <div style="background-color: var(--color-bg-light); border-radius: 0.5rem; width: 90%; max-width: 600px;">
+            <div style="padding: 1rem; border-bottom: 1px solid var(--color-border); display: flex;">
+                <input type="text" id="search-input" placeholder="Search..." style="flex: 1; border: none; background: transparent; font-size: 1.1rem; outline: none;">
+                <button id="close-search-btn" style="background: none; border: none; cursor: pointer;">ESC</button>
+            </div>
+            <div id="search-results" style="max-height: 60vh; overflow-y: auto;"></div>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/progress.js"></script>
+    <script src="../js/quiz.js"></script>
+    <script src="../js/search.js"></script>
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="chapter" content="8">
+    <title>Chapter 8: Smart Buildings & Energy Efficiency</title>
+    
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/navigation.css">
+</head>
+<body>
+    <div id="reading-progress"></div>
+
+    <nav class="top-nav">
+        <a href="../index.html" class="top-nav-brand">Climate Tech & Smart Cities</a>
+        <div class="nav-controls">
+            <button class="nav-btn" id="mobile-menu-btn" aria-expanded="false">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+            <a href="../resources.html">Resources</a>
+            <button class="nav-btn" id="search-icon" aria-label="Search">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            </button>
+            <button class="nav-btn" id="dark-mode-toggle" aria-label="Toggle dark mode">
+                <span id="dark-mode-icon">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="chapter-layout">
+        <aside class="left-sidebar sidebar">
+            <nav class="toc-nav">
+                <h3>Chapter Outline</h3>
+                <ul>
+                    <li><a href="#the-culprit">1. The Invisible Culprit</a></li>
+                    <li><a href="#bms">2. Traditional BMS vs AI</a></li>
+                    <li><a href="#hvac">3. HVAC Optimization</a></li>
+                    <li><a href="#occupancy">4. Occupancy Sensing</a></li>
+                    <li><a href="#retrofits">5. Deep Energy Retrofits</a></li>
+                    <li><a href="#quiz">6. Knowledge Check</a></li>
+                </ul>
+                <a href="../index.html" class="chapter-link">&larr; Back to Roadmap</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header>
+                <div style="font-family: 'JetBrains Mono', monospace; color: var(--color-accent-amber); font-weight: 600; margin-bottom: 0.5rem; text-transform: uppercase;">Chapter 8</div>
+                <h1 class="chapter-title">Smart Buildings & Energy Efficiency</h1>
+                <div style="color: var(--color-text-muted); font-size: 0.9rem; margin-top: 1rem;">
+                    <span id="reading-time">Reading time: calculating...</span> | Automating the Built Environment
+                </div>
+            </header>
+
+            <div class="content">
+                <h2 id="the-culprit">1. The Invisible Culprit</h2>
+                <p>
+                    When most people picture climate change, they picture cars, airplanes, and smokestacks. They rarely picture the office building they are sitting in. However, building operations—primarily heating, ventilation, air conditioning (HVAC), and lighting—account for roughly <strong>27% of global carbon emissions</strong>. If you include the concrete and steel used to construct them, the real estate sector is responsible for nearly 40% of all emissions.
+                </p>
+                <p>
+                    Reducing a commercial skyscraper's energy footprint by just 10% can eliminate more carbon than taking thousands of gas-powered cars off the road.
+                </p>
+
+                <h2 id="bms">2. Traditional BMS vs True AI</h2>
+                <p>
+                    Most modern commercial buildings already have a <strong>Building Management System (BMS)</strong>. However, legacy BMS are surprisingly dumb. They operate on rigid, hardcoded heuristics created by a facilities manager five years ago. 
+                </p>
+                <pre><code>// Example of a legacy BMS rule
+if (time == 08:00 && day == "Monday") {
+    turnOnAC(entireFloor, targetTemp=22C);
+}</code></pre>
+                <p>
+                    This rule will trigger even if Monday happens to be a national holiday where the office is completely empty, wasting hundreds of dollars of electricity. 
+                    <strong>True AI-driven Smart Buildings</strong> abandon these static rules in favor of dynamic, predictive optimization using Reinforcement Learning (RL) and real-time data ingestion.
+                </p>
+
+                <h2 id="hvac">3. HVAC Optimization</h2>
+                <p>
+                    HVAC (Heating, Ventilation, and Air Conditioning) is the heaviest consumer of power in any building. AI optimizes HVAC by ingesting multiple data streams:
+                </p>
+                <ul>
+                    <li><strong>Weather Forecasts:</strong> The AI looks at the 10-day API forecast. If it knows a massive heatwave is hitting at 2 PM tomorrow, it will "pre-cool" the building concrete overnight (when electricity is cheap and wind-powered) to act as a thermal battery, allowing it to turn off the AC during peak afternoon prices.</li>
+                    <li><strong>Thermodynamic Physics:</strong> The AI learns the unique thermal mass of the specific building. It knows that the South-facing offices heat up 20% faster than the North-facing offices in December.</li>
+                    <li><strong>Grid APIs:</strong> The building communicates with the utility grid (as a VPP, from Chapter 7) to shed load when the grid is stressed.</li>
+                </ul>
+
+                <h2 id="occupancy">4. High-Density Occupancy Sensing</h2>
+                <p>
+                    You cannot properly optimize a building if you don't know who is inside it. Post-COVID hybrid work models mean occupancy fluctuates wildly day-by-day.
+                </p>
+                <div class="info-box">
+                    <strong>Privacy-Preserving Sensors</strong><br>
+                    Rather than using optical cameras (which violate privacy), modern smart buildings use passive infrared (PIR), anonymous WiFi MAC-address counting, or low-resolution LiDAR. This provides a continuous real-time heatmap of building occupancy without identifying individuals. The AI uses this to shut off HVAC and lighting in completely empty wings of the building, routing fresh air only to dense conference rooms.
+                </div>
+
+                <h2 id="retrofits">5. Deep Energy Retrofits</h2>
+                <p>
+                    Software cannot fix a building with single-pane windows or a leaky roof. A <strong>Deep Energy Retrofit</strong> involves physically upgrading the building shell (insulation, windows) and aggressively electrifying the heating (ripping out gas boilers and installing electric Heat Pumps).
+                </p>
+                <p>
+                    Startups are using LiDAR mounted on drones and computer vision to rapidly perform 3D thermal audits of buildings, mathematically proving to landlords exactly what the ROI (Return on Investment) of a retrofit will be, unlocking necessary green financing.
+                </p>
+
+                <hr style="margin: 3rem 0; border: none; border-top: 1px solid var(--color-border);">
+
+                <h2 id="quiz">6. Knowledge Check</h2>
+                <div class="quiz-container" style="background: var(--color-bg-white); padding: 2rem; border-radius: 0.5rem; border: 1px solid var(--color-border);">
+                    <div class="quiz-question" style="margin-bottom: 2rem;">
+                        <p style="font-weight: 600; margin-bottom: 1rem;">1. Why is a traditional Building Management System (BMS) inefficient compared to an AI-driven system?</p>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q1" value="false"> It uses too much cloud computing power.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q1" value="true"> It relies on static heuristics (e.g., turn on at 8 AM) that don't account for actual occupancy, real-time weather, or grid prices.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q1" value="false"> It requires specialized quantum hardware to run.</label>
+                        <div class="explanation" style="display: none; font-size: 0.9em;"><strong>Correct!</strong> Rigid rule-based systems waste energy when physical realities (like weather or hybrid work schedules) change.</div>
+                    </div>
+
+                    <div class="quiz-question" style="margin-bottom: 2rem;">
+                        <p style="font-weight: 600; margin-bottom: 1rem;">2. What does it mean when an AI "pre-cools" a building overnight?</p>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q2" value="false"> It opens the windows using robotic actuators.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q2" value="false"> It turns off all server racks to reduce ambient heat.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q2" value="true"> It runs the AC when electricity is cheap and carbon-light, storing the cold in the building's thermal mass so the AC can be turned down during peak afternoon heat.</label>
+                        <div class="explanation" style="display: none; font-size: 0.9em;"><strong>Correct!</strong> Buildings themselves act as massive thermal batteries, a technique heavily utilized by dynamic RL agents.</div>
+                    </div>
+
+                    <button class="btn btn-primary check-answers-btn">Check Answers</button>
+                    <div class="quiz-feedback" style="margin-top: 1rem; font-weight: 600;"></div>
+                </div>
+
+                <nav class="chapter-nav">
+                    <a href="chapter-7.html" class="prev-chapter">
+                        <span class="nav-label">Previous Chapter</span>
+                        <span class="nav-title">&larr; Grid Optimization</span>
+                    </a>
+                    <a href="chapter-9.html" class="next-chapter">
+                        <span class="nav-label">Next Chapter</span>
+                        <span class="nav-title">Transportation Tech &rarr;</span>
+                    </a>
+                </nav>
+
+                <div style="text-align: center; margin-top: 3rem;">
+                    <button class="btn btn-secondary" id="mark-complete-btn" style="width: 100%;">Mark Chapter Complete</button>
+                </div>
+            </div>
+        </main>
+        
+        <aside class="right-sidebar sidebar">
+            <div class="takeaways-card">
+                <h4>Key Takeaways</h4>
+                <ul>
+                    <li>Buildings represent over a quarter of global energy emissions.</li>
+                    <li>Legacy BMS are static and waste energy on empty rooms.</li>
+                    <li>AI utilizes weather forecasts, grid dynamic pricing, and thermodynamic models to minimize HVAC use.</li>
+                    <li>Privacy-preserving occupancy sensors allow hyper-targeted ventilation.</li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Modals -->
+    <div id="search-modal" style="display: none; position: fixed; inset: 0; background-color: rgba(0,0,0,0.5); z-index: 200; align-items: flex-start; justify-content: center; padding-top: 10vh;">
+        <div style="background-color: var(--color-bg-light); border-radius: 0.5rem; width: 90%; max-width: 600px;">
+            <div style="padding: 1rem; border-bottom: 1px solid var(--color-border); display: flex;">
+                <input type="text" id="search-input" placeholder="Search..." style="flex: 1; border: none; background: transparent; font-size: 1.1rem; outline: none;">
+                <button id="close-search-btn" style="background: none; border: none; cursor: pointer;">ESC</button>
+            </div>
+            <div id="search-results" style="max-height: 60vh; overflow-y: auto;"></div>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/progress.js"></script>
+    <script src="../js/quiz.js"></script>
+    <script src="../js/search.js"></script>
+</body>
+</html>

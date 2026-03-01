@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="chapter" content="10">
+    <title>Chapter 10: Disaster Resilience & Early Warning</title>
+    
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/navigation.css">
+</head>
+<body>
+    <div id="reading-progress"></div>
+
+    <nav class="top-nav">
+        <a href="../index.html" class="top-nav-brand">Climate Tech & Smart Cities</a>
+        <div class="nav-controls">
+            <button class="nav-btn" id="mobile-menu-btn" aria-expanded="false">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+            <a href="../resources.html">Resources</a>
+            <button class="nav-btn" id="search-icon" aria-label="Search">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            </button>
+            <button class="nav-btn" id="dark-mode-toggle" aria-label="Toggle dark mode">
+                <span id="dark-mode-icon">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="chapter-layout">
+        <aside class="left-sidebar sidebar">
+            <nav class="toc-nav">
+                <h3>Chapter Outline</h3>
+                <ul>
+                    <li><a href="#mitigation-adaptation">1. Mitigation vs. Adaptation</a></li>
+                    <li><a href="#wildfires">2. Wildfire Detection</a></li>
+                    <li><a href="#floods">3. Flood Modeling & Digital Twins</a></li>
+                    <li><a href="#communications">4. Mesh Networks & Comms</a></li>
+                    <li><a href="#quiz">5. Knowledge Check</a></li>
+                </ul>
+                <a href="../index.html" class="chapter-link">&larr; Back to Roadmap</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header>
+                <div style="font-family: 'JetBrains Mono', monospace; color: var(--color-accent-amber); font-weight: 600; margin-bottom: 0.5rem; text-transform: uppercase;">Chapter 10</div>
+                <h1 class="chapter-title">Disaster Resilience & Early Warning Systems</h1>
+                <div style="color: var(--color-text-muted); font-size: 0.9rem; margin-top: 1rem;">
+                    <span id="reading-time">Reading time: calculating...</span> | Adaptation Technologies
+                </div>
+            </header>
+
+            <div class="content">
+                <h2 id="mitigation-adaptation">1. Mitigation vs. Adaptation</h2>
+                <p>
+                    Up to this point, much of this course has focused on <strong>Mitigation</strong>—efforts to reduce or prevent the emission of greenhouse gases (e.g., smart grids, EVs, energy efficiency). 
+                </p>
+                <p>
+                    Because of historical lag in the climate system (the heat capacity of the oceans), even if we stop all emissions today, extreme weather events will continue to worsen for decades. The focus of Climate Tech must equally shift to <strong>Adaptation</strong> and Resilience: preparing our cities and populations to survive the storms, wildfires, and floods that are already locked in.
+                </p>
+
+                <h2 id="wildfires">2. Wildfire Detection and Suppression</h2>
+                <p>
+                    Wildfires have become existential threats in regions like California, Australia, and Southern Europe. Historically, fires were detected by citizens calling 911 or by human watchtowers spotting smoke. By the time a human reports a fire, it is often too large to easily control.
+                </p>
+                <ul>
+                    <li><strong>Satellite IR Detection:</strong> Geostationary satellites use infrared sensors to detect the thermal signature of a fire anomaly. However, the update latency can be 15 minutes, which is an eternity in high-wind conditions.</li>
+                    <li><strong>AI Tower Cameras:</strong> Startups like Pano AI place high-definition, 360-degree cameras on mountaintops and cell towers. Computer vision (CNNs) scans the imagery 24/7. When the model detects the distinct visual pattern of a smoke plume, it instantly geolocates the coordinates via triangulation and texts the local fire chief.</li>
+                    <li><strong>Drone Swarms:</strong> Once a fire starts, autonomous drones equipped with thermal cameras map the fire line through thick smoke (which grounds human helicopter pilots), streaming live data to incident commanders.</li>
+                </ul>
+
+                <h2 id="floods">3. Flood Modeling & Hydrodynamic Digital Twins</h2>
+                <p>
+                    Flooding is the most common and expensive natural disaster globally. Traditional flood maps (like FEMA maps in the US) are notoriously outdated and rely on historical data, meaning they fail during unprecedented "1-in-1000 year" rain bombs.
+                </p>
+                <p>
+                    Cities are now constructing <strong>Hydrodynamic Digital Twins</strong>. They use low-flying aircraft equipped with LiDAR to scan the exact topography of the city down to centimeter accuracy (capturing the curbs, the storm drains, the retaining walls).
+                </p>
+                <p>
+                    During an oncoming hurricane, the city runs an AI-accelerated fluid dynamics simulation over this highly accurate 3D map. The model can accurately predict that if 5 inches of rain drop in two hours, Water Street will become impassable by 3 PM, allowing first responders to pre-position sandbags and evacuate specific nursing homes hours in advance. Google is currently providing this type of AI flood forecasting to hundreds of millions of people in the Global South via Android alerts.
+                </p>
+
+                <h2 id="communications">4. Communication Resilience (Mesh Networks)</h2>
+                <p>
+                    During a severe disaster, the power grid fails, taking centralized cell phone towers down with it. When citizens cannot access the internet, they cannot receive evacuation orders or call for help.
+                </p>
+                <p>
+                    <strong>Mesh Networking</strong> creates resilient, decentralized communication. Instead of every phone connecting to a single cell tower, edge devices (like LoRaWAN modules or specialized Bluetooth routers) connect to each other, forming a "mesh."
+                </p>
+                <div class="spotlight-box">
+                    <h3 style="margin-top:0; color:var(--color-primary-ocean)">How Mesh Works</h3>
+                    <p>
+                        If your phone is off-grid, it connects via short-range radio to your neighbor's router, which connects to the next block over, "hopping" data device-to-device until it hits a node that <em>does</em> have a satellite uplink (like Starlink) or fiber connection. 
+                    </p>
+                    <p>
+                        This ensures the city’s communication infrastructure acts like a sponge—if you poke a hole in one area (destroy a tower), data dynamically reroutes around the damage instead of the whole system crashing.
+                    </p>
+                </div>
+
+                <hr style="margin: 3rem 0; border: none; border-top: 1px solid var(--color-border);">
+
+                <h2 id="quiz">5. Knowledge Check</h2>
+                <div class="quiz-container" style="background: var(--color-bg-white); padding: 2rem; border-radius: 0.5rem; border: 1px solid var(--color-border);">
+                    <div class="quiz-question" style="margin-bottom: 2rem;">
+                        <p style="font-weight: 600; margin-bottom: 1rem;">1. What is the fundamental difference between Climate Mitigation and Climate Adaptation?</p>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q1" value="false"> Adaptation is reducing emissions; Mitigation is living with the consequences.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q1" value="true"> Mitigation is reducing/preventing emissions; Adaptation is preparing for and surviving the extreme weather that is already locked in.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q1" value="false"> There is no difference, they mean the same thing in IPCC reports.</label>
+                        <div class="explanation" style="display: none; font-size: 0.9em;"><strong>Correct!</strong> We must do both simultaneously. VPPs mitigate carbon; Flood Digital Twins adapt to storms.</div>
+                    </div>
+
+                    <div class="quiz-question" style="margin-bottom: 2rem;">
+                        <p style="font-weight: 600; margin-bottom: 1rem;">2. Why are traditional cellular networks vulnerable during climate disasters, and how do Mesh Networks solve this?</p>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q2" value="true"> Cellular networks rely on centralized towers that fail when grid power goes down; Mesh networks hop data peer-to-peer across decentralized nodes.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q2" value="false"> Cellular networks are too slow for emergency data; Mesh networks use fiber optics exclusively.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q2" value="false"> Cell towers melt in heatwaves; Mesh nodes are made of heat-resistant titanium.</label>
+                        <div class="explanation" style="display: none; font-size: 0.9em;"><strong>Correct!</strong> Decentralization (hopping peer-to-peer) provides resilience because there is no single point of failure.</div>
+                    </div>
+
+                    <button class="btn btn-primary check-answers-btn">Check Answers</button>
+                    <div class="quiz-feedback" style="margin-top: 1rem; font-weight: 600;"></div>
+                </div>
+
+                <nav class="chapter-nav">
+                    <a href="chapter-9.html" class="prev-chapter">
+                        <span class="nav-label">Previous Chapter</span>
+                        <span class="nav-title">&larr; Transportation Tech</span>
+                    </a>
+                    <a href="chapter-11.html" class="next-chapter">
+                        <span class="nav-label">Next Chapter</span>
+                        <span class="nav-title">Precision Agriculture &rarr;</span>
+                    </a>
+                </nav>
+
+                <div style="text-align: center; margin-top: 3rem;">
+                    <button class="btn btn-secondary" id="mark-complete-btn" style="width: 100%;">Mark Chapter Complete</button>
+                </div>
+            </div>
+        </main>
+        
+        <aside class="right-sidebar sidebar">
+            <div class="takeaways-card">
+                <h4>Key Takeaways</h4>
+                <ul>
+                    <li>The severity of locked-in warming means tech focus must shift equally to Adaptation alongside Mitigation.</li>
+                    <li>Computer vision allows for near-instant wildfire detection across camera networks.</li>
+                    <li>High-res digital twins combined with Physics ML provide hyper-accurate flood maps, abandoning legacy historical maps.</li>
+                    <li>Mesh networking prevents communications blackouts by decentralizing the physical layer of the internet.</li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Modals -->
+    <div id="search-modal" style="display: none; position: fixed; inset: 0; background-color: rgba(0,0,0,0.5); z-index: 200; align-items: flex-start; justify-content: center; padding-top: 10vh;">
+        <div style="background-color: var(--color-bg-light); border-radius: 0.5rem; width: 90%; max-width: 600px;">
+            <div style="padding: 1rem; border-bottom: 1px solid var(--color-border); display: flex;">
+                <input type="text" id="search-input" placeholder="Search..." style="flex: 1; border: none; background: transparent; font-size: 1.1rem; outline: none;">
+                <button id="close-search-btn" style="background: none; border: none; cursor: pointer;">ESC</button>
+            </div>
+            <div id="search-results" style="max-height: 60vh; overflow-y: auto;"></div>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/progress.js"></script>
+    <script src="../js/quiz.js"></script>
+    <script src="../js/search.js"></script>
+</body>
+</html>

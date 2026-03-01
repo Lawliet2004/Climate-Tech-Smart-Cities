@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="chapter" content="9">
+    <title>Chapter 9: Intelligent Transportation Systems</title>
+    
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/navigation.css">
+</head>
+<body>
+    <div id="reading-progress"></div>
+
+    <nav class="top-nav">
+        <a href="../index.html" class="top-nav-brand">Climate Tech & Smart Cities</a>
+        <div class="nav-controls">
+            <button class="nav-btn" id="mobile-menu-btn" aria-expanded="false">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+            <a href="../resources.html">Resources</a>
+            <button class="nav-btn" id="search-icon" aria-label="Search">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            </button>
+            <button class="nav-btn" id="dark-mode-toggle" aria-label="Toggle dark mode">
+                <span id="dark-mode-icon">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="chapter-layout">
+        <aside class="left-sidebar sidebar">
+            <nav class="toc-nav">
+                <h3>Chapter Outline</h3>
+                <ul>
+                    <li><a href="#maas">1. Mobility as a Service (MaaS)</a></li>
+                    <li><a href="#traffic-lights">2. Computer Vision for Flow</a></li>
+                    <li><a href="#micromobility">3. The Micromobility Missing Link</a></li>
+                    <li><a href="#avs">4. Autonomous Vehicles vs Transit</a></li>
+                    <li><a href="#quiz">5. Knowledge Check</a></li>
+                </ul>
+                <a href="../index.html" class="chapter-link">&larr; Back to Roadmap</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header>
+                <div style="font-family: 'JetBrains Mono', monospace; color: var(--color-accent-amber); font-weight: 600; margin-bottom: 0.5rem; text-transform: uppercase;">Chapter 9</div>
+                <h1 class="chapter-title">Intelligent Transportation Systems</h1>
+                <div style="color: var(--color-text-muted); font-size: 0.9rem; margin-top: 1rem;">
+                    <span id="reading-time">Reading time: calculating...</span> | Urban Mobility Networks
+                </div>
+            </header>
+
+            <div class="content">
+                <h2 id="maas">1. Mobility as a Service (MaaS)</h2>
+                <p>
+                    Historically, the gold standard of transportation was private car ownership. A car sits parked and useless 95% of its life, yet requires massive amounts of urban space for parking lots and garages. 
+                </p>
+                <p>
+                    <strong>Mobility as a Service (MaaS)</strong> is a shift away from ownership toward access. It integrates public transit, ride-sharing, bikeshare, and scooter rentals into a single, unified digital platform (usually an app like Citymapper or specific municipal apps like Jelbi in Berlin). A citizen can plan a trip that involves taking a train for 5 miles, booking an e-scooter for the "last mile," and paying for it all via a single QR code.
+                </p>
+
+                <h2 id="traffic-lights">2. Computer Vision for Traffic Flow</h2>
+                <p>
+                    Traffic lights are fundamentally "dumb." They generally operate on timed rotations or simple induction loops buried in the pavement that trigger only when heavy metal rolls over them.
+                </p>
+                <p>
+                    Modern <strong>Intelligent Transportation Systems (ITS)</strong> deploy edge-computing cameras running computer vision models directly at the intersection. Google's "Project Green Light" analyzes vast amounts of Google Maps driving data to suggest small tweaks to traffic light timings. By smoothing the flow of traffic and preventing cars from idling and rapidly accelerating (the most carbon-intensive phase of driving), early pilots reduced intersection emissions by up to 10%.
+                </p>
+                <p>
+                    More advanced systems prioritize vulnerable road users—keeping the light green a few seconds longer if the camera detects an elderly pedestrian crossing slowly or a cyclist approaching.
+                </p>
+
+                <h2 id="micromobility">3. The Micromobility Missing Link</h2>
+                <p>
+                    The majority of car trips in the United States and Europe are under 3 miles, an absurdly inefficient use of a 4,000-pound metal machine to move a 180-pound human. Enter <strong>Micromobility</strong> (e-bikes, e-scooters, cargo bikes).
+                </p>
+                <p>
+                    Micromobility is fundamentally an IoT software problem. Companies use geospatial ML algorithms to predict where demand will be highest (e.g., placing scooters near a train station precisely when the 5 PM commuter train arrives) and to determine exactly when batteries need swapping by "juicers."
+                </p>
+
+                <div class="warning-box">
+                    <strong>The Danger of Autonomous Vehicles (AVs)</strong><br>
+                    Autonomous vehicles (like Waymo) represent incredible AI accomplishments. However, from a climate and urbanist perspective, they are a massive risk if deployed poorly. If AVs make the act of driving effortless—allowing you to sleep or work during your commute—people will willingly endure three-hour commutes. This will trigger massive urban sprawl and "zero-occupancy" zombie cars circling the block to avoid parking fees. AV tech is best suited for <strong>Autonomous Bus Rapid Transit</strong> and fixed-route micro-shuttles, not just individual robo-taxis.
+                </div>
+
+                <h2 id="avs">4. The Geometry of Public Transit</h2>
+                <p>
+                    Technologists often try to invent complex, hyper-expensive solutions (like Elon Musk's Vegas Loop tunnels or Hyperloop) to bypass traffic. However, traffic is a geometry problem, not a technology problem.
+                </p>
+                <ul>
+                    <li>A car lane moves ~2,000 people per hour.</li>
+                    <li>A dedicated bus lane moves ~8,000 people per hour.</li>
+                    <li>A protected bike lane moves ~14,000 people per hour.</li>
+                    <li>A heavy rail commuter train moves ~50,000 people per hour.</li>
+                </ul>
+                <p>
+                    Tech should be used to optimize high-capacity transit (e.g., using AI to dynamically route 15-passenger vans in rural areas without fixed bus stops) rather than trying to optimize low-capacity personal vehicles.
+                </p>
+
+                <hr style="margin: 3rem 0; border: none; border-top: 1px solid var(--color-border);">
+
+                <h2 id="quiz">5. Knowledge Check</h2>
+                <div class="quiz-container" style="background: var(--color-bg-white); padding: 2rem; border-radius: 0.5rem; border: 1px solid var(--color-border);">
+                    <div class="quiz-question" style="margin-bottom: 2rem;">
+                        <p style="font-weight: 600; margin-bottom: 1rem;">1. What does Mobility as a Service (MaaS) attempt to achieve?</p>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q1" value="false"> Giving every citizen a free electric vehicle.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q1" value="true"> Integrating various forms of transit (trains, scooters, ride-share) into a single, seamless digital platform to reduce the need for car ownership.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q1" value="false"> Replacing bus drivers with AI chatbots.</label>
+                        <div class="explanation" style="display: none; font-size: 0.9em;"><strong>Correct!</strong> MaaS provides access-over-ownership, linking disparate transit networks into one app.</div>
+                    </div>
+
+                    <div class="quiz-question" style="margin-bottom: 2rem;">
+                        <p style="font-weight: 600; margin-bottom: 1rem;">2. Why might cheap, widespread Autonomous Vehicles (robotaxis) actually be bad for the climate?</p>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q2" value="false"> Because AVs inherently get worse gas mileage than human drivers.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q2" value="false"> Because their LiDAR sensors emit greenhouse gases.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q2" value="true"> Because making the commute effortless could induce massive urban sprawl and add millions of "zero-occupancy" trips as cars circle empty.</label>
+                        <div class="explanation" style="display: none; font-size: 0.9em;"><strong>Correct!</strong> The Jevons Paradox strikes again. By lowering the "cost" of the commute (time/attention), total vehicle miles traveled will explode.</div>
+                    </div>
+
+                    <button class="btn btn-primary check-answers-btn">Check Answers</button>
+                    <div class="quiz-feedback" style="margin-top: 1rem; font-weight: 600;"></div>
+                </div>
+
+                <nav class="chapter-nav">
+                    <a href="chapter-8.html" class="prev-chapter">
+                        <span class="nav-label">Previous Chapter</span>
+                        <span class="nav-title">&larr; Smart Buildings</span>
+                    </a>
+                    <a href="chapter-10.html" class="next-chapter">
+                        <span class="nav-label">Next Chapter</span>
+                        <span class="nav-title">Disaster Resilience &rarr;</span>
+                    </a>
+                </nav>
+
+                <div style="text-align: center; margin-top: 3rem;">
+                    <button class="btn btn-secondary" id="mark-complete-btn" style="width: 100%;">Mark Chapter Complete</button>
+                </div>
+            </div>
+        </main>
+        
+        <aside class="right-sidebar sidebar">
+            <div class="takeaways-card">
+                <h4>Key Takeaways</h4>
+                <ul>
+                    <li>Mobility as a Service shifts urban design away from parking/ownership and toward unified transit access.</li>
+                    <li>AI trims intersection emissions by smoothing traffic flow via edge-based computer vision.</li>
+                    <li>Micromobility targets the drastically inefficient "under 3 miles" trips historically done in 4000lb cars.</li>
+                    <li>Technology cannot beat the sheer geometric efficiency of heavy rail and dedicated bus lanes.</li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Modals -->
+    <div id="search-modal" style="display: none; position: fixed; inset: 0; background-color: rgba(0,0,0,0.5); z-index: 200; align-items: flex-start; justify-content: center; padding-top: 10vh;">
+        <div style="background-color: var(--color-bg-light); border-radius: 0.5rem; width: 90%; max-width: 600px;">
+            <div style="padding: 1rem; border-bottom: 1px solid var(--color-border); display: flex;">
+                <input type="text" id="search-input" placeholder="Search..." style="flex: 1; border: none; background: transparent; font-size: 1.1rem; outline: none;">
+                <button id="close-search-btn" style="background: none; border: none; cursor: pointer;">ESC</button>
+            </div>
+            <div id="search-results" style="max-height: 60vh; overflow-y: auto;"></div>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/progress.js"></script>
+    <script src="../js/quiz.js"></script>
+    <script src="../js/search.js"></script>
+</body>
+</html>

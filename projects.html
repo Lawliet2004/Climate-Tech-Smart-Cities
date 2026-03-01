@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Master Climate Tech</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/typography.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <style>
+        .projects-header {
+            text-align: center;
+            padding: 4rem 2rem;
+            background-color: var(--color-bg-warm);
+        }
+        
+        .projects-grid {
+            max-width: 1000px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .project-row {
+            display: flex;
+            gap: 2rem;
+            background: var(--color-bg-white);
+            border: 1px solid var(--color-border);
+            border-radius: 0.5rem;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .difficulty-badge {
+            position: absolute;
+            top: -10px;
+            left: 2rem;
+            background: var(--color-primary-forest);
+            color: white;
+            padding: 0.2rem 1rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+        
+        .difficulty-badge.beginner { background: #10B981; }
+        .difficulty-badge.intermediate { background: #F59E0B; }
+        .difficulty-badge.advanced { background: #EF4444; }
+
+        .project-content h3 {
+            margin-top: 0;
+            color: var(--color-primary-ocean);
+        }
+
+        .tech-stack {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .tech-stack code {
+            font-size: 0.8rem;
+            background: var(--color-paper-bg);
+            border: 1px solid var(--color-paper-border);
+        }
+
+        @media (max-width: 768px) {
+            .project-row { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <a href="index.html" class="top-nav-brand">Climate Tech & Smart Cities</a>
+        <div class="nav-controls">
+            <a href="resources.html">Resources</a>
+            <a href="projects.html" style="color: var(--color-primary-ocean); font-weight: 600;">Projects</a>
+            <a href="career-paths.html">Careers</a>
+            <button class="nav-btn" id="dark-mode-toggle" aria-label="Toggle dark mode">
+                <span id="dark-mode-icon">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </span>
+            </button>
+        </div>
+    </nav>
+
+    <header class="projects-header">
+        <h1 style="border:none;">Build It: Hands-on Projects</h1>
+        <p style="max-width: 700px; margin: 0 auto; color: var(--color-text-muted);">
+            Theory is not enough. To truly understand climate technology, you have to build it. 
+            Here are implementable projects designed to solidify your skills and build your portfolio.
+            (Covered extensively in Chapter 19).
+        </p>
+    </header>
+
+    <div class="projects-grid">
+
+        <div class="project-row">
+            <span class="difficulty-badge beginner">Beginner</span>
+            <div class="project-content">
+                <h3>1. Personal Carbon Footprint API & Calculator</h3>
+                <p>Build a web application that takes user inputs (flights, miles driven, diet) and calculates their annual carbon footprint using standard emission factors.</p>
+                <div class="tech-stack">
+                    <code>HTML/CSS/JS</code> <code>Node.js</code> <code>EPA Emission Factors</code>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-row">
+            <span class="difficulty-badge intermediate">Intermediate</span>
+            <div class="project-content">
+                <h3>2. Hyperlocal Air Quality Predictor</h3>
+                <p>Train a machine learning model using historical data from OpenAQ combined with weather forecasts to predict the PM2.5 levels for your city 24 hours in advance.</p>
+                <div class="tech-stack">
+                    <code>Python</code> <code>Scikit-learn / XGBoost</code> <code>OpenAQ API</code>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-row">
+            <span class="difficulty-badge intermediate">Intermediate</span>
+            <div class="project-content">
+                <h3>3. Satellite Deforestation Detection</h3>
+                <p>Use computer vision and satellite imagery to identify areas of the Amazon that have been cleared over a specific timeframe.</p>
+                <div class="tech-stack">
+                    <code>PyTorch</code> <code>Copernicus Sentinel-2 Data</code> <code>CNNs / U-Net</code>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-row">
+            <span class="difficulty-badge advanced">Advanced</span>
+            <div class="project-content">
+                <h3>4. Smart Building HVAC Reinforcement Learning</h3>
+                <p>Create a simulated environment of a commercial building and train an RL agent to continuously control the HVAC setpoints to minimize energy usage while keeping occupants comfortable.</p>
+                <div class="tech-stack">
+                    <code>Python</code> <code>Stable Baselines3</code> <code>EnergyPlus</code>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-row">
+            <span class="difficulty-badge advanced">Capstone</span>
+            <div class="project-content">
+                <h3>5. Mini City Digital Twin Dashboard</h3>
+                <p>Build an interactive 3D web dashboard that aggregates open city data (traffic, real-time weather, public transit locations) onto a Mapbox or CesiumJS 3D visualization representing a digital shadow of a city.</p>
+                <div class="tech-stack">
+                    <code>Three.js / CesiumJS</code> <code>WebSockets</code> <code>OpenCity Data APIs</code>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

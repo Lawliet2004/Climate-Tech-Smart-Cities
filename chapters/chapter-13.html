@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="chapter" content="13">
+    <title>Chapter 13: The Circular Economy</title>
+    
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/navigation.css">
+</head>
+<body>
+    <div id="reading-progress"></div>
+
+    <nav class="top-nav">
+        <a href="../index.html" class="top-nav-brand">Climate Tech & Smart Cities</a>
+        <div class="nav-controls">
+            <button class="nav-btn" id="mobile-menu-btn" aria-expanded="false">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+            <a href="../resources.html">Resources</a>
+            <button class="nav-btn" id="search-icon" aria-label="Search">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            </button>
+            <button class="nav-btn" id="dark-mode-toggle" aria-label="Toggle dark mode">
+                <span id="dark-mode-icon">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="chapter-layout">
+        <aside class="left-sidebar sidebar">
+            <nav class="toc-nav">
+                <h3>Chapter Outline</h3>
+                <ul>
+                    <li><a href="#take-make-waste">1. Take-Make-Waste vs Circular</a></li>
+                    <li><a href="#dpp">2. Digital Product Passports</a></li>
+                    <li><a href="#ai-sorting">3. Optical AI Sorting</a></li>
+                    <li><a href="#e-waste">4. E-Waste & Server Farms</a></li>
+                    <li><a href="#quiz">5. Knowledge Check</a></li>
+                </ul>
+                <a href="../index.html" class="chapter-link">&larr; Back to Roadmap</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header>
+                <div style="font-family: 'JetBrains Mono', monospace; color: var(--color-accent-amber); font-weight: 600; margin-bottom: 0.5rem; text-transform: uppercase;">Chapter 13</div>
+                <h1 class="chapter-title">The Circular Economy</h1>
+                <div style="color: var(--color-text-muted); font-size: 0.9rem; margin-top: 1rem;">
+                    <span id="reading-time">Reading time: calculating...</span> | Supply Chain Transparency
+                </div>
+            </header>
+
+            <div class="content">
+                <h2 id="take-make-waste">1. Take-Make-Waste vs. Circularity</h2>
+                <p>
+                    Since the Industrial Revolution, the global economy has functioned on a linear <strong>"Take-Make-Waste"</strong> model. We extract raw materials from the earth, manufacture a product, use it briefly, and throw it into a landfill. Roughly 45% of global greenhouse gas emissions are tied directly to how we make and manage products and materials.
+                </p>
+                <p>
+                    A <strong>Circular Economy</strong> seeks to decouple economic activity from the consumption of finite resources. The goal is to design waste and pollution out of the system entirely, keeping materials in continuous use via recycling, refurbishing, and remanufacturing.
+                </p>
+
+                <h2 id="dpp">2. Digital Product Passports (DPP)</h2>
+                <p>
+                    You cannot recycle or refurbish what you do not understand. If a smart appliance breaks, a recycler often has no idea what chemicals, rare-earth metals, or plastics are inside it.
+                </p>
+                <p>
+                    The EU is pioneering <strong>Digital Product Passports (DPPs)</strong>. A DPP is an electronic record tied to a physical product via a QR code, RFID tag, or blockchain token. It provides a complete, transparent ledger of the product's entire supply chain history: where the cobalt was mined, the chemical composition of the plastics, its Scope 3 carbon footprint, and exactly how to safely disassemble it for recycling at the end of its life.
+                </p>
+
+                <h2 id="ai-sorting">3. Optical AI Sorting at MRFs</h2>
+                <p>
+                    Municipal Materials Recovery Facilities (MRFs) are the factories where your "single-stream" blue bin recycling is sorted. Historically, this relied on vibrating screens, magnets, and human labor visually picking out contamination (like a greasy pizza box mixed with cardboard). The error rate was massive, meaning much of what citizens thought they were recycling actually went to landfills.
+                </p>
+                <div class="spotlight-box">
+                    <h3 style="margin-top:0; color:var(--color-primary-ocean)">Robotic Sorting Arms</h3>
+                    <p>
+                        Modern smart cities install AI-powered robotic arms over the conveyor belts. Using high-speed computer vision and hyperspectral cameras, the AI can instantly differentiate between High-Density Polyethylene (HDPE) plastic and Polyethylene Terephthalate (PET) plastic—transparent materials that look identical to a human eye. 
+                    </p>
+                    <p>
+                        Pneumatic robotic arms fire a burst of air or grab the item in milliseconds, doubling the purity of the sorted bales of plastic and making them economically viable to sell back to manufacturers.
+                    </p>
+                </div>
+
+                <h2 id="e-waste">4. E-Waste and Server Farm Circularity</h2>
+                <p>
+                    As computer scientists, our specific blind spot is <strong>E-Waste</strong> (discarded electronics). Tech hardware has a brutally short lifecycle, and e-waste is the fastest-growing waste stream on Earth. It contains toxic heavy metals (lead, mercury) alongside highly valuable rare-earth elements.
+                </p>
+                <p>
+                    As the AI boom drives the frantic construction of massive hyperscaler data centers, millions of servers, GPUs, and switches must be decommissioned every few years. Circular IT asset disposition (ITAD) uses automated testing software to securely wipe the drives, certify the hardware via blockchain ledgers, and refurbish the servers for secondary markets, preventing thousands of tons of silicon and copper from being buried.
+                </p>
+
+                <hr style="margin: 3rem 0; border: none; border-top: 1px solid var(--color-border);">
+
+                <h2 id="quiz">5. Knowledge Check</h2>
+                <div class="quiz-container" style="background: var(--color-bg-white); padding: 2rem; border-radius: 0.5rem; border: 1px solid var(--color-border);">
+                    <div class="quiz-question" style="margin-bottom: 2rem;">
+                        <p style="font-weight: 600; margin-bottom: 1rem;">1. How does a Digital Product Passport (DPP) enable a Circular Economy?</p>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q1" value="false"> It is a government visa that allows shipping companies to bypass international carbon taxes.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q1" value="false"> It uses generative AI to design new products from scratch.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q1" value="true"> It creates a transparent digital ledger detailing exactly what materials a product contains and how to physically disassemble/recycle it.</label>
+                        <div class="explanation" style="display: none; font-size: 0.9em;"><strong>Correct!</strong> A lack of information at the point of disposal forces e-waste/recyclers to guess; DPPs solve this via data transparency.</div>
+                    </div>
+
+                    <div class="quiz-question" style="margin-bottom: 2rem;">
+                        <p style="font-weight: 600; margin-bottom: 1rem;">2. Why do Municipal supply chains struggle with Single-Stream recycling without AI?</p>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q2" value="false"> Citizens deliberately sabotage the bins.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q2" value="true"> Humans cannot rapidly or accurately differentiate between different internal chemical grades of clear plastics moving at high speeds on a conveyor belt.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q2" value="false"> There is no global market for recycled aluminum.</label>
+                        <div class="explanation" style="display: none; font-size: 0.9em;"><strong>Correct!</strong> Hyperspectral computer vision can see the chemical differences in plastics that human eyes cannot.</div>
+                    </div>
+
+                    <button class="btn btn-primary check-answers-btn">Check Answers</button>
+                    <div class="quiz-feedback" style="margin-top: 1rem; font-weight: 600;"></div>
+                </div>
+
+                <nav class="chapter-nav">
+                    <a href="chapter-12.html" class="prev-chapter">
+                        <span class="nav-label">Previous Chapter</span>
+                        <span class="nav-title">&larr; Water & Ocean Tech</span>
+                    </a>
+                    <a href="chapter-14.html" class="next-chapter">
+                        <span class="nav-label">Next Chapter</span>
+                        <span class="nav-title">Hyper-local Air Quality &rarr;</span>
+                    </a>
+                </nav>
+
+                <div style="text-align: center; margin-top: 3rem;">
+                    <button class="btn btn-secondary" id="mark-complete-btn" style="width: 100%;">Mark Chapter Complete</button>
+                </div>
+            </div>
+        </main>
+        
+        <aside class="right-sidebar sidebar">
+            <div class="takeaways-card">
+                <h4>Key Takeaways</h4>
+                <ul>
+                    <li>The transition from Take-Make-Waste to circularity could address 45% of global emissions tied to goods.</li>
+                    <li>Digital Product Passports (DPPs) track supply chain footprints and provide essential recycling blueprints.</li>
+                    <li>AI robotics and hyperspectral imaging are rescuing municipal recycling programs from high contamination rates.</li>
+                    <li>Hyperscale AI clouds produce immense E-Waste, requiring strict secondary-market hardware circularity.</li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/progress.js"></script>
+    <script src="../js/quiz.js"></script>
+    <script src="../js/search.js"></script>
+</body>
+</html>

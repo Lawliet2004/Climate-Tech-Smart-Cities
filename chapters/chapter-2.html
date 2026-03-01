@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="chapter" content="2">
+    <title>Chapter 2: Understanding the Climate System</title>
+    
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/navigation.css">
+    <style>
+        /* Specific Styles for Chapter 2 Interactive SVG */
+        .feedback-loop-container {
+            margin: 3rem 0;
+            padding: 2rem;
+            background: var(--color-bg-white);
+            border: 1px solid var(--color-border);
+            border-radius: 0.5rem;
+            text-align: center;
+        }
+        
+        .feedback-svg {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem;
+        }
+        
+        /* SVG Interactivity */
+        .sys-node { cursor: pointer; transition: opacity 0.2s; }
+        .sys-node:hover { opacity: 0.8; }
+        .sys-edge { stroke-dasharray: 1000; stroke-dashoffset: 1000; animation: dash 3s linear forwards infinite; }
+        
+        @keyframes dash {
+            to { stroke-dashoffset: 0; }
+        }
+
+        .sys-tooltip {
+            position: absolute;
+            background: var(--color-bg-warm);
+            border: 1px solid var(--color-border);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            font-size: 0.85rem;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.2s;
+            max-width: 250px;
+            text-align: left;
+            z-index: 100;
+        }
+    </style>
+</head>
+<body>
+    <div id="reading-progress"></div>
+
+    <nav class="top-nav">
+        <a href="../index.html" class="top-nav-brand">Climate Tech & Smart Cities</a>
+        <div class="nav-controls">
+            <button class="nav-btn" id="mobile-menu-btn" aria-expanded="false">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+            <a href="../resources.html">Resources</a>
+            <button class="nav-btn" id="search-icon" aria-label="Search">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            </button>
+            <button class="nav-btn" id="dark-mode-toggle" aria-label="Toggle dark mode">
+                <span id="dark-mode-icon">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="chapter-layout">
+        <aside class="left-sidebar sidebar">
+            <nav class="toc-nav">
+                <h3>Chapter Outline</h3>
+                <ul>
+                    <li><a href="#energy-budget">1. Earth's Energy Budget</a></li>
+                    <li><a href="#carbon-cycle">2. The Carbon Cycle</a></li>
+                    <li><a href="#feedback-loops">3. Feedback Loops</a></li>
+                    <li><a href="#spotlight">4. CS Spotlight: System Dynamics</a></li>
+                    <li><a href="#tipping-points">5. Tipping Points (AMOC)</a></li>
+                    <li><a href="#quiz">6. Knowledge Check</a></li>
+                </ul>
+                <a href="../index.html" class="chapter-link">&larr; Back to Roadmap</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header>
+                <div style="font-family: 'JetBrains Mono', monospace; color: var(--color-accent-amber); font-weight: 600; margin-bottom: 0.5rem; text-transform: uppercase;">Chapter 2</div>
+                <h1 class="chapter-title">Understanding the Climate System</h1>
+                <div style="color: var(--color-text-muted); font-size: 0.9rem; margin-top: 1rem;">
+                    <span id="reading-time">Reading time: calculating...</span> | Systems Thinking
+                </div>
+            </header>
+
+            <div class="content">
+                <h2 id="energy-budget">1. Earth's Energy Budget</h2>
+                <p>
+                    The climate is fundamentally an accounting problem of energy. The Earth receives incoming <strong>shortwave radiation</strong> from the sun. To maintain a stable temperature, it must emit exactly the same amount of energy back into space as <strong>longwave (infrared) radiation</strong>. When these two numbers match, the Earth is in <em>radiative equilibrium</em>.
+                </p>
+                <p>
+                    Currently, humanity's greenhouse gas emissions have trapped slightly more heat than is escaping. This creates a net positive <strong>Radiative Forcing</strong>, equivalent to adding a tiny, continuous heater to every square meter of the Earth's surface. While the imbalance is mathematically small compared to the total solar input, this retained energy builds up primarily in the oceans (absorbing 90% of the excess heat), driving global warming, sea-level rise via thermal expansion, and extreme weather.
+                </p>
+
+                <h2 id="carbon-cycle">2. The Carbon Cycle Fast and Slow</h2>
+                <p>
+                    Carbon is not our enemy; it is the building block of life. The problem is one of velocity and reservoirs. The Earth has two distinct carbon cycles:
+                </p>
+                <ul>
+                    <li><strong>The Fast Carbon Cycle:</strong> Operates on human timescales. Plants inhale CO<sub>2</sub> during photosynthesis; animals exhale it. The surface ocean absorbs and releases CO<sub>2</sub>. This cycle is relatively balanced.</li>
+                    <li><strong>The Slow Carbon Cycle:</strong> Operates on geological millions of years. Carbon locked in rocks, tectonic plates, and fossilized ancient plants (coal, oil, gas) deep underground.</li>
+                </ul>
+                <p>
+                    The climate crisis is caused by humanity acting as a geological force, excavating millions of years' worth of fossilized carbon from the slow cycle and violently injecting it into the fast cycle via combustion in just 150 years. The fast cycle (oceans, forests) simply cannot absorb it quickly enough, leading to atmospheric accumulation.
+                </p>
+
+                <h2 id="feedback-loops">3. Feedback Loops</h2>
+                <p>
+                    In computer science, a <code>while</code> loop can spiral out of control if you lack an exit condition or decrementing counter. The Earth's climate possesses similar physical loops that amplify or dampen temperature changes.
+                </p>
+
+                <div class="feedback-loop-container" style="position: relative;">
+                    <h4 style="margin-top: 0; margin-bottom: 1.5rem;">Interactive: Ice-Albedo Feedback Loop</h4>
+                    <svg viewBox="0 0 600 300" class="feedback-svg" id="albedo-svg" style="background:#f8fafc;">
+                        <!-- Defs -->
+                        <defs>
+                            <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="#EF4444" />
+                            </marker>
+                        </defs>
+                        
+                        <!-- Nodes -->
+                        <circle cx="150" cy="150" r="50" fill="var(--color-primary-ocean)" class="sys-node" data-info="Global temperatures rise due to initial GHG emissions."/>
+                        <text x="150" y="155" text-anchor="middle" fill="white" font-weight="bold">Temperature</text>
+                        <text x="150" y="170" text-anchor="middle" fill="white" font-size="12">Rises</text>
+
+                        <circle cx="300" cy="50" r="50" fill="#94A3B8" class="sys-node" data-info="Warmer temperatures cause reflective polar ice to melt into dark ocean water."/>
+                        <text x="300" y="55" text-anchor="middle" fill="white" font-weight="bold">Sea Ice</text>
+                        <text x="300" y="70" text-anchor="middle" fill="white" font-size="12">Melts</text>
+
+                        <circle cx="450" cy="150" r="50" fill="#F59E0B" class="sys-node" data-info="Albedo is reflectivity. Less ice means lower albedo, so Earth absorbs more heat."/>
+                        <text x="450" y="155" text-anchor="middle" fill="white" font-weight="bold">Albedo</text>
+                        <text x="450" y="170" text-anchor="middle" fill="white" font-size="12">Drops</text>
+
+                        <!-- Edges -->
+                        <path d="M 185 115 Q 240 60 250 50" fill="none" stroke="#EF4444" stroke-width="4" marker-end="url(#arrowhead)" class="sys-edge"/>
+                        <path d="M 350 50 Q 400 80 415 115" fill="none" stroke="#EF4444" stroke-width="4" marker-end="url(#arrowhead)" class="sys-edge"/>
+                        <path d="M 400 150 Q 300 150 200 150" fill="none" stroke="#EF4444" stroke-width="4" marker-end="url(#arrowhead)" class="sys-edge"/>
+                    </svg>
+                    <p style="font-size: 0.85rem; color: var(--color-text-muted); margin-top: 1rem;">Hover over nodes to explore the reinforcing (positive) feedback loop.</p>
+                </div>
+
+                <div class="warning-box">
+                    <strong>Positive vs. Negative Feedbacks</strong><br>
+                    In systems theory, "positive" does not mean "good." A <em>positive feedback loop</em> amplifies the initial change (like microphone feedback or the Ice-Albedo effect). A <em>negative feedback loop</em> dampens the change, pushing the system back towards equilibrium (like Earth's tendency to radiate more heat as it gets hotter).
+                </div>
+
+                <h2 id="spotlight">4. CS Spotlight: Systems Dynamics</h2>
+                <div class="spotlight-box">
+                    <h3 style="margin-top:0; color:var(--color-primary-ocean)">Modeling Dynamic Systems</h3>
+                    <p>
+                        Software engineers are uniquely equipped to understand climate science because it is entirely based on <strong>Systems Dynamics</strong>, a field pioneered by Jay Forrester at MIT (inventor of magnetic core memory). 
+                    </p>
+                    <p>
+                        A climate model is essentially an enormous set of coupled differential equations tracking <code>stocks</code> (e.g., carbon in atmosphere) and <code>flows</code> (e.g., emissions rate minus sequestration rate). When you map the climate system programmatically, you realize that fixing it is not just about writing clean code—it's about manipulating the coefficients on multi-decade latency loops.
+                    </p>
+                    <pre><code>// Pseudocode of a disastrous positive feedback loop
+let temp = 15.0; // Celsius
+let polarIceArea = 100;
+let baseAlbedo = 0.8;
+
+function annualTick(emissions) {
+    temp += calculateWarming(emissions);
+    
+    if (temp > THRESHOLD) {
+        polarIceArea -= calculateMelt(temp);
+        
+        // Ice reflects heat. Less ice = more heat absorbed.
+        let newAlbedo = baseAlbedo * (polarIceArea / 100);
+        let extraHeat = calculateAbsorbedHeat(newAlbedo);
+        
+        temp += extraHeat; // The feedback happens here
+    }
+}</code></pre>
+                </div>
+
+                <h2 id="tipping-points">5. Tipping Points and Non-Linearity</h2>
+                <p>
+                    The most terrifying concept in climate science is the <strong>Tipping Point</strong>. The climate does not always react linearly to increased CO<sub>2</sub>. Because of the feedback loops, crossing certain temperature thresholds can trigger irreversible, cascading changes.
+                </p>
+                <ul>
+                    <li><strong>Permafrost Thaw:</strong> Vast regions of the Arctic hold frozen organic matter. If it thaws, microbes break it down, releasing massive amounts of Methane (CH<sub>4</sub>), a gas 80x more potent than CO<sub>2</sub> over a 20-year timeframe. This causes more warming, thawing more permafrost.</li>
+                    <li><strong>AMOC Collapse:</strong> The Atlantic Meridional Overturning Circulation (the Gulf Stream system) relies on cold, salty, dense water sinking in the North Atlantic. Rapid melting of Greenland's freshwater ice dilutes this salt, preventing sinking. If the AMOC halts, the Northern Hemisphere could face severe regional cooling while the tropics scorch, radically disrupting global agriculture.</li>
+                    <li><strong>Amazon Dieback:</strong> The Amazon rainforest creates its own rainfall. If deforestation and warming dry it out too much, it could spontaneously transition into a dry savanna, releasing billions of tons of stored carbon.</li>
+                </ul>
+
+                <hr style="margin: 3rem 0; border: none; border-top: 1px solid var(--color-border);">
+
+                <h2 id="quiz">6. Knowledge Check</h2>
+                <div class="quiz-container" style="background: var(--color-bg-white); padding: 2rem; border-radius: 0.5rem; border: 1px solid var(--color-border);">
+                    <div class="quiz-question" style="margin-bottom: 2rem;">
+                        <p style="font-weight: 600; margin-bottom: 1rem;">1. An increase in temperature causes sea ice to melt, lowering the Earth’s albedo so it absorbs more heat, causing more warming. This is an example of a:</p>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q1" value="false"> Negative feedback loop</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q1" value="true"> Positive feedback loop</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q1" value="false"> Radiative equilibrium</label>
+                        <div class="explanation" style="display: none; font-size: 0.9em;"><strong>Correct!</strong> Positive feedback loops amplify the initial change in the system.</div>
+                    </div>
+
+                    <div class="quiz-question" style="margin-bottom: 2rem;">
+                        <p style="font-weight: 600; margin-bottom: 1rem;">2. The primary cause of modern climate change is:</p>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q2" value="false"> Shifting carbon from the fast carbon cycle to the slow carbon cycle.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q2" value="true"> Extracting fossilized carbon from the slow cycle and rapidly burning it into the fast cycle.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q2" value="false"> An increase in the sun's total shortwave radiation output.</label>
+                        <div class="explanation" style="display: none; font-size: 0.9em;"><strong>Correct!</strong> We are acting as a geological force, moving millions of years of stored carbon into the atmosphere in just 150 years.</div>
+                    </div>
+
+                    <button class="btn btn-primary check-answers-btn">Check Answers</button>
+                    <div class="quiz-feedback" style="margin-top: 1rem; font-weight: 600;"></div>
+                </div>
+
+                <nav class="chapter-nav">
+                    <a href="chapter-1.html" class="prev-chapter">
+                        <span class="nav-label">Previous Chapter</span>
+                        <span class="nav-title">&larr; Deep History of Climate Science</span>
+                    </a>
+                    <a href="chapter-3.html" class="next-chapter">
+                        <span class="nav-label">Next Chapter</span>
+                        <span class="nav-title">The Urban Challenge &rarr;</span>
+                    </a>
+                </nav>
+
+                <div style="text-align: center; margin-top: 3rem;">
+                    <button class="btn btn-secondary" id="mark-complete-btn" style="width: 100%;">Mark Chapter Complete</button>
+                </div>
+            </div>
+        </main>
+
+        <aside class="right-sidebar sidebar">
+            <div class="takeaways-card">
+                <h4>Key Takeaways</h4>
+                <ul>
+                    <li>The Earth is out of radiative equilibrium due to excess GHGs trapping longwave radiation.</li>
+                    <li>We are injecting "slow cycle" fossilized carbon into the "fast cycle" atmosphere too rapidly.</li>
+                    <li>Positive feedback loops, like the ice-albedo effect, amplify warming.</li>
+                    <li>Non-linear tipping points (AMOC collapse, permafrost thaw) pose extreme, irreversible risks to human civilization.</li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Modals & Search -->
+    <div id="search-modal" style="display: none; position: fixed; inset: 0; background-color: rgba(0,0,0,0.5); z-index: 200; align-items: flex-start; justify-content: center; padding-top: 10vh;">
+        <div style="background-color: var(--color-bg-light); border-radius: 0.5rem; width: 90%; max-width: 600px;">
+            <div style="padding: 1rem; border-bottom: 1px solid var(--color-border); display: flex;">
+                <input type="text" id="search-input" placeholder="Search..." style="flex: 1; border: none; background: transparent; font-size: 1.1rem; outline: none;">
+                <button id="close-search-btn" style="background: none; border: none; cursor: pointer;">ESC</button>
+            </div>
+            <div id="search-results" style="max-height: 60vh; overflow-y: auto;"></div>
+        </div>
+    </div>
+
+    <!-- SVG Tooltip -->
+    <div id="svg-tooltip" class="sys-tooltip"></div>
+
+    <!-- Scripts -->
+    <script src="../js/main.js"></script>
+    <script src="../js/progress.js"></script>
+    <script src="../js/quiz.js"></script>
+    <script src="../js/search.js"></script>
+    <script>
+        // Interactive SVG Tooltip Logic
+        const nodes = document.querySelectorAll('.sys-node');
+        const tooltip = document.getElementById('svg-tooltip');
+        
+        nodes.forEach(node => {
+            node.addEventListener('mouseenter', (e) => {
+                const info = e.target.getAttribute('data-info');
+                tooltip.textContent = info;
+                tooltip.style.opacity = 1;
+                
+                // Position
+                const rect = e.target.getBoundingClientRect();
+                tooltip.style.left = (rect.left + window.scrollX + 60) + 'px';
+                tooltip.style.top = (rect.top + window.scrollY - 30) + 'px';
+            });
+            
+            node.addEventListener('mouseleave', () => {
+                tooltip.style.opacity = 0;
+            });
+        });
+    </script>
+</body>
+</html>

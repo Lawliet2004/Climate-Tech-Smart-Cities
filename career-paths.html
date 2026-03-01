@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Paths - Master Climate Tech</title>
+    
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/typography.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <style>
+        .page-header {
+            text-align: center;
+            padding: 4rem 2rem;
+            background-color: var(--color-bg-warm);
+            border-bottom: 1px solid var(--color-border);
+        }
+        
+        .career-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .career-card {
+            background: var(--color-bg-white);
+            border: 1px solid var(--color-border);
+            border-radius: 0.5rem;
+            padding: 2rem;
+            transition: transform 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .career-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .career-card h3 {
+            margin-top: 0;
+            color: var(--color-primary-forest);
+            font-size: 1.5rem;
+        }
+
+        .salary {
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--color-text-muted);
+            font-size: 0.9em;
+            margin-bottom: 1rem;
+        }
+
+        .skills-list {
+            margin-top: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .skills-list span {
+            display: inline-block;
+            background: var(--color-info-bg);
+            color: var(--color-primary-ocean);
+            padding: 0.2rem 0.6rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+            margin: 0.2rem;
+            font-weight: 500;
+        }
+
+        .companies {
+            margin-top: auto;
+            border-top: 1px solid var(--color-border);
+            padding-top: 1rem;
+            font-size: 0.9rem;
+            color: var(--color-text-muted);
+        }
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <a href="index.html" class="top-nav-brand">Climate Tech & Smart Cities</a>
+        <div class="nav-controls">
+            <a href="resources.html">Resources</a>
+            <a href="projects.html">Projects</a>
+            <a href="career-paths.html" style="color: var(--color-primary-ocean); font-weight: 600;">Careers</a>
+            <button class="nav-btn" id="dark-mode-toggle" aria-label="Toggle dark mode">
+                <span id="dark-mode-icon">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </span>
+            </button>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <h1 style="border: none;">Find Your Climate Tech Career</h1>
+        <p style="max-width: 600px; margin: 0 auto; color: var(--color-text-muted);">
+            The climate crisis requires an unprecedented mobilization of technical talent. 
+            Discover how your computer science skills map to high-impact roles.
+        </p>
+    </header>
+
+    <main style="max-width: 100%; padding: 0;">
+        <div class="career-grid">
+            
+            <div class="career-card">
+                <h3>Machine Learning Engineer (Climate)</h3>
+                <div class="salary">Est: $130k - $250k+</div>
+                <p>Build and productionize ML models for emissions tracking, weather forecasting, grid optimization, and material discovery.</p>
+                <div class="skills-list">
+                    <span>PyTorch/TensorFlow</span> <span>Python</span> <span>MLOps</span> <span>Time Series</span>
+                </div>
+                <div class="companies">
+                    <strong>Where:</strong> DeepMind, Pachama, ClimateAi, Grid Edge startups
+                </div>
+            </div>
+
+            <div class="career-card">
+                <h3>Geospatial Data Scientist</h3>
+                <div class="salary">Est: $120k - $200k</div>
+                <p>Analyze satellite imagery and Earth Observation data to track deforestation, map floods, or verify carbon credits.</p>
+                <div class="skills-list">
+                    <span>Google Earth Engine</span> <span>QGIS</span> <span>xarray/GDAL</span> <span>Computer Vision</span>
+                </div>
+                <div class="companies">
+                    <strong>Where:</strong> Planet, Salo Sciences, Descartes Labs, WRI
+                </div>
+            </div>
+
+            <div class="career-card">
+                <h3>Smart Grid / Power Systems Developer</h3>
+                <div class="salary">Est: $110k - $190k</div>
+                <p>Develop the software optimization engines that balance supply and demand on distributed, renewable-heavy power grids.</p>
+                <div class="skills-list">
+                    <span>C++/Rust</span> <span>Control Theory</span> <span>Optimization Algorithms</span>
+                </div>
+                <div class="companies">
+                    <strong>Where:</strong> Tesla (Autobidder), Octopus Energy, Advanced Microgrid Solutions
+                </div>
+            </div>
+
+            <div class="career-card">
+                <h3>Climate Startup Founder</h3>
+                <div class="salary">Variable (Equity)</div>
+                <p>Identify a massive climate problem, build a MVP, raise capital from climate-focused VCs, and scale the impact.</p>
+                <div class="skills-list">
+                    <span>Full-Stack Dev</span> <span>Domain Expertise</span> <span>Product Management</span>
+                </div>
+                <div class="companies">
+                    <strong>Ecosystem:</strong> Y Combinator (Climate Track), Breakthrough Energy Ventures, Lowercarbon Capital
+                </div>
+            </div>
+
+            <div class="career-card">
+                <h3>IoT / Edge Engineer (Smart Cities)</h3>
+                <div class="salary">Est: $120k - $180k</div>
+                <p>Build the firmware, communication protocols, and edge-processing logic for sensor networks monitoring air quality, traffic, or water.</p>
+                <div class="skills-list">
+                    <span>C/C++</span> <span>MQTT/LoRaWAN</span> <span>Embedded Linux</span> <span>TinyML</span>
+                </div>
+                <div class="companies">
+                    <strong>Where:</strong> Density, Sense, Sidewalk Labs (spin-offs), Municipal IT
+                </div>
+            </div>
+
+            <div class="career-card">
+                <h3>Full-Stack Carbon Accounting Dev</h3>
+                <div class="salary">Est: $110k - $180k</div>
+                <p>Build the SaaS platforms that help massive corporations measure, report, and reduce their Scope 1, 2, and 3 emissions.</p>
+                <div class="skills-list">
+                    <span>React/Vue</span> <span>Node/Django</span> <span>PostgreSQL</span> <span>API Integrations</span>
+                </div>
+                <div class="companies">
+                    <strong>Where:</strong> Persefoni, Watershed, Sweep, CarbonChain
+                </div>
+            </div>
+            
+        </div>
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

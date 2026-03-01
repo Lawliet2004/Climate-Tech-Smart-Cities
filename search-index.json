@@ -1,0 +1,122 @@
+[
+  {
+    "title": "Home Roadmap",
+    "url": "/index.html",
+    "content": "Course overview, roadmap, syllabus, climate tech, smart cities, curriculum"
+  },
+  {
+    "title": "About This Course",
+    "url": "/about.html",
+    "content": "Philosophy, target audience, computer science, software engineering, climate goals"
+  },
+  {
+    "title": "Career Paths",
+    "url": "/career-paths.html",
+    "content": "Jobs, carbon accounting, hardware engineering, data science, IoT, smart grid"
+  },
+  {
+    "title": "Project Ideas",
+    "url": "/projects.html",
+    "content": "Portfolio projects, WattTime API, open source, GIS mapping, DIY sensors"
+  },
+  {
+    "title": "Chapter 1: Deep History of Climate Science",
+    "url": "/chapters/chapter-1.html",
+    "content": "Eunice Foote, Fourier, Keeling Curve, radiative forcing, Milankovitch cycles"
+  },
+  {
+    "title": "Chapter 2: Understanding the Climate System",
+    "url": "/chapters/chapter-2.html",
+    "content": "Energy budget, albedo effect, tipping points, carbon cycle, feedback loops"
+  },
+  {
+    "title": "Chapter 3: The Urban Challenge",
+    "url": "/chapters/chapter-3.html",
+    "content": "Urban heat island, sprawl, 15-minute city, concrete emissions, Jevons paradox induced demand"
+  },
+  {
+    "title": "Chapter 4: What Are Smart Cities?",
+    "url": "/chapters/chapter-4.html",
+    "content": "IoT architecture, edge computing, perception, network block, Sidewalk Labs Toronto privacy"
+  },
+  {
+    "title": "Chapter 5: AI Fundamentals for Climate",
+    "url": "/chapters/chapter-5.html",
+    "content": "PINNs, physics-informed neural networks, CNN computer vision, reinforcement learning RL, data sparsity"
+  },
+  {
+    "title": "Chapter 6: AI vs Traditional Modeling",
+    "url": "/chapters/chapter-6.html",
+    "content": "NWP, GraphCast, downscaling GANs, weather prediction forecasting"
+  },
+  {
+    "title": "Chapter 7: Optimizing the Smart Grid",
+    "url": "/chapters/chapter-7.html",
+    "content": "Duck Curve, Virtual Power Plants VPP, V2G Vehicle to Grid, demand response"
+  },
+  {
+    "title": "Chapter 8: Smart Buildings & Efficiency",
+    "url": "/chapters/chapter-8.html",
+    "content": "BMS, HVAC optimization, deep energy retrofits, thermal mass, occupancy sensing"
+  },
+  {
+    "title": "Chapter 9: Intelligent Transportation",
+    "url": "/chapters/chapter-9.html",
+    "content": "MaaS Mobility as a Service, autonomous vehicles AV, traffic lights computer vision, micromobility"
+  },
+  {
+    "title": "Chapter 10: Disaster Resilience",
+    "url": "/chapters/chapter-10.html",
+    "content": "Adaptation vs mitigation, flood digital twins, mesh networking communications, wildfire drone detection"
+  },
+  {
+    "title": "Chapter 11: Precision Agriculture",
+    "url": "/chapters/chapter-11.html",
+    "content": "Methane, fertilizer N2O, drone spraying, digital twins of farms, vertical farming"
+  },
+  {
+    "title": "Chapter 12: Water Strategy & Ocean Tech",
+    "url": "/chapters/chapter-12.html",
+    "content": "NRW Non-Revenue Water leaks, acoustic sensors, desalination reverse osmosis bounds, blue carbon"
+  },
+  {
+    "title": "Chapter 13: Circular Economy",
+    "url": "/chapters/chapter-13.html",
+    "content": "Take-make-waste, Digital Product Passports DPP, AI optical sorting MRF, e-waste server farms"
+  },
+  {
+    "title": "Chapter 14: Hyper-local Air Quality",
+    "url": "/chapters/chapter-14.html",
+    "content": "PM2.5, environmental justice, mobile IoT sensing, macro vs micro networks"
+  },
+  {
+    "title": "Chapter 15: Urban Digital Twins",
+    "url": "/chapters/chapter-15.html",
+    "content": "Cityverse, spatial computing, what-if predictive simulation, IoT integration API"
+  },
+  {
+    "title": "Chapter 16: Climate Finance & Markets",
+    "url": "/chapters/chapter-16.html",
+    "content": "VCM Voluntary Carbon Markets, MRV satellite verification, catalytic capital FOAK valley of death"
+  },
+  {
+    "title": "Chapter 17: Governance & Ethics",
+    "url": "/chapters/chapter-17.html",
+    "content": "Techno-solutionism, algorithmic bias, privacy by design edge surveillance, geoengineering solar SRM"
+  },
+  {
+    "title": "Chapter 18: Careers in Climate Tech",
+    "url": "/chapters/chapter-18.html",
+    "content": "Green software engineering carbon-aware, transferable skills, embedded systems IoT"
+  },
+  {
+    "title": "Chapter 19: Hands-On Projects",
+    "url": "/chapters/chapter-19.html",
+    "content": "WattTime API, ESP32 PurpleAir sensor DIY, QGIS openstreetmap GIS, open source contributing"
+  },
+  {
+    "title": "Chapter 20: The Frontier of Tech",
+    "url": "/chapters/chapter-20.html",
+    "content": "DAC Direct Air Capture, nuclear fusion tokamaks, Space-based Solar Power SBSP, conclusion"
+  }
+]

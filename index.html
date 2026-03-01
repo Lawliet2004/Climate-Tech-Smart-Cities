@@ -1,0 +1,720 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Master Climate Tech & Smart Cities</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/typography.css" />
+    <link rel="stylesheet" href="css/navigation.css" />
+    <style>
+      /* Landing Page Specific Styles */
+      .hero {
+        text-align: center;
+        padding: 6rem 2rem;
+        background: linear-gradient(
+          135deg,
+          var(--color-bg-warm) 0%,
+          var(--color-bg-light) 100%
+        );
+        border-bottom: 1px solid var(--color-border);
+      }
+      .hero h1 {
+        font-size: 3.5rem;
+        color: var(--color-primary-forest);
+        max-width: 900px;
+        margin: 0 auto 1.5rem auto;
+        line-height: 1.1;
+      }
+      .hero p.subtitle {
+        font-size: 1.25rem;
+        color: var(--color-text-muted);
+        max-width: 700px;
+        margin: 0 auto 2.5rem auto;
+      }
+
+      .roadmap-container {
+        margin: 4rem auto;
+        max-width: 1000px;
+      }
+      .roadmap-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+      .roadmap-card {
+        background-color: var(--color-bg-white);
+        border: 1px solid var(--color-border);
+        border-radius: 0.5rem;
+        padding: 1.5rem;
+        text-decoration: none;
+        color: inherit;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        overflow: hidden;
+      }
+      .roadmap-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        text-decoration: none;
+      }
+      .roadmap-card.completed::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 4px;
+        height: 100%;
+        background-color: var(--color-primary-forest);
+      }
+      .chapter-num {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.85rem;
+        color: var(--color-accent-amber);
+        font-weight: 600;
+        text-transform: uppercase;
+        margin-bottom: 0.5rem;
+      }
+      .chapter-title {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--color-primary-ocean);
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+      }
+      .reading-time {
+        margin-top: auto;
+        font-size: 0.85rem;
+        color: var(--color-text-muted);
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+      }
+
+      .stats-section {
+        background-color: var(--color-primary-forest);
+        color: white;
+        padding: 4rem 2rem;
+      }
+      .stats-section h2,
+      .stats-section p {
+        color: white;
+        text-align: center;
+      }
+      .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 3rem auto 0 auto;
+      }
+      .stat-card {
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 0.5rem;
+        padding: 2rem;
+        text-align: center;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      .stat-card h3 {
+        color: var(--color-accent-amber);
+        font-size: 2.5rem;
+        margin-top: 0;
+        margin-bottom: 0.5rem;
+      }
+
+      .paths-section {
+        padding: 4rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .paths-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+      .path-card {
+        background-color: var(--color-bg-white);
+        border: 1px solid var(--color-border);
+        border-radius: 0.5rem;
+        padding: 2rem;
+      }
+      .path-title {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--color-primary-ocean);
+        margin-bottom: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="top-nav">
+      <a href="index.html" class="top-nav-brand">Climate Tech & Smart Cities</a>
+      <div class="nav-controls">
+        <a href="resources.html">Resources</a>
+        <a href="projects.html">Projects</a>
+        <a href="career-paths.html">Careers</a>
+        <button class="nav-btn" id="search-icon" aria-label="Search">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+            ></path>
+          </svg>
+        </button>
+        <button
+          class="nav-btn"
+          id="dark-mode-toggle"
+          aria-label="Toggle dark mode"
+        >
+          <span id="dark-mode-icon">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+              ></path>
+            </svg>
+          </span>
+        </button>
+      </div>
+    </nav>
+
+    <main style="padding: 0; max-width: 100%">
+      <section class="hero">
+        <h1>
+          Master Climate Tech & Smart Cities: From History to AI-Powered
+          Solutions
+        </h1>
+        <p class="subtitle">
+          A comprehensive, university-level curriculum designed explicitly for
+          computer science students, software engineers, data scientists, ML
+          engineers, and aspiring climate tech founders.
+        </p>
+        <div style="margin-top: 2rem">
+          <a href="#roadmap" class="btn btn-primary" style="margin-right: 1rem"
+            >View Course Roadmap</a
+          >
+          <a href="chapters/chapter-1.html" class="btn btn-secondary"
+            >Start Chapter 1</a
+          >
+        </div>
+
+        <div
+          style="
+            margin-top: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: left;
+            background: var(--color-bg-white);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid var(--color-border);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+          "
+        >
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              margin-bottom: 0.5rem;
+            "
+          >
+            <span style="font-weight: 600; font-size: 0.9rem"
+              >Course Progress</span
+            >
+            <span
+              id="landing-progress-text"
+              style="font-size: 0.9rem; color: var(--color-text-muted)"
+              >0/20 Chapters</span
+            >
+          </div>
+          <div
+            style="
+              width: 100%;
+              background-color: var(--color-border);
+              height: 8px;
+              border-radius: 4px;
+              overflow: hidden;
+            "
+          >
+            <div
+              id="landing-progress-bar"
+              style="
+                height: 100%;
+                width: 0%;
+                background-color: var(--color-primary-forest);
+                transition: width 0.3s ease;
+              "
+            ></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="stats-section">
+        <h2 style="border: none">Why This Matters Now</h2>
+        <p
+          style="
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            opacity: 0.9;
+          "
+        >
+          The intersection of climate science and urbanization represents the
+          greatest engineering challenge of the 21st century. The tech industry
+          has a vital role to play.
+        </p>
+
+        <div class="stats-grid">
+          <div class="stat-card">
+            <h3>70%+</h3>
+            <p style="font-size: 0.95rem; font-weight: 500">
+              Of Global CO2 Emissions
+            </p>
+            <p style="font-size: 0.85rem; opacity: 0.8">
+              Cities consume 78% of the world's energy while covering only 2% of
+              the Earth's surface. (UN Habitat)
+            </p>
+          </div>
+          <div class="stat-card">
+            <h3>2.5 Billion</h3>
+            <p style="font-size: 0.95rem; font-weight: 500">
+              New Urban Dwellers by 2050
+            </p>
+            <p style="font-size: 0.85rem; opacity: 0.8">
+              The urban population is projected to grow to 68% of the global
+              total by 2050. (UN DESA)
+            </p>
+          </div>
+          <div class="stat-card">
+            <h3>$4.3 Trillion</h3>
+            <p style="font-size: 0.95rem; font-weight: 500">
+              Annual Investment Needed
+            </p>
+            <p style="font-size: 0.85rem; opacity: 0.8">
+              The climate finance gap requires scaling current investment by
+              nearly 4x by 2030. (IPCC AR6)
+            </p>
+          </div>
+          <div class="stat-card">
+            <h3>$70B+</h3>
+            <p style="font-size: 0.95rem; font-weight: 500">
+              Climate Tech VC Investment
+            </p>
+            <p style="font-size: 0.85rem; opacity: 0.8">
+              Capital flowing into climate solutions companies over recent years
+              is surging. (PwC / BloombergNEF)
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="roadmap" class="roadmap-container">
+        <h2 style="text-align: center; margin-bottom: 3rem">Course Roadmap</h2>
+
+        <h3
+          style="
+            color: var(--color-text-muted);
+            font-size: 1rem;
+            text-transform: uppercase;
+          "
+        >
+          Part I: Foundations of Climate & Cities
+        </h3>
+        <div class="roadmap-grid">
+          <a
+            href="chapters/chapter-1.html"
+            class="roadmap-card"
+            data-chapter="1"
+          >
+            <span class="chapter-num">Chapter 1</span>
+            <span class="chapter-title"
+              >The Deep History of Climate Science</span
+            >
+            <span class="reading-time">⏱ 25 min</span>
+          </a>
+          <a
+            href="chapters/chapter-2.html"
+            class="roadmap-card"
+            data-chapter="2"
+          >
+            <span class="chapter-num">Chapter 2</span>
+            <span class="chapter-title">Understanding the Climate System</span>
+            <span class="reading-time">⏱ 30 min</span>
+          </a>
+          <a
+            href="chapters/chapter-3.html"
+            class="roadmap-card"
+            data-chapter="3"
+          >
+            <span class="chapter-num">Chapter 3</span>
+            <span class="chapter-title"
+              >The Urban Challenge & Future Cities</span
+            >
+            <span class="reading-time">⏱ 20 min</span>
+          </a>
+          <a
+            href="chapters/chapter-4.html"
+            class="roadmap-card"
+            data-chapter="4"
+          >
+            <span class="chapter-num">Chapter 4</span>
+            <span class="chapter-title">What Are Smart Cities?</span>
+            <span class="reading-time">⏱ 22 min</span>
+          </a>
+        </div>
+
+        <h3
+          style="
+            color: var(--color-text-muted);
+            font-size: 1rem;
+            text-transform: uppercase;
+            margin-top: 3rem;
+          "
+        >
+          Part II: AI Tooling & Modeling
+        </h3>
+        <div class="roadmap-grid">
+          <a
+            href="chapters/chapter-5.html"
+            class="roadmap-card"
+            data-chapter="5"
+          >
+            <span class="chapter-num">Chapter 5</span>
+            <span class="chapter-title">AI Fundamentals for Climate</span>
+            <span class="reading-time">⏱ 35 min</span>
+          </a>
+          <a
+            href="chapters/chapter-6.html"
+            class="roadmap-card"
+            data-chapter="6"
+          >
+            <span class="chapter-num">Chapter 6</span>
+            <span class="chapter-title">AI for Climate & Weather Modeling</span>
+            <span class="reading-time">⏱ 28 min</span>
+          </a>
+          <a
+            href="chapters/chapter-15.html"
+            class="roadmap-card"
+            data-chapter="15"
+          >
+            <span class="chapter-num">Chapter 15</span>
+            <span class="chapter-title">Digital Twins for Cities</span>
+            <span class="reading-time">⏱ 25 min</span>
+          </a>
+        </div>
+
+        <h3
+          style="
+            color: var(--color-text-muted);
+            font-size: 1rem;
+            text-transform: uppercase;
+            margin-top: 3rem;
+          "
+        >
+          Part III: Smart Infrastructure Systems
+        </h3>
+        <div class="roadmap-grid">
+          <a
+            href="chapters/chapter-7.html"
+            class="roadmap-card"
+            data-chapter="7"
+          >
+            <span class="chapter-num">Chapter 7</span>
+            <span class="chapter-title">Optimization of Smart Grids</span>
+            <span class="reading-time">⏱ 30 min</span>
+          </a>
+          <a
+            href="chapters/chapter-8.html"
+            class="roadmap-card"
+            data-chapter="8"
+          >
+            <span class="chapter-num">Chapter 8</span>
+            <span class="chapter-title"
+              >Smart Buildings & Energy Efficiency</span
+            >
+            <span class="reading-time">⏱ 25 min</span>
+          </a>
+          <a
+            href="chapters/chapter-9.html"
+            class="roadmap-card"
+            data-chapter="9"
+          >
+            <span class="chapter-num">Chapter 9</span>
+            <span class="chapter-title">Smart Transportation & Mobility</span>
+            <span class="reading-time">⏱ 28 min</span>
+          </a>
+          <a
+            href="chapters/chapter-13.html"
+            class="roadmap-card"
+            data-chapter="13"
+          >
+            <span class="chapter-num">Chapter 13</span>
+            <span class="chapter-title"
+              >Smart Waste Management & Circularity</span
+            >
+            <span class="reading-time">⏱ 22 min</span>
+          </a>
+        </div>
+
+        <h3
+          style="
+            color: var(--color-text-muted);
+            font-size: 1rem;
+            text-transform: uppercase;
+            margin-top: 3rem;
+          "
+        >
+          Part IV: Environmental Intelligence
+        </h3>
+        <div class="roadmap-grid">
+          <a
+            href="chapters/chapter-10.html"
+            class="roadmap-card"
+            data-chapter="10"
+          >
+            <span class="chapter-num">Chapter 10</span>
+            <span class="chapter-title">Adaptation & Disaster Resilience</span>
+            <span class="reading-time">⏱ 25 min</span>
+          </a>
+          <a
+            href="chapters/chapter-11.html"
+            class="roadmap-card"
+            data-chapter="11"
+          >
+            <span class="chapter-num">Chapter 11</span>
+            <span class="chapter-title">Agriculture, Food, & Land Use</span>
+            <span class="reading-time">⏱ 30 min</span>
+          </a>
+          <a
+            href="chapters/chapter-12.html"
+            class="roadmap-card"
+            data-chapter="12"
+          >
+            <span class="chapter-num">Chapter 12</span>
+            <span class="chapter-title">Water Management & Ocean Systems</span>
+            <span class="reading-time">⏱ 25 min</span>
+          </a>
+          <a
+            href="chapters/chapter-14.html"
+            class="roadmap-card"
+            data-chapter="14"
+          >
+            <span class="chapter-num">Chapter 14</span>
+            <span class="chapter-title"
+              >Air Quality & Environmental Sensing</span
+            >
+            <span class="reading-time">⏱ 25 min</span>
+          </a>
+        </div>
+
+        <h3
+          style="
+            color: var(--color-text-muted);
+            font-size: 1rem;
+            text-transform: uppercase;
+            margin-top: 3rem;
+          "
+        >
+          Part V: Policy, Finance, & the Future
+        </h3>
+        <div class="roadmap-grid">
+          <a
+            href="chapters/chapter-16.html"
+            class="roadmap-card"
+            data-chapter="16"
+          >
+            <span class="chapter-num">Chapter 16</span>
+            <span class="chapter-title">Climate Finance & Carbon Markets</span>
+            <span class="reading-time">⏱ 28 min</span>
+          </a>
+          <a
+            href="chapters/chapter-17.html"
+            class="roadmap-card"
+            data-chapter="17"
+          >
+            <span class="chapter-num">Chapter 17</span>
+            <span class="chapter-title">Ethics, Equity, & Governance</span>
+            <span class="reading-time">⏱ 25 min</span>
+          </a>
+          <a
+            href="chapters/chapter-18.html"
+            class="roadmap-card"
+            data-chapter="18"
+          >
+            <span class="chapter-num">Chapter 18</span>
+            <span class="chapter-title">Career Paths & the Ecosystem</span>
+            <span class="reading-time">⏱ 20 min</span>
+          </a>
+          <a
+            href="chapters/chapter-19.html"
+            class="roadmap-card"
+            data-chapter="19"
+          >
+            <span class="chapter-num">Chapter 19</span>
+            <span class="chapter-title">Hands-On Built-It Projects</span>
+            <span class="reading-time">⏱ 45 min</span>
+          </a>
+          <a
+            href="chapters/chapter-20.html"
+            class="roadmap-card"
+            data-chapter="20"
+          >
+            <span class="chapter-num">Chapter 20</span>
+            <span class="chapter-title">Frontier Research & the Future</span>
+            <span class="reading-time">⏱ 25 min</span>
+          </a>
+        </div>
+      </section>
+
+      <section class="paths-section">
+        <h2 style="text-align: center">Learning Paths</h2>
+        <div class="paths-grid">
+          <div class="path-card">
+            <div class="path-title">🚀 The Comprehensive Path</div>
+            <p>
+              Read sequentially from Chapter 1 through 20. Ideal for absolute
+              beginners who want a masterful understanding of the entire climate
+              technology landscape.
+            </p>
+          </div>
+          <div class="path-card">
+            <div class="path-title">🤖 Just the AI Stuff</div>
+            <p>
+              Skip the history and dive straight into the machine learning. Read
+              Chapters 5, 6, 7, 10, 11, and 15 to understand how AI is
+              physically applied in climate.
+            </p>
+          </div>
+          <div class="path-card">
+            <div class="path-title">🛠️ The Builder's Path</div>
+            <p>
+              Learn by doing. Skim Chapter 5 for ML fundamentals, then jump
+              directly into Chapter 19 and start building the projects,
+              referring back to other chapters as needed.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Search Modal -->
+    <div
+      id="search-modal"
+      style="
+        display: none;
+        position: fixed;
+        inset: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 200;
+        align-items: flex-start;
+        justify-content: center;
+        padding-top: 10vh;
+      "
+    >
+      <div
+        style="
+          background-color: var(--color-bg-light);
+          border-radius: 0.5rem;
+          width: 90%;
+          max-width: 600px;
+          box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+          border: 1px solid var(--color-border);
+          overflow: hidden;
+        "
+      >
+        <div
+          style="
+            padding: 1rem;
+            border-bottom: 1px solid var(--color-border);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+          "
+        >
+          <svg
+            width="20"
+            height="20"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Search the course..."
+            style="
+              flex: 1;
+              border: none;
+              background: transparent;
+              font-size: 1.1rem;
+              color: var(--color-text-main);
+              outline: none;
+            "
+          />
+          <button
+            id="close-search-btn"
+            style="
+              background: none;
+              border: none;
+              cursor: pointer;
+              color: var(--color-text-muted);
+            "
+          >
+            ESC
+          </button>
+        </div>
+        <div id="search-results" style="max-height: 60vh; overflow-y: auto">
+          <!-- Results injected here -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/search.js"></script>
+    <script>
+      // Landing page specific logic to mark completed chapters visually
+      document.addEventListener("DOMContentLoaded", () => {
+        const completedChapters = JSON.parse(
+          localStorage.getItem("completedChapters") || "[]",
+        );
+        const totalChapters = 20;
+
+        // Update progress bar
+        const bar = document.getElementById("landing-progress-bar");
+        const text = document.getElementById("landing-progress-text");
+        if (bar && text) {
+          const perc = Math.round(
+            (completedChapters.length / totalChapters) * 100,
+          );
+          bar.style.width = perc + "%";
+          text.textContent =
+            completedChapters.length + " / " + totalChapters + " Chapters";
+        }
+
+        // Highlight cards
+        document.querySelectorAll(".roadmap-card").forEach((card) => {
+          const id = card.getAttribute("data-chapter");
+          if (completedChapters.includes(id)) {
+            card.classList.add("completed");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

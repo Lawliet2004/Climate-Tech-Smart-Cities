@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources - Master Climate Tech</title>
+    
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/typography.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <style>
+        .resources-layout {
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .resources-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .filters {
+            position: sticky;
+            top: 5rem;
+            background: var(--color-bg-white);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid var(--color-border);
+            height: fit-content;
+        }
+        
+        .filters h3 {
+            margin-top: 0;
+            font-size: 1.1rem;
+        }
+        
+        .filter-btn {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 0.5rem;
+            margin-bottom: 0.5rem;
+            background: none;
+            border: 1px solid transparent;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            color: var(--color-text-main);
+            transition: all 0.2s;
+        }
+        
+        .filter-btn:hover { background: var(--color-bg-warm); }
+        .filter-btn.active { 
+            background: var(--color-info-bg);
+            color: 	var(--color-primary-ocean);
+            font-weight: 600;
+        }
+        
+        .resource-section {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+        .resource-section.active { display: block; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .resource-card {
+            background: var(--color-bg-white);
+            border: 1px solid var(--color-border);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .resource-card h4 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            color: var(--color-primary-forest);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .tag {
+            font-size: 0.75rem;
+            background: var(--color-bg-warm);
+            padding: 0.1rem 0.5rem;
+            border-radius: 1rem;
+            font-weight: 500;
+            color: var(--color-text-muted);
+        }
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <a href="index.html" class="top-nav-brand">Climate Tech & Smart Cities</a>
+        <div class="nav-controls">
+            <a href="resources.html" style="color: var(--color-primary-ocean); font-weight: 600;">Resources</a>
+            <a href="projects.html">Projects</a>
+            <a href="career-paths.html">Careers</a>
+            <button class="nav-btn" id="dark-mode-toggle" aria-label="Toggle dark mode">
+                <span id="dark-mode-icon">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="resources-layout">
+        <aside class="filters">
+            <h3>Categories</h3>
+            <button class="filter-btn active" data-target="papers">Essential Papers</button>
+            <button class="filter-btn" data-target="books">Books</button>
+            <button class="filter-btn" data-target="courses">Online Courses</button>
+            <button class="filter-btn" data-target="datasets">Datasets</button>
+            <button class="filter-btn" data-target="tools">Tools & Frameworks</button>
+            <button class="filter-btn" data-target="orgs">Communities & Orgs</button>
+            <button class="filter-btn" data-target="media">Podcasts & Media</button>
+        </aside>
+
+        <main>
+            <h1>Climate Tech Resources</h1>
+            <p>A curated compilation of the most important research, data, tools, and communities for building climate tech.</p>
+
+            <!-- Papers -->
+            <section id="papers" class="resource-section active">
+                <h2>Essential Research Papers</h2>
+                
+                <div class="resource-card">
+                    <h4>Tackling Climate Change with Machine Learning <span class="tag">Foundation</span></h4>
+                    <p class="citation">Rolnick, D. et al., 2019/2022. ACM Computing Surveys.</p>
+                    <p>The seminal paper that catalyzed the modern Climate AI movement, mapping out 100+ ways machine learning can address climate mitigation and adaptation.</p>
+                    <a href="https://dl.acm.org/doi/10.1145/3481687" target="_blank">Read Paper</a>
+                </div>
+                
+                <div class="resource-card">
+                    <h4>GraphCast: Learning skillful medium-range global weather forecasting <span class="tag">AI Modeling</span></h4>
+                    <p class="citation">Lam, R. et al., 2023. Science.</p>
+                    <p>Google DeepMind's breakthrough Graph Neural Network model that outperformed traditional numerical weather prediction (HRES) in accuracy and speed.</p>
+                    <a href="https://www.science.org/doi/10.1126/science.adi2336" target="_blank">Read Paper</a>
+                </div>
+
+                <div class="resource-card">
+                    <h4>Toward Improved Predictions in Ungauged Basins <span class="tag">Water/Adaptation</span></h4>
+                    <p class="citation">Kratzert, F. et al., 2019. Water Resources Research.</p>
+                    <p>Landmark paper showing how LSTMs can outperform traditional physics-based hydrological models for predicting river flow, even in unmapped regions.</p>
+                    <a href="https://agupubs.onlinelibrary.wiley.com/doi/full/10.1029/2019WR026065" target="_blank">Read Paper</a>
+                </div>
+
+                <div class="resource-card">
+                    <h4>Trajectories of the Earth System in the Anthropocene <span class="tag">Climate Science</span></h4>
+                    <p class="citation">Steffen, W. et al., 2018. PNAS.</p>
+                    <p>Introduces the concept of "Hothouse Earth" and the danger of cascading tipping points in the climate system.</p>
+                </div>
+                <!-- Additional papers would follow... -->
+            </section>
+
+            <!-- Books -->
+            <section id="books" class="resource-section">
+                <h2>Recommended Books</h2>
+                <div class="resource-card">
+                    <h4>Speed & Scale</h4>
+                    <p><strong>John Doerr</strong> - An action plan for solving the climate crisis, breaking down exactly how many gigatons of emissions need to be eliminated across specific sectors (power, transportation, industry, agriculture, buildings).</p>
+                </div>
+                <div class="resource-card">
+                    <h4>Under a White Sky</h4>
+                    <p><strong>Elizabeth Kolbert</strong> - An exploration of human interventions in nature, including geoengineering, and the ethical/scale challenges of trying to engineer our way out of planetary problems.</p>
+                </div>
+                <div class="resource-card">
+                    <h4>The Smart Enough City</h4>
+                    <p><strong>Ben Green</strong> - A crucial critique of "smart city" techno-solutionism, arguing against deploying technology for its own sake and advocating for tech that serves civic equity.</p>
+                </div>
+            </section>
+
+            <!-- Courses -->
+            <section id="courses" class="resource-section">
+                <h2>Online Courses</h2>
+                <div class="resource-card">
+                    <h4>Climate Change AI Summer School <span class="tag">Advanced ML</span></h4>
+                    <p>Offered annually by CCAI, this is the premier structured program for learning how to apply ML to climate challenges. <a href="https://www.climatechange.ai/events/summer_school">Link</a></p>
+                </div>
+                <div class="resource-card">
+                    <h4>Project Drawdown: Climate Solutions 101 <span class="tag">Fundamentals</span></h4>
+                    <p>A rigorous, accessible overview of the physical solutions needed to reach drawdown. <a href="https://drawdown.org/climate-solutions-101">Link</a></p>
+                </div>
+            </section>
+
+            <!-- Datasets -->
+            <section id="datasets" class="resource-section">
+                <h2>Datasets</h2>
+                <div class="resource-card">
+                    <h4>Google Earth Engine Data Catalog <span class="tag">Geospatial</span></h4>
+                    <p>A multi-petabyte catalog of satellite imagery and geospatial datasets with planetary-scale analysis capabilities. Essential for any spatial climate AI work.</p>
+                </div>
+                <div class="resource-card">
+                    <h4>ERA5 Reanalysis <span class="tag">Climate/Weather</span></h4>
+                    <p>ECMWF's comprehensive historical climate and weather data (1940-present). The gold standard training dataset for AI weather models like GraphCast and Pangu-Weather.</p>
+                </div>
+                <div class="resource-card">
+                    <h4>Climate TRACE <span class="tag">Emissions</span></h4>
+                    <p>Facility-level global greenhouse gas emissions data estimated via satellite imagery and machine learning.</p>
+                </div>
+            </section>
+
+            <!-- Tools -->
+            <section id="tools" class="resource-section">
+                <h2>Tools & Frameworks</h2>
+                <div class="resource-card">
+                    <h4>xarray <span class="tag">Python Library</span></h4>
+                    <p>N-dimensional arrays in Python. The fundamental library for working with multi-dimensional climate data (NetCDF/Zarr files).</p>
+                </div>
+                <div class="resource-card">
+                    <h4>EnergyPlus <span class="tag">Simulation</span></h4>
+                    <p>DOE's flagship whole-building energy simulation program. Used as the environment for many Reinforcement Learning HVAC optimization projects.</p>
+                </div>
+                <div class="resource-card">
+                    <h4>QGIS <span class="tag">Desktop App</span></h4>
+                    <p>Open-source Geographic Information System. The standard local tool for visualizing and analyzing spatial data before writing code.</p>
+                </div>
+            </section>
+
+            <!-- Orgs -->
+            <section id="orgs" class="resource-section">
+                <h2>Communities & Organizations</h2>
+                <div class="resource-card">
+                    <h4>Work on Climate <span class="tag">Slack Community</span></h4>
+                    <p>The largest community dedicated to helping people pivot their careers into climate tech. Excellent jobs board and expert office hours.</p>
+                </div>
+                <div class="resource-card">
+                    <h4>Climate Change AI (CCAI) <span class="tag">Organization</span></h4>
+                    <p>An organization of researchers and engineers facilitating the application of ML to climate change. Hosts major workshops at NeurIPS and ICLR.</p>
+                </div>
+            </section>
+            
+            <!-- Media -->
+            <section id="media" class="resource-section">
+                <h2>Podcasts & Media</h2>
+                <div class="resource-card">
+                    <h4>My Climate Journey (MCJ)</h4>
+                    <p>The leading podcast interviewing founders and investors across the entire climate tech spectrum.</p>
+                </div>
+                <div class="resource-card">
+                    <h4>Volts</h4>
+                    <p>David Roberts' deep dives into the clean energy transition, policy, and decarbonization technologies.</p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Simple tab switching logic for resources
+        document.addEventListener('DOMContentLoaded', () => {
+            const btns = document.querySelectorAll('.filter-btn');
+            const sections = document.querySelectorAll('.resource-section');
+
+            btns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Remove active from all
+                    btns.forEach(b => b.classList.remove('active'));
+                    sections.forEach(s => s.classList.remove('active'));
+                    
+                    // Add active to clicked
+                    btn.classList.add('active');
+                    document.getElementById(btn.getAttribute('data-target')).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

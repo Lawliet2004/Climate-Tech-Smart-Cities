@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="chapter" content="7">
+    <title>Chapter 7: Optimization of Smart Grids</title>
+    
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/navigation.css">
+    <style>
+        .duck-curve-box {
+            background: var(--color-bg-white);
+            border: 1px solid var(--color-border);
+            border-radius: 0.5rem;
+            padding: 2rem;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .duck-svg {
+            width: 100%;
+            height: auto;
+            max-width: 600px;
+            background: #fff;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+        }
+        
+        .axis-text { font-family: 'JetBrains Mono', monospace; font-size: 10px; fill: var(--color-text-muted); }
+        .grid-line { stroke: #e5e7eb; stroke-width: 1; stroke-dasharray: 4; }
+        .demand-line { fill: none; stroke: var(--color-text-main); stroke-width: 3; }
+        .net-load-line { fill: none; stroke: #F59E0B; stroke-width: 4; stroke-linecap: round; }
+        .solar-area { fill: #FEF3C7; opacity: 0.8; }
+        
+        .interactive-overlay:hover { opacity: 0.5; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div id="reading-progress"></div>
+
+    <nav class="top-nav">
+        <a href="../index.html" class="top-nav-brand">Climate Tech & Smart Cities</a>
+        <div class="nav-controls">
+            <button class="nav-btn" id="mobile-menu-btn" aria-expanded="false">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+            <a href="../resources.html">Resources</a>
+            <button class="nav-btn" id="search-icon" aria-label="Search">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            </button>
+            <button class="nav-btn" id="dark-mode-toggle" aria-label="Toggle dark mode">
+                <span id="dark-mode-icon">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="chapter-layout">
+        <aside class="left-sidebar sidebar">
+            <nav class="toc-nav">
+                <h3>Chapter Outline</h3>
+                <ul>
+                    <li><a href="#the-grid">1. The Electrical Grid Protocol</a></li>
+                    <li><a href="#duck-curve">2. The Duck Curve</a></li>
+                    <li><a href="#vpp">3. Virtual Power Plants (VPPs)</a></li>
+                    <li><a href="#demand-response">4. Dynamic Pricing & Response</a></li>
+                    <li><a href="#v2g">5. Vehicle-to-Grid (V2G)</a></li>
+                    <li><a href="#quiz">6. Knowledge Check</a></li>
+                </ul>
+                <a href="../index.html" class="chapter-link">&larr; Back to Roadmap</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header>
+                <div style="font-family: 'JetBrains Mono', monospace; color: var(--color-accent-amber); font-weight: 600; margin-bottom: 0.5rem; text-transform: uppercase;">Chapter 7</div>
+                <h1 class="chapter-title">Optimization of Smart Grids</h1>
+                <div style="color: var(--color-text-muted); font-size: 0.9rem; margin-top: 1rem;">
+                    <span id="reading-time">Reading time: calculating...</span> | Energy Systems & VPPs
+                </div>
+            </header>
+
+            <div class="content">
+                <h2 id="the-grid">1. The Electrical Grid Protocol</h2>
+                <p>
+                    The electrical grid represents the largest, most complex machine humanity has ever built. Historically, it operated via a strict, one-way architecture: massive, centralized, fossil-fueled power plants generated electricity, transmitting it linearly to passive consumers.
+                </p>
+                <p>
+                    Crucially, <strong>supply must perfectly match demand at every second of the day.</strong> If too much power is generated, the grid frequency spikes and transformers blow. If too little is generated, rolling blackouts occur. This perfect balancing act was historically managed by manually dialing up or dialing down coal/gas "peaker plants" as human demand shifted.
+                </p>
+
+                <h2 id="duck-curve">2. Renewable Energy and the Duck Curve</h2>
+                <p>
+                    The transition to renewable energy fundamentally breaks the old grid protocol. Wind and solar are <strong>intermittent</strong>. We do not control when the sun shines or when the wind blows. When you add massive amounts of solar panels to a grid (like in California), it creates a phenomenon known as the <em>Duck Curve</em>.
+                </p>
+
+                <div class="duck-curve-box">
+                    <h4 style="margin-top:0; color:var(--color-primary-ocean)">The California Duck Curve</h4>
+                    <svg viewBox="0 0 500 300" class="duck-svg">
+                        <g transform="translate(40, 20)">
+                            <!-- Grid lines -->
+                            <line x1="0" y1="50" x2="420" y2="50" class="grid-line" />
+                            <line x1="0" y1="100" x2="420" y2="100" class="grid-line" />
+                            <line x1="0" y1="150" x2="420" y2="150" class="grid-line" />
+                            <line x1="0" y1="200" x2="420" y2="200" class="grid-line" />
+                            <line x1="0" y1="250" x2="420" y2="250" stroke="#333" stroke-width="2" />
+                            <line x1="0" y1="250" x2="0" y2="0" stroke="#333" stroke-width="2" />
+
+                            <!-- X Axis Labels (Time) -->
+                            <text x="0" y="270" text-anchor="middle" class="axis-text">12am</text>
+                            <text x="105" y="270" text-anchor="middle" class="axis-text">6am</text>
+                            <text x="210" y="270" text-anchor="middle" class="axis-text">12pm</text>
+                            <text x="315" y="270" text-anchor="middle" class="axis-text">6pm</text>
+                            <text x="420" y="270" text-anchor="middle" class="axis-text">12am</text>
+
+                            <!-- Y Axis Labels (Megawatts) -->
+                            <text x="-10" y="55" text-anchor="end" class="axis-text">High</text>
+                            <text x="-10" y="250" text-anchor="end" class="axis-text">Low</text>
+                            
+                            <text x="-35" y="125" transform="rotate(-90, -35, 125)" text-anchor="middle" font-size="12" font-weight="bold">Net Load (Demand - Solar)</text>
+
+                            <!-- Typical Demand Line without solar -->
+                            <path d="M 0 130 C 50 150, 80 160, 105 140 C 150 120, 180 120, 210 130 C 260 140, 280 120, 315 80 C 350 50, 380 90, 420 150" class="demand-line" stroke-dasharray="5,5" />
+                            <text x="210" y="115" text-anchor="middle" font-size="12" fill="#666">Gross Demand</text>
+
+                            <!-- The Duck "Net Load" Line (Yellowish Orange) -->
+                            <path d="M 0 130 C 50 150, 80 160, 105 140 C 140 180, 180 230, 210 230 C 260 230, 290 180, 315 80 C 350 50, 380 90, 420 150" class="net-load-line" id="duck-path" />
+                            
+                            <!-- Highlight Solar area -->
+                            <path d="M 105 140 C 150 120, 180 120, 210 130 C 260 140, 280 120, 315 80 C 290 180, 260 230, 210 230 C 180 230, 140 180, 105 140 Z" class="solar-area" />
+                            <text x="210" y="180" text-anchor="middle" font-size="12" font-weight="bold" fill="#B45309">Solar Generation</text>
+                            
+                            <!-- Annotations -->
+                            <text x="325" y="130" font-size="10" fill="#EF4444" font-weight="bold">Steep Ramp (The "Neck")</text>
+                        </g>
+                    </svg>
+                    <p style="font-size: 0.85rem; margin-top: 1rem; color: var(--color-text-muted);">
+                        As the sun sets (6pm), solar generation violently drops off right exactly as humans come home from work, turn on TVs, cook, and plug in EVs. The grid operators must spin up rapid, dirty Natural Gas peaker plants to cover the massive, steep "neck" of the duck.
+                    </p>
+                </div>
+
+                <div class="info-box">
+                    <strong>Why Batteries Aren't Enough</strong><br>
+                    It is a common myth that we can just build giant Tesla Megapacks everywhere and solve grid intermittency. Utility-scale batteries are incredibly expensive and usually only provide 2 to 4 hours of backup capacity. They can smooth out the Duck Curve's neck, but they cannot provide seasonal storage (e.g., keeping Germany powered during weeks of winter where it is both dark and windless, an event known as <em>Dunkelflaute</em>).
+                </div>
+
+                <h2 id="vpp">3. Virtual Power Plants (VPPs)</h2>
+                <p>
+                    If generating supply on-demand is no longer possible, we must shift to <strong>controlling demand dynamically.</strong> This is the holy grail of smart grid optimization: The Virtual Power Plant (VPP).
+                </p>
+                <p>
+                    A VPP is a decentralized network of Distributed Energy Resources (DERs)—such as residential rooftop solar, Tesla Powerwalls in garages, smart thermostats (Nest/ecobee), and electric water heaters. Via cloud APIs, an ML algorithm aggregates these thousands of separate devices into a single, controllable software entity.
+                </p>
+                <p>
+                    If the grid algorithm realizes a massive spike in demand is coming in 10 minutes at sunset, instead of turning on a coal plant, it can send programmatic signals to silently lower the power draw of 50,000 smart AC units by 2 degrees and briefly pause 10,000 EV chargers. The humans don't notice, but the grid stays balanced.
+                </p>
+
+                <h2 id="demand-response">4. Dynamic Pricing & Automatic Demand Response</h2>
+                <p>
+                    For VPPs to work, markets must align with physics. Currently, most consumers pay a flat rate for electricity (e.g., $0.15/kWh). This gives them no financial incentive to care about the Duck Curve.
+                </p>
+                <p>
+                    <strong>Dynamic Pricing</strong> exposes wholesale market prices to algorithms at the edge of the network. If wholesale electricity prices go negative at noon (because there is too much solar), your smart grid API will recognize the price signal and automatically turn on your pool pump or charge your EV, essentially getting paid to consume excess energy.
+                </p>
+
+                <h2 id="v2g">5. Vehicle-to-Grid (V2G)</h2>
+                <p>
+                    An electric vehicle is essentially a massive battery on wheels. A standard EV holds roughly 60 to 100 kWh of energy—enough to power a typical home for 3 days. Most cars sit parked 95% of their life.
+                </p>
+                <p>
+                    With <strong>Vehicle-to-Grid (V2G)</strong> technology via bidirectional chargers, grid operators can pull power <em>out</em> of parked electric vehicles during the peak 6pm "neck" of the duck curve, compensating the owners, and then smoothly charge the cars back up at 2am when wind energy is abundant and cheap.
+                </p>
+
+                <hr style="margin: 3rem 0; border: none; border-top: 1px solid var(--color-border);">
+
+                <h2 id="quiz">6. Knowledge Check</h2>
+                <div class="quiz-container" style="background: var(--color-bg-white); padding: 2rem; border-radius: 0.5rem; border: 1px solid var(--color-border);">
+                    <div class="quiz-question" style="margin-bottom: 2rem;">
+                        <p style="font-weight: 600; margin-bottom: 1rem;">1. What is the fundamental operational danger highlighted by the "Duck Curve"?</p>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q1" value="false"> It means grids are producing too much carbon dioxide at noon.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q1" value="true"> The steep ramp required rapidly replacing disappearing solar energy precisely when human demand peaks in the evening.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q1" value="false"> It causes wind turbines to spin out of control.</label>
+                        <div class="explanation" style="display: none; font-size: 0.9em;"><strong>Correct!</strong> The "neck" of the duck requires massive amounts of dispatchable fast energy to prevent rolling blackouts.</div>
+                    </div>
+
+                    <div class="quiz-question" style="margin-bottom: 2rem;">
+                        <p style="font-weight: 600; margin-bottom: 1rem;">2. What is a Virtual Power Plant (VPP)?</p>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q2" value="false"> A massive new nuclear plant built entirely using digital twin simulation.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q2" value="false"> A video game used to teach engineers how to manage grid infrastructure.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q2" value="true"> A cloud-based network of aggregated edge devices (thermostats, solar, home batteries, EVs) that act as a single programmable power entity.</label>
+                        <div class="explanation" style="display: none; font-size: 0.9em;"><strong>Correct!</strong> VPPs shift demand dynamically, avoiding the need to turn on fossil-fuel peaker plants.</div>
+                    </div>
+
+                    <button class="btn btn-primary check-answers-btn">Check Answers</button>
+                    <div class="quiz-feedback" style="margin-top: 1rem; font-weight: 600;"></div>
+                </div>
+
+                <nav class="chapter-nav">
+                    <a href="chapter-6.html" class="prev-chapter">
+                        <span class="nav-label">Previous Chapter</span>
+                        <span class="nav-title">&larr; AI for Models</span>
+                    </a>
+                    <a href="chapter-8.html" class="next-chapter">
+                        <span class="nav-label">Next Chapter</span>
+                        <span class="nav-title">Smart Buildings &rarr;</span>
+                    </a>
+                </nav>
+
+                <div style="text-align: center; margin-top: 3rem;">
+                    <button class="btn btn-secondary" id="mark-complete-btn" style="width: 100%;">Mark Chapter Complete</button>
+                </div>
+            </div>
+        </main>
+
+        <aside class="right-sidebar sidebar">
+            <div class="takeaways-card">
+                <h4>Key Takeaways</h4>
+                <ul>
+                    <li>The electrical grid requires supply to perfectly match demand every second.</li>
+                    <li>Because sun and wind are intermittent, legacy dispatchable grids are ill-equipped to handle modern renewables.</li>
+                    <li>Virtual Power Plants programmatically alter demand at the edge via APIs instead of boosting supply.</li>
+                    <li>EVs, via V2G technology, can serve as distributed grid storage, fundamentally changing automotive utility.</li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Modals -->
+    <div id="search-modal" style="display: none; position: fixed; inset: 0; background-color: rgba(0,0,0,0.5); z-index: 200; align-items: flex-start; justify-content: center; padding-top: 10vh;">
+        <div style="background-color: var(--color-bg-light); border-radius: 0.5rem; width: 90%; max-width: 600px;">
+            <div style="padding: 1rem; border-bottom: 1px solid var(--color-border); display: flex;">
+                <input type="text" id="search-input" placeholder="Search..." style="flex: 1; border: none; background: transparent; font-size: 1.1rem; outline: none;">
+                <button id="close-search-btn" style="background: none; border: none; cursor: pointer;">ESC</button>
+            </div>
+            <div id="search-results" style="max-height: 60vh; overflow-y: auto;"></div>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/progress.js"></script>
+    <script src="../js/quiz.js"></script>
+    <script src="../js/search.js"></script>
+</body>
+</html>

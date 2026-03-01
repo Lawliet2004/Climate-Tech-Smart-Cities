@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="chapter" content="19">
+    <title>Chapter 19: Practical Hands-On Projects</title>
+    
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/navigation.css">
+</head>
+<body>
+    <div id="reading-progress"></div>
+
+    <nav class="top-nav">
+        <a href="../index.html" class="top-nav-brand">Climate Tech & Smart Cities</a>
+        <div class="nav-controls">
+            <button class="nav-btn" id="mobile-menu-btn" aria-expanded="false">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+            <a href="../resources.html">Resources</a>
+            <button class="nav-btn" id="search-icon" aria-label="Search">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            </button>
+            <button class="nav-btn" id="dark-mode-toggle" aria-label="Toggle dark mode">
+                <span id="dark-mode-icon">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="chapter-layout">
+        <aside class="left-sidebar sidebar">
+            <nav class="toc-nav">
+                <h3>Chapter Outline</h3>
+                <ul>
+                    <li><a href="#api">1. Grid Carbon APIs (Software)</a></li>
+                    <li><a href="#sensor">2. DIY Air Sensor (Hardware)</a></li>
+                    <li><a href="#gis">3. Spatial Mapping (Data/GIS)</a></li>
+                    <li><a href="#open-source">4. Contributing to Open Source</a></li>
+                    <li><a href="#quiz">5. Knowledge Check</a></li>
+                </ul>
+                <a href="../index.html" class="chapter-link">&larr; Back to Roadmap</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header>
+                <div style="font-family: 'JetBrains Mono', monospace; color: var(--color-accent-amber); font-weight: 600; margin-bottom: 0.5rem; text-transform: uppercase;">Chapter 19</div>
+                <h1 class="chapter-title">Practical Hands-On Projects</h1>
+                <div style="color: var(--color-text-muted); font-size: 0.9rem; margin-top: 1rem;">
+                    <span id="reading-time">Reading time: calculating...</span> | Portfolio Builders for CS Students
+                </div>
+            </header>
+
+            <div class="content">
+                <h2 id="api">1. Software Project: Carbon-Aware Web App</h2>
+                <p>
+                    <strong>The Goal:</strong> Build a tool that modifies its behavior based on the live carbon intensity of the local power grid.
+                </p>
+                <p>
+                    <strong>How to build it:</strong> Register for a free API key from <em>WattTime</em> or <em>Electricity Maps</em>. These APIs provide real-time, locational Marginal Operating Emissions Rate (MOER) data. Build a simple Python/Flask or Node.js web dashboard that checks the API. 
+                </p>
+                <p>
+                    <em>Extension:</em> Write a Python script that only allows a long-running rendering task (or a local ML model training run) to execute if the local grid's renewable energy mix is above 50%.
+                </p>
+
+                <h2 id="sensor">2. Hardware Project: DIY PM2.5 Air Quality Node</h2>
+                <p>
+                    <strong>The Goal:</strong> Learn embedded systems by building a cheap IoT air quality monitor that feeds data to a global public map.
+                </p>
+                <p>
+                    <strong>How to build it:</strong> Order an ESP32 microcontroller (with built-in WiFi), a Plantower PMS5003 laser dust sensor, and a BME280 humidity/temperature sensor (total cost ~$35). Wire them together using jumper cables on a breadboard. Write a C++ script using the Arduino IDE to read the serial data from the PMS5003. 
+                </p>
+                <p>
+                    <em>Extension:</em> Use the MQTT protocol to send your sensor's live data to a cloud database, or push the data to a public citizen-science API like <em>Sensor.Community</em> (formerly Luftdaten) or <em>PurpleAir</em>.
+                </p>
+
+                <h2 id="gis">3. Data Project: Urban Tree Canopy Mapping (GIS)</h2>
+                <p>
+                    <strong>The Goal:</strong> Analyze spatial inequality in urban heat islands using Geographic Information Systems (GIS).
+                </p>
+                <div class="spotlight-box">
+                    <h3 style="margin-top:0; color:var(--color-primary-forest)">The OpenStreetMap Workflow</h3>
+                    <p>
+                        Download QGIS (a free, open-source geospatial software suite). Download open-source vector shapefiles of your city's street trees from their Open Data portal, and download the city's census income tracts.
+                    </p>
+                    <p>
+                        Write a Python script using the <code>Geopandas</code> library to perform a spatial join, calculating the density of tree canopy cover per capita overlaid against median household income. Create a heatmap visualization proving whether wealthier neighborhoods have disproportionately more shade (a common reality due to historic redlining).
+                    </p>
+                </div>
+
+                <h2 id="open-source">4. Contributing to Open Source Climate Software</h2>
+                <p>
+                    If you don't want to start from scratch, massive open-source communities already exist.
+                </p>
+                <ul>
+                    <li><strong>Open Climate Fix:</strong> An open-source lab attempting to reduce emissions by gigatons by building open ML models for forecasting solar clouds. They actively need Python/PyTorch contributors.</li>
+                    <li><strong>ClimateTriage:</strong> A directory specifically built to match developers with open-source climate projects that have open "Good First Issues" on GitHub.</li>
+                    <li><strong>OpenStreetMap (OSM):</strong> The "Wikipedia of Maps." You can create an account today and start tracing the outlines of solar panels on satellite imagery or logging the coordinates of public EV chargers in your town, adding to the free global database used by researchers worldwide.</li>
+                </ul>
+
+                <hr style="margin: 3rem 0; border: none; border-top: 1px solid var(--color-border);">
+
+                <h2 id="quiz">5. Knowledge Check</h2>
+                <div class="quiz-container" style="background: var(--color-bg-white); padding: 2rem; border-radius: 0.5rem; border: 1px solid var(--color-border);">
+                    <div class="quiz-question" style="margin-bottom: 2rem;">
+                        <p style="font-weight: 600; margin-bottom: 1rem;">1. What does the WattTime or Electricity Maps API allow a developer to do?</p>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q1" value="false"> View a live feed of the International Space Station.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q1" value="false"> Control the thermostat of random buildings in their city.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q1" value="true"> Programmatically query the real-time carbon intensity (clean vs dirty power mix) of the local utility grid to make code "carbon-aware."</label>
+                        <div class="explanation" style="display: none; font-size: 0.9em;"><strong>Correct!</strong> Accessing real-time grid data is the first step in building green software.</div>
+                    </div>
+
+                    <div class="quiz-question" style="margin-bottom: 2rem;">
+                        <p style="font-weight: 600; margin-bottom: 1rem;">2. Why is combining census demographic data with tree canopy data (via GIS) a valuable climate tech project?</p>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q2" value="true"> It visualizes spatial and environmental inequality, providing actionable data to prove which neighborhoods are disproportionately vulnerable to the Urban Heat Island effect.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q2" value="false"> It helps lumber companies decide which neighborhoods to log for timber.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q2" value="false"> It is required by law to plant trees.</label>
+                        <div class="explanation" style="display: none; font-size: 0.9em;"><strong>Correct!</strong> Code that proves environmental injustice is a powerful tool for civic activism.</div>
+                    </div>
+
+                    <button class="btn btn-primary check-answers-btn">Check Answers</button>
+                    <div class="quiz-feedback" style="margin-top: 1rem; font-weight: 600;"></div>
+                </div>
+
+                <nav class="chapter-nav">
+                    <a href="chapter-18.html" class="prev-chapter">
+                        <span class="nav-label">Previous Chapter</span>
+                        <span class="nav-title">&larr; Careers in Climate</span>
+                    </a>
+                    <a href="chapter-20.html" class="next-chapter">
+                        <span class="nav-label">Next Chapter</span>
+                        <span class="nav-title">The Frontier of Technology &rarr;</span>
+                    </a>
+                </nav>
+
+                <div style="text-align: center; margin-top: 3rem;">
+                    <button class="btn btn-secondary" id="mark-complete-btn" style="width: 100%;">Mark Chapter Complete</button>
+                </div>
+            </div>
+        </main>
+        
+        <aside class="right-sidebar sidebar">
+            <div class="takeaways-card">
+                <h4>Key Takeaways</h4>
+                <ul>
+                    <li>You can practice Green Software Engineering today by hooking into free grid-carbon APIs like WattTime.</li>
+                    <li>Building embedded hardware (like an ESP32 air sensor) connects abstract code to physical urban realities.</li>
+                    <li>Geospatial tools like QGIS and Geopandas are essential for analyzing systemic climate inequalities.</li>
+                    <li>Open-source communities desperately need traditional software engineering help to scale climate models.</li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Modals -->
+    <div id="search-modal" style="display: none; position: fixed; inset: 0; background-color: rgba(0,0,0,0.5); z-index: 200; align-items: flex-start; justify-content: center; padding-top: 10vh;">
+        <div style="background-color: var(--color-bg-light); border-radius: 0.5rem; width: 90%; max-width: 600px;">
+            <div style="padding: 1rem; border-bottom: 1px solid var(--color-border); display: flex;">
+                <input type="text" id="search-input" placeholder="Search..." style="flex: 1; border: none; background: transparent; font-size: 1.1rem; outline: none;">
+                <button id="close-search-btn" style="background: none; border: none; cursor: pointer;">ESC</button>
+            </div>
+            <div id="search-results" style="max-height: 60vh; overflow-y: auto;"></div>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/progress.js"></script>
+    <script src="../js/quiz.js"></script>
+    <script src="../js/search.js"></script>
+</body>
+</html>

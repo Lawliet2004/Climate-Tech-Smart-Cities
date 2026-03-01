@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="chapter" content="4">
+    <title>Chapter 4: What Are Smart Cities?</title>
+    
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/navigation.css">
+    <style>
+        .architecture-layers {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 3rem 0;
+            padding: 2rem;
+            background: var(--color-bg-white);
+            border: 1px solid var(--color-border);
+            border-radius: 0.5rem;
+        }
+
+        .layer {
+            border: 2px dashed var(--color-primary-ocean);
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            position: relative;
+            background: var(--color-info-bg);
+            transition: transform 0.2s;
+        }
+        
+        .layer:hover { transform: translateX(10px); }
+
+        .layer-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--color-primary-forest);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .layer-title svg { width: 24px; height: 24px; }
+        
+        .layer-desc { font-size: 0.95rem; color: var(--color-text-main); }
+        
+        .layer.edge { background: #E0E7FF; border-color: #6366F1; }
+        .layer.cloud { background: #F3E8FF; border-color: #A855F7; }
+
+        .arrow-down {
+            text-align: center;
+            color: var(--color-text-muted);
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+    </style>
+</head>
+<body>
+    <div id="reading-progress"></div>
+
+    <nav class="top-nav">
+        <a href="../index.html" class="top-nav-brand">Climate Tech & Smart Cities</a>
+        <div class="nav-controls">
+            <button class="nav-btn" id="mobile-menu-btn" aria-expanded="false">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+            <a href="../resources.html">Resources</a>
+            <button class="nav-btn" id="search-icon" aria-label="Search">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            </button>
+            <button class="nav-btn" id="dark-mode-toggle" aria-label="Toggle dark mode">
+                <span id="dark-mode-icon">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="chapter-layout">
+        <aside class="left-sidebar sidebar">
+            <nav class="toc-nav">
+                <h3>Chapter Outline</h3>
+                <ul>
+                    <li><a href="#definition">1. Defining the Smart City</a></li>
+                    <li><a href="#iot-architecture">2. The IoT Architecture</a></li>
+                    <li><a href="#edge-vs-cloud">3. Edge vs. Cloud</a></li>
+                    <li><a href="#techno">4. The Danger of Techno-Solutionism</a></li>
+                    <li><a href="#privacy">5. Spotlight: Privacy by Design</a></li>
+                    <li><a href="#quiz">6. Knowledge Check</a></li>
+                </ul>
+                <a href="../index.html" class="chapter-link">&larr; Back to Roadmap</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header>
+                <div style="font-family: 'JetBrains Mono', monospace; color: var(--color-accent-amber); font-weight: 600; margin-bottom: 0.5rem; text-transform: uppercase;">Chapter 4</div>
+                <h1 class="chapter-title">What Are Smart Cities?</h1>
+                <div style="color: var(--color-text-muted); font-size: 0.9rem; margin-top: 1rem;">
+                    <span id="reading-time">Reading time: calculating...</span> | Internet of Things & IoT Architecture
+                </div>
+            </header>
+
+            <div class="content">
+                <h2 id="definition">1. Defining the Smart City</h2>
+                <p>
+                    A "Smart City" is an urban area that uses different types of electronic Internet of Things (IoT) sensors to collect data and then uses insights gained from that data to manage assets, resources, and services efficiently. 
+                </p>
+                <p>
+                    Historically, the term was co-opted by large telecom and IT vendors (like Cisco and IBM in the early 2010s) to sell proprietary hardware suites to municipal governments. However, the modern, climate-focused definition centers around <strong>Digital Interoperability</strong>—the ability for distinct urban systems (the electrical grid, the water pipes, the traffic lights) to communicate openly with one another to reduce waste and carbon emissions.
+                </p>
+
+                <h2 id="iot-architecture">2. The IoT Architecture of a City</h2>
+                <p>
+                    For computer scientists, a smart city is simply a massive, geo-spatially distributed microservices architecture interfacing with the physical world. It generally operates in three distinct layers:
+                </p>
+
+                <div class="architecture-layers">
+                    <div class="layer">
+                        <div class="layer-title">
+                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path></svg>
+                            The Perception Layer (Sensors & Actuators)
+                        </div>
+                        <div class="layer-desc">The physical hardware interacting with the world. Smart meters reading wattages, air quality monitors detecting PM2.5, LiDAR on autonomous buses, or smart valves in water pipes. Communication relies on low-power protocols (LoRaWAN, Zigbee, NB-IoT).</div>
+                    </div>
+                    
+                    <div class="arrow-down">&uarr; &darr;</div>
+                    
+                    <div class="layer edge">
+                        <div class="layer-title">
+                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path></svg>
+                            The Edge / Network Layer (Gateways)
+                        </div>
+                        <div class="layer-desc">Instead of pinging the cloud directly, thousands of sensors connect to a local neighborhood gateway. The gateway performs "Edge Computing"—filtering out noise, running lightweight ML models (TinyML) locally, and aggregating data before transmitting via 5G/Fiber.</div>
+                    </div>
+
+                    <div class="arrow-down">&uarr; &darr;</div>
+
+                    <div class="layer cloud">
+                        <div class="layer-title">
+                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"></path></svg>
+                            The Application / Cloud Layer (Brain)
+                        </div>
+                        <div class="layer-desc">The centralized heavy compute. Disparate data siloes (traffic, weather, energy) are joined in a data lake. Massive AI models are trained here, Digital Twins are rendered, and high-level municipal decisions are made.</div>
+                    </div>
+                </div>
+
+                <h2 id="edge-vs-cloud">3. The Imperative of Edge Computing</h2>
+                <p>
+                    Why not just send all sensor data directly to AWS/GCP? Three reasons:
+                </p>
+                <ol>
+                    <li><strong>Latency:</strong> A smart traffic light needs to react to an approaching emergency vehicle in milliseconds. A round-trip to a centralized data center is too slow.</li>
+                    <li><strong>Bandwidth & Energy:</strong> Transmitting raw 4K video from a traffic camera over 5G 24/7 uses massive amounts of power. It's much greener to run a computer vision model on the camera itself (the edge) that simply transmits a 1-byte integer: <code>cars = 4</code>.</li>
+                    <li><strong>Privacy:</strong> By processing data locally and only sending metadata to the cloud, Edge computing inherently protects citizen privacy.</li>
+                </ol>
+
+                <h2 id="techno">4. The Danger of Techno-Solutionism</h2>
+                <p>
+                    As engineers, we must be wary of <strong>Techno-Solutionism</strong>: the belief that complex social or political problems can be solved simply by adding software. 
+                </p>
+                <p>
+                    Adding an app to trace the arrival time of a bus is "smart." However, if the bus is stuck in traffic because the city refuses to dedicate a bus-only lane for political reasons, the app doesn't solve the core problem (slow public transit). The best smart cities align physical policy with digital infrastructure.
+                </p>
+
+                <h2 id="privacy">5. Spotlight: Privacy by Design</h2>
+                <div class="spotlight-box">
+                    <h3 style="margin-top:0; color:var(--color-primary-ocean)">Surveillance vs. Sustainability</h3>
+                    <p>
+                        In 2017, Sidewalk Labs (an Alphabet/Google subsidiary) proposed a ground-up smart city neighborhood in Toronto called Quayside. It promised heated pavements to melt snow, autonomous trash delivery, and timber skyscrapers.
+                    </p>
+                    <p>
+                        However, the project faced massive public backlash and was eventually cancelled in 2020. The primary reason? <strong>Data Privacy and Governance.</strong> Citizens balked at living in an environment blanketed with cameras and sensors owned by a private tech conglomerate, sparking fears of "surveillance capitalism" manifesting in the physical world.
+                    </p>
+                    <p>
+                        <strong>The CS Lesson:</strong> Any climate smart city tech you build must utilize <em>Privacy by Design</em>. If you are building optical sensors to count traffic for emissions tracking, ensure the firmware automatically blurs license plates and faces <em>before</em> the image ever enters RAM. Do not collect what you do not need.
+                    </p>
+                </div>
+
+                <hr style="margin: 3rem 0; border: none; border-top: 1px solid var(--color-border);">
+
+                <h2 id="quiz">6. Knowledge Check</h2>
+                <div class="quiz-container" style="background: var(--color-bg-white); padding: 2rem; border-radius: 0.5rem; border: 1px solid var(--color-border);">
+                    <div class="quiz-question" style="margin-bottom: 2rem;">
+                        <p style="font-weight: 600; margin-bottom: 1rem;">1. Which layer of the IoT architecture handles running advanced, computationally heavy Machine Learning models across city-wide data lakes?</p>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q1" value="false"> The Perception Layer</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q1" value="false"> The Edge Layer</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q1" value="true"> The Cloud/Application Layer</label>
+                        <div class="explanation" style="display: none; font-size: 0.9em;"><strong>Correct!</strong> While Edge handles lightweight inference, heavy training and cross-silo data lakes live in the Cloud.</div>
+                    </div>
+
+                    <div class="quiz-question" style="margin-bottom: 2rem;">
+                        <p style="font-weight: 600; margin-bottom: 1rem;">2. What is the primary reason to use Edge Computing for a smart city traffic camera?</p>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q2" value="false"> It allows AWS and GCP to charge higher cloud computing fees.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q2" value="true"> It saves bandwidth and protects privacy by only transmitting metadata (e.g., car counts) instead of raw video streams.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q2" value="false"> It is completely invulnerable to hacking.</label>
+                        <div class="explanation" style="display: none; font-size: 0.9em;"><strong>Correct!</strong> Edge computing prevents massive video transfers and allows privacy-preserving local inference.</div>
+                    </div>
+
+                    <button class="btn btn-primary check-answers-btn">Check Answers</button>
+                    <div class="quiz-feedback" style="margin-top: 1rem; font-weight: 600;"></div>
+                </div>
+
+                <nav class="chapter-nav">
+                    <a href="chapter-3.html" class="prev-chapter">
+                        <span class="nav-label">Previous Chapter</span>
+                        <span class="nav-title">&larr; The Urban Challenge</span>
+                    </a>
+                    <a href="chapter-5.html" class="next-chapter">
+                        <span class="nav-label">Next Chapter</span>
+                        <span class="nav-title">AI Fundamentals &rarr;</span>
+                    </a>
+                </nav>
+
+                <div style="text-align: center; margin-top: 3rem;">
+                    <button class="btn btn-secondary" id="mark-complete-btn" style="width: 100%;">Mark Chapter Complete</button>
+                </div>
+            </div>
+        </main>
+
+        <aside class="right-sidebar sidebar">
+            <div class="takeaways-card">
+                <h4>Key Takeaways</h4>
+                <ul>
+                    <li>Smart cities use the IoT stack: Perception (sensors), Edge (gateways), Cloud (central aggregation).</li>
+                    <li>Edge computing is vital for low-latency, bandwidth conservation, and preserving privacy natively.</li>
+                    <li>Avoid Techno-solutionism. Apps cannot fix missing physical infrastructure or hostile civic policy.</li>
+                    <li>Surveillance capitalist approaches to smart cities inevitably fail due to public backlash.</li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/progress.js"></script>
+    <script src="../js/quiz.js"></script>
+    <script src="../js/search.js"></script>
+</body>
+</html>

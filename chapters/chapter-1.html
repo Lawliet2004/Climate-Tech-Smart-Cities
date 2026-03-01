@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="chapter" content="1">
+    <title>Chapter 1: The Deep History of Climate Science</title>
+    
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/navigation.css">
+    <style>
+        /* Specific Styles for Chapter 1 Interactive Timeline */
+        .timeline-container {
+            position: relative;
+            max-width: 100%;
+            margin: 3rem 0;
+            overflow-x: auto;
+            border: 1px solid var(--color-border);
+            border-radius: 0.5rem;
+            background: var(--color-bg-white);
+            padding: 2rem;
+        }
+        .timeline-scroll-area {
+            min-width: 800px;
+            position: relative;
+            height: 300px;
+        }
+        .timeline-line {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--color-border);
+            transform: translateY(-50%);
+        }
+        .timeline-node {
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--color-primary-ocean);
+            border: 4px solid var(--color-bg-white);
+            cursor: pointer;
+            transition: transform 0.2s, background 0.2s;
+            z-index: 2;
+        }
+        .timeline-node:hover, .timeline-node.active {
+            transform: translate(-50%, -50%) scale(1.3);
+            background: var(--color-accent-amber);
+        }
+        .timeline-year {
+            position: absolute;
+            top: calc(50% + 15px);
+            transform: translateX(-50%);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9em;
+            color: var(--color-text-muted);
+            font-weight: 600;
+        }
+        .timeline-content-card {
+            position: absolute;
+            top: calc(50% - 130px);
+            transform: translateX(-50%);
+            width: 250px;
+            background: var(--color-bg-warm);
+            border: 1px solid var(--color-border);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            font-size: 0.85rem;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s, transform 0.3s;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+        }
+        .timeline-content-card::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 8px 8px 0;
+            border-style: solid;
+            border-color: var(--color-bg-warm) transparent transparent transparent;
+        }
+        .timeline-node.active + .timeline-year + .timeline-content-card {
+            opacity: 1;
+            transform: translateX(-50%) translateY(-10px);
+            pointer-events: auto;
+        }
+        .timeline-content-card h4 {
+            margin-top: 0;
+            color: var(--color-primary-forest);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Alternating bottom cards */
+        .timeline-node:nth-child(even) + .timeline-year { top: calc(50% - 30px); }
+        .timeline-node:nth-child(even) + .timeline-year + .timeline-content-card {
+            top: calc(50% + 20px);
+        }
+        .timeline-node:nth-child(even) + .timeline-year + .timeline-content-card::after {
+            bottom: auto;
+            top: -8px;
+            border-width: 0 8px 8px;
+            border-color: transparent transparent var(--color-bg-warm) transparent;
+        }
+    </style>
+</head>
+<body>
+    <div id="reading-progress"></div>
+
+    <nav class="top-nav">
+        <a href="../index.html" class="top-nav-brand">Climate Tech & Smart Cities</a>
+        <div class="nav-controls">
+            <button class="nav-btn" id="mobile-menu-btn" aria-expanded="false">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+            <a href="../resources.html">Resources</a>
+            <button class="nav-btn" id="search-icon" aria-label="Search">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            </button>
+            <button class="nav-btn" id="dark-mode-toggle" aria-label="Toggle dark mode">
+                <span id="dark-mode-icon">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="chapter-layout">
+        <!-- Scroll Spy Sidebar -->
+        <aside class="left-sidebar sidebar">
+            <nav class="toc-nav">
+                <h3>Chapter Outline</h3>
+                <ul>
+                    <li><a href="#introduction">1. Introduction</a></li>
+                    <li><a href="#fourier-tyndall">2. The Greenhouse Pioneers</a></li>
+                    <li><a href="#foote-spotlight">3. Spotlight: Eunice Foote</a></li>
+                    <li><a href="#arrhenius">4. Arrhenius & Quantification</a></li>
+                    <li><a href="#keeling">5. The Keeling Curve</a></li>
+                    <li><a href="#milankovitch">6. Milankovitch Cycles</a></li>
+                    <li><a href="#quiz">7. Knowledge Check</a></li>
+                </ul>
+                <a href="../index.html" class="chapter-link">&larr; Back to Roadmap</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header>
+                <div style="font-family: 'JetBrains Mono', monospace; color: var(--color-accent-amber); font-weight: 600; margin-bottom: 0.5rem; text-transform: uppercase;">Chapter 1</div>
+                <h1 class="chapter-title">The Deep History of Climate Science</h1>
+                <div style="color: var(--color-text-muted); font-size: 0.9rem; margin-top: 1rem;">
+                    <span id="reading-time">Reading time: calculating...</span> | Required Physics Foundations
+                </div>
+            </header>
+
+            <div class="content">
+                <h2 id="introduction">1. Physics Over Politics</h2>
+                <p>
+                    Before discussing artificial intelligence, smart grids, or digital twins, we must establish a foundational truth: <strong>the physics of climate change is not a modern discovery, nor is it a political invention.</strong> The core mechanics of the greenhouse effect were hypothesized, tested, and quantified in the 19th century by the same physicists who laid the groundwork for thermodynamics and modern computer science.
+                </p>
+                <p>
+                    For computer science students reading this, treat the climate system as a massive, continuous computational loop governed by differential equations. The atmosphere is holding a state variable—atmospheric carbon concentration—that inherently controls the radiative transfer of heat.
+                </p>
+
+                <h2 id="fourier-tyndall">2. The Greenhouse Pioneers: Fourier to Tyndall</h2>
+                <p>
+                    The story begins in 1824 with <strong>Joseph Fourier</strong>. Fourier—famous in computer science for the Fourier Transform (the mathematical basis for signal processing, image compression like JPEG, and quantum mechanics)—was the first to calculate that the Earth, given its distance from the sun, should be roughly 33°C (60°F) colder than it actually is. He hypothesized that the atmosphere acts like a transparent insulating box window, letting visible light in but trapping infrared heat.
+                </p>
+                
+                <p>
+                    In 1859, <strong>John Tyndall</strong> created a highly precise spectrophotometer to test which gases trapped this heat. He discovered that the most abundant gases (Nitrogen and Oxygen, making up 99% of the atmosphere) are completely transparent to infrared heat. The entire "greenhouse effect" keeping the globe warm was being driven by trace gases—primarily water vapor and Carbon Dioxide (CO<sub>2</sub>).
+                </p>
+
+                <div class="info-box">
+                    <strong>The Physics: Radiative Forcing</strong><br>
+                    Shortwave radiation (visible light/UV) from the sun passes through CO<sub>2</sub> unimpeded. The Earth absorbs this energy and re-emits it as longwave radiation (infrared). The molecular structure of CO<sub>2</sub> and Methane (CH<sub>4</sub>) happens to vibrate at the exact frequency of infrared light, absorbing it and scattering the heat back in all directions—including back down to Earth. This is known as Radiative Forcing.
+                </div>
+
+                <h2 id="foote-spotlight">3. Spotlight: The Forgotten Pioneer</h2>
+                
+                <div class="spotlight-box">
+                    <h3 style="margin-top: 0; color: var(--color-primary-ocean);">Eunice Newton Foote (1856)</h3>
+                    <p>
+                        Three years before Tyndall's famous experiments, an American scientist and women's rights campaigner named Eunice Newton Foote conducted a brilliant, elegant experiment. She placed glass cylinders filled with various gases in the sunlight and measured their temperature changes. 
+                    </p>
+                    <p>
+                        She found that the cylinder containing "carbonic acid gas" (CO<sub>2</sub>) trapped far more heat than standard air, and retained it much longer. She presciently concluded in her brief 1856 paper: <em>"An atmosphere of that gas would give to our earth a high temperature."</em> 
+                    </p>
+                    <p>
+                        Because she was a woman in the 1850s, she was not allowed to read her own paper at the American Association for the Advancement of Science; it was read by a male colleague. Her foundational contribution to atmospheric physics was largely lost to history until it was rediscovered in 2011.
+                    </p>
+                </div>
+
+                <h2 id="arrhenius">4. Svante Arrhenius: The First Quantification (1896)</h2>
+                <p>
+                    In 1896, Swedish physical chemist <strong>Svante Arrhenius</strong> (who would later win a Nobel Prize) decided to mathematically quantify what would happen if humanity doubled the amount of CO<sub>2</sub> in the atmosphere through the burning of coal.
+                </p>
+                <p>
+                    Arrhenius performed thousands of grueling manual calculations representing the radiative transfer of heat across different latitudes. His conclusion? Doubling atmospheric CO<sub>2</sub> would raise the global average temperature by <strong>5 to 6 degrees Celsius</strong>. Modern supercomputer models operated by AI at organizations like DeepMind arrive at numbers ranging from 2.5°C to 4.5°C. Arrhenius was remarkably close using nothing but paper, pencil, and 19th-century physics.
+                </p>
+
+                <!-- Interactive SVG Timeline -->
+                <div class="timeline-container">
+                    <h4 style="margin-top: 0; text-align: center;">Interactive History of Climate Science</h4>
+                    <div class="timeline-scroll-area">
+                        <div class="timeline-line"></div>
+                        
+                        <!-- Node 1 -->
+                        <div class="timeline-node" style="left: 10%;" onclick="toggleTimeline(this)"></div>
+                        <div class="timeline-year" style="left: 10%;">1824</div>
+                        <div class="timeline-content-card" style="left: 10%;">
+                            <h4>Joseph Fourier</h4>
+                            <p>Hypothesizes the Earth's atmosphere retains heat mathematically, creating the "greenhouse" analogy.</p>
+                        </div>
+
+                        <!-- Node 2 -->
+                        <div class="timeline-node" style="left: 30%;" onclick="toggleTimeline(this)"></div>
+                        <div class="timeline-year" style="left: 30%;">1856</div>
+                        <div class="timeline-content-card" style="left: 30%;">
+                            <h4>Eunice Newton Foote</h4>
+                            <p>Demonstrates experimentally that CO2 traps more solar heat than regular atmospheric air.</p>
+                        </div>
+
+                        <!-- Node 3 -->
+                        <div class="timeline-node" style="left: 50%;" onclick="toggleTimeline(this)"></div>
+                        <div class="timeline-year" style="left: 50%;">1859</div>
+                        <div class="timeline-content-card" style="left: 50%;">
+                            <h4>John Tyndall</h4>
+                            <p>Uses a spectrophotometer to prove precisely which trace gases absorb infrared radiation.</p>
+                        </div>
+
+                        <!-- Node 4 -->
+                        <div class="timeline-node" style="left: 70%;" onclick="toggleTimeline(this)"></div>
+                        <div class="timeline-year" style="left: 70%;">1896</div>
+                        <div class="timeline-content-card" style="left: 70%;">
+                            <h4>Svante Arrhenius</h4>
+                            <p>Calculates that halving CO2 caused Ice Ages, and doubling it via coal combustion would warm the globe.</p>
+                        </div>
+
+                        <!-- Node 5 -->
+                        <div class="timeline-node" style="left: 90%;" onclick="toggleTimeline(this)"></div>
+                        <div class="timeline-year" style="left: 90%;">1958</div>
+                        <div class="timeline-content-card" style="left: 90%;">
+                            <h4>Charles Keeling</h4>
+                            <p>Begins continuous monitoring of CO2 atmospheric concentrations at Mauna Loa Observatory.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 id="keeling">5. The Keeling Curve & Modern Observation</h2>
+                <p>
+                    For over half a century, the theories of Foote and Arrhenius remained mostly academic curiosities. But in 1958, a geochemist named <strong>Charles David Keeling</strong> began taking hyper-precise, daily measurements of atmospheric CO<sub>2</sub> from the Mauna Loa Observatory in Hawaii.
+                </p>
+                <p>
+                    The resulting graph, known as the <strong>Keeling Curve</strong>, is arguably the most famous chart in all of science. It shows two things:
+                </p>
+                <ol>
+                    <li><strong>A jagged, sawtooth pattern every year:</strong> The Northern Hemisphere holds most of Earth's landmass and vegetation. When it is Spring/Summer in the North, plants inhale CO<sub>2</sub> (lowering global levels). In Autumn/Winter, leaves die and decompose, exhaling CO<sub>2</sub>. The Earth is literally "breathing."</li>
+                    <li><strong>A relentless upward trajectory:</strong> Despite the breathing, the baseline moves relentlessly upward, representing the billions of tons of ancient compressed carbon (fossil fuels) being rapidly injected back into the active carbon cycle by humanity.</li>
+                </p>
+
+                <h2 id="milankovitch">6. Milankovitch Cycles: Why This Isn't "Natural"</h2>
+                <p>
+                    A common misconception is that "the climate has always changed naturally." This is absolutely true. During the Pleistocene epoch, the Earth cycled through dramatic Ice Ages and warm periods. However, we know exactly <em>why</em> this happened, and it has nothing to do with what is happening today.
+                </p>
+                <p>
+                    The natural glacial cycles are driven by <strong>Milankovitch Cycles</strong>—slight variations in the Earth's orbit around the sun. 
+                </p>
+                <ul>
+                    <li><strong>Eccentricity:</strong> The shape of Earth's orbit stretches from circular to slightly elliptical on a 100,000-year cycle.</li>
+                    <li><strong>Obliquity (Tilt):</strong> Earth's axial tilt shifts between 22.1° and 24.5° on a 41,000-year cycle.</li>
+                    <li><strong>Precession:</strong> The Earth "wobbles" on its axis like a spinning top on a 26,000-year cycle.</li>
+                </ul>
+                <p>
+                    These cycles dictate precisely how much sunlight hits the Northern Hemisphere during summer, triggering or ending ice ages over tens of thousands of years. Current Milankovitch geometry suggests the Earth should actually be slowly <em>cooling</em> over the next few millennia. 
+                </p>
+                <p>
+                    Instead, temperatures are spiking violently upward at a rate thousands of times faster than natural orbital forcing. We have overridden orbital mechanics through chemistry.
+                </p>
+
+                <div class="paper-box">
+                    <strong>Reference:</strong> Oreskes, N. (2004). <em>The Scientific Consensus on Climate Change</em>. Science, 306(5702), 1686. <br>
+                    Shows that the basic physics established by Tyndall, Arrhenius, and modern observations form an unshakeable foundation across all peer-reviewed atmospheric science.
+                </div>
+
+                <hr style="margin: 3rem 0; border: none; border-top: 1px solid var(--color-border);">
+
+                <h2 id="quiz">7. Knowledge Check</h2>
+                <div class="quiz-container" style="background: var(--color-bg-white); padding: 2rem; border-radius: 0.5rem; border: 1px solid var(--color-border);">
+                    <div class="quiz-question" style="margin-bottom: 2rem;">
+                        <p style="font-weight: 600; margin-bottom: 1rem;">1. Which property of CO2 and trace gases causes the greenhouse effect?</p>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q1" value="false"> They reflect incoming shortwave solar radiation back into space.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q1" value="true"> They are transparent to visible light but absorb and re-emit longwave infrared radiation.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q1" value="false"> They undergo chemical combustion when exposed to ultraviolet light.</label>
+                        <div class="explanation" style="display: none; font-size: 0.9em;"><strong>Correct!</strong> This is called radiative forcing, established by John Tyndall.</div>
+                    </div>
+
+                    <div class="quiz-question" style="margin-bottom: 2rem;">
+                        <p style="font-weight: 600; margin-bottom: 1rem;">2. What creates the "sawtooth" up-and-down pattern in the Keeling Curve line?</p>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q2" value="false"> Industrial output decreasing during winter holidays.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q2" value="false"> Variations in solar output during the 11-year sunspot cycle.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q2" value="true"> The seasonal growth and decay of vegetation in the Northern Hemisphere.</label>
+                        <div class="explanation" style="display: none; font-size: 0.9em;"><strong>Correct!</strong> The Earth "breathes" as Northern plants absorb CO2 in summer and release it when decomposing in winter.</div>
+                    </div>
+
+                    <div class="quiz-question" style="margin-bottom: 2rem;">
+                        <p style="font-weight: 600; margin-bottom: 1rem;">3. Which historical figure experimentally proved that CO2 traps more heat than regular air in 1856?</p>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q3" value="false"> Joseph Fourier</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q3" value="false"> Svante Arrhenius</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q3" value="true"> Eunice Newton Foote</label>
+                        <div class="explanation" style="display: none; font-size: 0.9em;"><strong>Correct!</strong> Eunice Newton Foote conducted the experiments using glass cylinders in 1856, predating Tyndall.</div>
+                    </div>
+
+                    <button class="btn btn-primary check-answers-btn">Check Answers</button>
+                    <div class="quiz-feedback" style="margin-top: 1rem; font-weight: 600;"></div>
+                </div>
+
+                <!-- Bottom Navigation -->
+                <nav class="chapter-nav">
+                    <div></div> <!-- Empty div for flex spacing -->
+                    <a href="chapter-2.html" class="next-chapter">
+                        <span class="nav-label">Next Chapter</span>
+                        <span class="nav-title">Understanding the Climate System &rarr;</span>
+                    </a>
+                </nav>
+
+                <div style="text-align: center; margin-top: 3rem;">
+                    <button class="btn btn-secondary" id="mark-complete-btn" style="width: 100%;">Mark Chapter Complete</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Right Sidebar (Key Takeaways) -->
+        <aside class="right-sidebar sidebar">
+            <div class="takeaways-card">
+                <h4>Key Takeaways</h4>
+                <ul>
+                    <li>The greenhouse effect is 19th-century physics, established by Fourier, Foote, Tyndall, and Arrhenius.</li>
+                    <li>Trace gases like CO2 absorb infrared radiation, causing Earth to warm.</li>
+                    <li>The Keeling Curve definitively tracks the unnatural rise in global CO2.</li>
+                    <li>Milankovitch Cycles drive natural ice ages, but current warming is thousands of times too fast to be orbital.</li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Modals & Search -->
+    <div id="search-modal" style="display: none; position: fixed; inset: 0; background-color: rgba(0,0,0,0.5); z-index: 200; align-items: flex-start; justify-content: center; padding-top: 10vh;">
+        <div style="background-color: var(--color-bg-light); border-radius: 0.5rem; width: 90%; max-width: 600px;">
+            <div style="padding: 1rem; border-bottom: 1px solid var(--color-border); display: flex;">
+                <input type="text" id="search-input" placeholder="Search..." style="flex: 1; border: none; background: transparent; font-size: 1.1rem; outline: none;">
+                <button id="close-search-btn" style="background: none; border: none; cursor: pointer;">ESC</button>
+            </div>
+            <div id="search-results" style="max-height: 60vh; overflow-y: auto;"></div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../js/main.js"></script>
+    <script src="../js/progress.js"></script>
+    <script src="../js/quiz.js"></script>
+    <script src="../js/search.js"></script>
+    <script>
+        // Simple JS for interactive timeline toggle
+        function toggleTimeline(node) {
+            // Remove active from all
+            document.querySelectorAll('.timeline-node').forEach(n => {
+                if(n !== node) n.classList.remove('active');
+            });
+            // Toggle clicked
+            node.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

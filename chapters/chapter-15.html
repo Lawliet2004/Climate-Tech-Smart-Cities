@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="chapter" content="15">
+    <title>Chapter 15: Urban Digital Twins</title>
+    
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/navigation.css">
+</head>
+<body>
+    <div id="reading-progress"></div>
+
+    <nav class="top-nav">
+        <a href="../index.html" class="top-nav-brand">Climate Tech & Smart Cities</a>
+        <div class="nav-controls">
+            <button class="nav-btn" id="mobile-menu-btn" aria-expanded="false">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+            <a href="../resources.html">Resources</a>
+            <button class="nav-btn" id="search-icon" aria-label="Search">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            </button>
+            <button class="nav-btn" id="dark-mode-toggle" aria-label="Toggle dark mode">
+                <span id="dark-mode-icon">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="chapter-layout">
+        <aside class="left-sidebar sidebar">
+            <nav class="toc-nav">
+                <h3>Chapter Outline</h3>
+                <ul>
+                    <li><a href="#what-is-dt">1. What is a Digital Twin?</a></li>
+                    <li><a href="#cityverse">2. The Cityverse vs Metaverse</a></li>
+                    <li><a href="#integration">3. The Three Stages of Integration</a></li>
+                    <li><a href="#predictive">4. Predictive "What-If" Scenarios</a></li>
+                    <li><a href="#quiz">5. Knowledge Check</a></li>
+                </ul>
+                <a href="../index.html" class="chapter-link">&larr; Back to Roadmap</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header>
+                <div style="font-family: 'JetBrains Mono', monospace; color: var(--color-accent-amber); font-weight: 600; margin-bottom: 0.5rem; text-transform: uppercase;">Chapter 15</div>
+                <h1 class="chapter-title">Urban Digital Twins</h1>
+                <div style="color: var(--color-text-muted); font-size: 0.9rem; margin-top: 1rem;">
+                    <span id="reading-time">Reading time: calculating...</span> | Spatial Computing & Simulation
+                </div>
+            </header>
+
+            <div class="content">
+                <h2 id="what-is-dt">1. What is a Digital Twin?</h2>
+                <p>
+                    A <strong>Digital Twin</strong> is a highly detailed, 3D virtual representation of a physical object or system that is updated in real-time by IoT data. 
+                </p>
+                <p>
+                    The concept originated at NASA (they built digital twins of physical spacecraft to simulate repairs before risking astronauts). Later, manufacturing companies built twins of jet engines to predict when bearings would fail based on vibration sensors. Today, entire Smart Cities—like Singapore (Virtual Singapore) and Helsinki—have built digital twins of their entire municipal boundaries.
+                </p>
+
+                <h2 id="cityverse">2. The Cityverse vs. The Metaverse</h2>
+                <p>
+                    While the "Metaverse" generally refers to fantasy digital worlds built for consumer entertainment or VR meetings, the <strong>"Cityverse"</strong> or Urban Digital Twin is tethered strictly to reality.
+                </p>
+                <p>
+                    If an IoT sensor registers a traffic jam on Main Street at 5:00 PM, cars in the Digital Twin stop moving. If a smart meter registers a power surge in a building, the specific floor glowing red in the virtual 3D model alerts a grid operator on a dashboard. It requires combining 3D spatial computing (often game engines like Unreal or Unity) with massive real-time database ingestion.
+                </p>
+
+                <h2 id="integration">3. The Three Stages of Integration</h2>
+                <p>
+                    Building an Urban Digital Twin generally requires three distinct technical layers:
+                </p>
+                <ol>
+                    <li><strong>The Static Base (Geometric):</strong> High-resolution 3D models created via drone photogrammetry and LiDAR. This maps all buildings, topography, and roads precisely.</li>
+                    <li><strong>The Dynamic Layer (IoT):</strong> Wiring the static model via APIs to all the live sensor networks discussed in previous chapters: smart grids (Ch 7), smart buildings (Ch 8), traffic cameras (Ch 9), and air quality monitors (Ch 14).</li>
+                    <li><strong>The Intelligence Layer (AI/Simulation):</strong> Applying Machine Learning/physics engines on top of the live data to simulate future states and test urban policies.</li>
+                </ol>
+
+                <h2 id="predictive">4. Predictive "What-If" Scenarios</h2>
+                <p>
+                    The true value of a Digital Twin is not just visualizing the present, but simulating the future. Changing urban infrastructure is expensive and permanent; you cannot simply A/B test a billion-dollar subway line in the real world.
+                </p>
+                <div class="spotlight-box">
+                    <h3 style="margin-top:0; color:var(--color-primary-forest)">Simulating Reality</h3>
+                    <p>
+                        Using a fully integrated Digital Twin, urban planners can test "What-If" scenarios safely in code:
+                    </p>
+                    <ul>
+                        <li><em>"What if we close 5th Avenue to all car traffic and plant 500 trees?"</em> The Twin runs a fluid dynamics simulation to show exactly how much the localized Urban Heat Island effect will cool down, and uses reinforcement learning traffic models to predict where the displaced cars will go.</li>
+                        <li><em>"What if we mandate solar panels on all south-facing roofs in this zip code?"</em> The Twin analyzes the exact roof angles, shadows cast by taller neighboring buildings, and predicts exactly how many megawatts will hit the local grid substation on a cloudy Tuesday at 2 PM.</li>
+                    </ul>
+                </div>
+
+                <hr style="margin: 3rem 0; border: none; border-top: 1px solid var(--color-border);">
+
+                <h2 id="quiz">5. Knowledge Check</h2>
+                <div class="quiz-container" style="background: var(--color-bg-white); padding: 2rem; border-radius: 0.5rem; border: 1px solid var(--color-border);">
+                    <div class="quiz-question" style="margin-bottom: 2rem;">
+                        <p style="font-weight: 600; margin-bottom: 1rem;">1. How does an Urban Digital Twin differ from a standard 3D architectural rendering or Google Earth?</p>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q1" value="false"> It uses VR headsets exclusively.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q1" value="true"> It is dynamically linked to real-time physical IoT data and allows for predictive physics/impact simulations.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q1" value="false"> It is drawn completely by generative AI without physical accuracy.</label>
+                        <div class="explanation" style="display: none; font-size: 0.9em;"><strong>Correct!</strong> The live data integration (the "Twin" tether) and simulation capabilities elevate it past a static map.</div>
+                    </div>
+
+                    <div class="quiz-question" style="margin-bottom: 2rem;">
+                        <p style="font-weight: 600; margin-bottom: 1rem;">2. Why are Digital Twins incredibly valuable for major urban planning and climate policy (e.g., mandating a new subway or pedestrianizing a street)?</p>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q2" value="true"> Because making permanent infrastructure mistakes in the real world costs billions; Twins allow safe, mathematical A/B testing of physical policies in code before concrete is ever poured.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q2" value="false"> Because algorithms can automatically pour the concrete using drones.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q2" value="false"> Because the graphics look good in presentations to voters.</label>
+                        <div class="explanation" style="display: none; font-size: 0.9em;"><strong>Correct!</strong> Urban planners use Twins to de-risk massive, permanent infrastructure investments through simulation.</div>
+                    </div>
+
+                    <button class="btn btn-primary check-answers-btn">Check Answers</button>
+                    <div class="quiz-feedback" style="margin-top: 1rem; font-weight: 600;"></div>
+                </div>
+
+                <nav class="chapter-nav">
+                    <a href="chapter-14.html" class="prev-chapter">
+                        <span class="nav-label">Previous Chapter</span>
+                        <span class="nav-title">&larr; Air Quality</span>
+                    </a>
+                    <a href="chapter-16.html" class="next-chapter">
+                        <span class="nav-label">Next Chapter</span>
+                        <span class="nav-title">Climate Finance & Markets &rarr;</span>
+                    </a>
+                </nav>
+
+                <div style="text-align: center; margin-top: 3rem;">
+                    <button class="btn btn-secondary" id="mark-complete-btn" style="width: 100%;">Mark Chapter Complete</button>
+                </div>
+            </div>
+        </main>
+        
+        <aside class="right-sidebar sidebar">
+            <div class="takeaways-card">
+                <h4>Key Takeaways</h4>
+                <ul>
+                    <li>A Digital Twin is a physical model tethered to real-time IoT feeds.</li>
+                    <li>Unlike the consumer Metaverse, Urban Twins are strictly anchored to solving physical reality problems.</li>
+                    <li>They stack three layers: Geometric Topography, live IoT Data APIs, and AI Simulation.</li>
+                    <li>Twins allow cities to safely "A/B test" massive climate infrastructure policies before risking public funds.</li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Modals -->
+    <div id="search-modal" style="display: none; position: fixed; inset: 0; background-color: rgba(0,0,0,0.5); z-index: 200; align-items: flex-start; justify-content: center; padding-top: 10vh;">
+        <div style="background-color: var(--color-bg-light); border-radius: 0.5rem; width: 90%; max-width: 600px;">
+            <div style="padding: 1rem; border-bottom: 1px solid var(--color-border); display: flex;">
+                <input type="text" id="search-input" placeholder="Search..." style="flex: 1; border: none; background: transparent; font-size: 1.1rem; outline: none;">
+                <button id="close-search-btn" style="background: none; border: none; cursor: pointer;">ESC</button>
+            </div>
+            <div id="search-results" style="max-height: 60vh; overflow-y: auto;"></div>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/progress.js"></script>
+    <script src="../js/quiz.js"></script>
+    <script src="../js/search.js"></script>
+</body>
+</html>

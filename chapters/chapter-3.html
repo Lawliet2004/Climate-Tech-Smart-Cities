@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="chapter" content="3">
+    <title>Chapter 3: The Urban Challenge & Future Cities</title>
+    
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/navigation.css">
+    <style>
+        .comparison-slider {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 0.5rem;
+            margin: 3rem 0;
+            background: #e2e8f0;
+            display: flex;
+        }
+        
+        .comp-half {
+            flex: 1;
+            padding: 2rem;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: white;
+            position: relative;
+        }
+
+        .comp-bad { background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect width="100" height="100" fill="%23475569"/></svg>') center/cover; }
+        .comp-good { background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect width="100" height="100" fill="%2310b981"/></svg>') center/cover; border-left: 4px solid var(--color-bg-white); }
+        
+        .comp-title { font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem; color: white; }
+        .comp-list { padding-left: 1.5rem; }
+        .comp-list li { margin-bottom: 0.5rem; font-size: 0.95rem; }
+        
+        @media (max-width: 768px) {
+            .comparison-slider { flex-direction: column; height: auto; }
+            .comp-good { border-left: none; border-top: 4px solid var(--color-bg-white); }
+        }
+    </style>
+</head>
+<body>
+    <div id="reading-progress"></div>
+
+    <nav class="top-nav">
+        <a href="../index.html" class="top-nav-brand">Climate Tech & Smart Cities</a>
+        <div class="nav-controls">
+            <button class="nav-btn" id="mobile-menu-btn" aria-expanded="false">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+            <a href="../resources.html">Resources</a>
+            <button class="nav-btn" id="search-icon" aria-label="Search">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            </button>
+            <button class="nav-btn" id="dark-mode-toggle" aria-label="Toggle dark mode">
+                <span id="dark-mode-icon">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="chapter-layout">
+        <aside class="left-sidebar sidebar">
+            <nav class="toc-nav">
+                <h3>Chapter Outline</h3>
+                <ul>
+                    <li><a href="#the-nexus">1. The Urban-Climate Nexus</a></li>
+                    <li><a href="#built-environment">2. The Built Environment</a></li>
+                    <li><a href="#mobility">3. Mobility & Induced Demand</a></li>
+                    <li><a href="#jevons">4. Spotlight: Jevons Paradox</a></li>
+                    <li><a href="#heat-islands">5. Urban Heat Islands</a></li>
+                    <li><a href="#quiz">6. Knowledge Check</a></li>
+                </ul>
+                <a href="../index.html" class="chapter-link">&larr; Back to Roadmap</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header>
+                <div style="font-family: 'JetBrains Mono', monospace; color: var(--color-accent-amber); font-weight: 600; margin-bottom: 0.5rem; text-transform: uppercase;">Chapter 3</div>
+                <h1 class="chapter-title">The Urban Challenge & Future Cities</h1>
+                <div style="color: var(--color-text-muted); font-size: 0.9rem; margin-top: 1rem;">
+                    <span id="reading-time">Reading time: calculating...</span> | Spatial Planning & Infrastructure
+                </div>
+            </header>
+
+            <div class="content">
+                <h2 id="the-nexus">1. The Urban-Climate Nexus</h2>
+                <p>
+                    Why focus on cities? Because cities are the battleground where the climate fight will be won or lost. 
+                    Today, cities occupy merely <strong>2% to 3% of the Earth's land surface</strong>, yet they consume roughly <strong>78% of the world's energy</strong> and produce more than <strong>70% of global greenhouse gas emissions</strong>.
+                </p>
+                <p>
+                    Furthermore, the UN projects that by 2050, 68% of the human population will live in urban areas. This means we must build the equivalent of a new New York City every month for the next 40 years just to accommodate this growth. If we build these new cities—and retrofit our current ones—using 20th-century paradigms of urban sprawl, concrete, and fossil-fueled cars, we will obliterate our carbon budgets regardless of how efficient our algorithms are.
+                </p>
+
+                <h2 id="built-environment">2. The Built Environment: Concrete and Steel</h2>
+                <p>
+                    Software engineers often romanticize software solutions, but the physical layer of society is immensely carbon-heavy. The two most widely used man-made materials on Earth are concrete and steel.
+                </p>
+                <ul>
+                    <li><strong>Cement (Concrete):</strong> Accounts for ~8% of global CO<sub>2</sub> emissions. The chemical process of creating cement (calcination) intrinsically releases CO<sub>2</sub>, even before you factor in the massive fossil-fuel heat required for the kilns.</li>
+                    <li><strong>Steel:</strong> Accounts for another 7-9% of global emissions, primarily relying on metallurgical coal in blast furnaces to strip oxygen from iron ore.</li>
+                </ul>
+                <p>
+                    Before any software is written to optimize building HVAC systems (Chapter 8), spatial and architectural planning must ensure we are building denser, smaller, and utilizing low-carbon materials like mass timber where possible.
+                </p>
+
+                <div class="comparison-slider">
+                    <div class="comp-half comp-bad">
+                        <div class="comp-title">20th Century Sprawl</div>
+                        <ul class="comp-list">
+                            <li>Zoned exclusively (residential far from commercial).</li>
+                            <li>Car-dependent infrastructure (high embedded carbon in asphalt/highways).</li>
+                            <li>Low-density single-family housing (high per-capita energy loss).</li>
+                            <li>Impermeable surfaces causing severe flood risks.</li>
+                        </ul>
+                    </div>
+                    <div class="comp-half comp-good">
+                        <div class="comp-title">15-Minute City Model</div>
+                        <ul class="comp-list">
+                            <li>Mixed-use zoning (live, work, play in same area).</li>
+                            <li>Active transit (walking/cycling) prioritized natively.</li>
+                            <li>High-density, highly efficient multi-tenant buildings.</li>
+                            <li>Porous surfaces "sponge cities" and integrated tree canopies.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h2 id="mobility">3. Mobility & Induced Demand</h2>
+                <p>
+                    The transportation sector is the largest single source of greenhouse gas emissions in the United States, and a top contributor globally. A common technological reflex is to simply swap internal combustion engine (ICE) vehicles for Electric Vehicles (EVs).
+                </p>
+                <p>
+                    While EVs are drastically better for tailpipe emissions and grid integration, they do not solve the fundamental geometry problem of cities: space. A traffic jam of Teslas is still a traffic jam. Furthermore, expanding highways to reduce congestion has been mathematically proven to fail due to <strong>Induced Demand</strong>.
+                </p>
+
+                <h2 id="jevons">4. Spotlight: Jevons Paradox & Induced Demand</h2>
+                <div class="spotlight-box">
+                    <h3 style="margin-top:0; color:var(--color-primary-ocean)">The Fallacy of Efficiency</h3>
+                    <p>
+                        In 1865, economist William Stanley Jevons observed that as the steam engine became more efficient at using coal, total coal consumption in England actually <em>increased</em>. Why? Because the increased efficiency made steam power cheaper and more viable for new use cases, radically expanding demand.
+                    </p>
+                    <p>
+                        <strong>In Transportation:</strong> When you widen a highway (increasing efficiency to reduce congestion), driving becomes faster and cheaper. Therefore, more people choose to drive, people move further out into the suburbs, and within a few years, the highway is just as congested as before (Induced Demand).
+                    </p>
+                    <p>
+                        <strong>In Software:</strong> If an AI algorithm perfectly routes traffic to make autonomous car trips 20% faster, the Jevons paradox suggests people will live 20% further away from work, negating emission savings. Thus, tech must be deployed alongside policy (like congestion pricing or dense zoning).
+                    </p>
+                </div>
+
+                <h2 id="heat-islands">5. Urban Heat Islands</h2>
+                <p>
+                    As the base global temperature rises, cities face an amplified threat: the <strong>Urban Heat Island (UHI) effect</strong>. 
+                </p>
+                <p>
+                    Dark asphalt, concrete rooftops, and a lack of vegetation absorb incoming solar radiation during the day and slowly re-radiate it at night. Furthermore, millions of air conditioners running simultaneously pump waste heat directly into the narrow streets. Consequently, cities can be up to 10°C (18°F) hotter than surrounding rural areas during heatwaves—a lethal difference for vulnerable populations.
+                </p>
+
+                <hr style="margin: 3rem 0; border: none; border-top: 1px solid var(--color-border);">
+
+                <h2 id="quiz">6. Knowledge Check</h2>
+                <div class="quiz-container" style="background: var(--color-bg-white); padding: 2rem; border-radius: 0.5rem; border: 1px solid var(--color-border);">
+                    <div class="quiz-question" style="margin-bottom: 2rem;">
+                        <p style="font-weight: 600; margin-bottom: 1rem;">1. What is the fundamental problem described by the concept of "Induced Demand" in urban planning?</p>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q1" value="false"> Electric vehicles require more electricity than the grid can provide.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q1" value="false"> Building denser cities inherently causes more air pollution.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q1" value="true"> Expanding highway capacity to reduce traffic temporarily works, but ultimately encourages more driving, filling the highway again.</label>
+                        <div class="explanation" style="display: none; font-size: 0.9em;"><strong>Correct!</strong> Adding lanes creates immediate efficiency, which lowers the "cost" of driving, inducing new demand until equilibrium (congestion) is reached again.</div>
+                    </div>
+
+                    <div class="quiz-question" style="margin-bottom: 2rem;">
+                        <p style="font-weight: 600; margin-bottom: 1rem;">2. Which two materials are responsible for roughly 15% of global CO2 emissions combined?</p>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q2" value="true"> Concrete (Cement) and Steel</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q2" value="false"> Plastic and Aluminum</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q2" value="false"> Lithium and Cobalt</label>
+                        <div class="explanation" style="display: none; font-size: 0.9em;"><strong>Correct!</strong> The chemical processes and extreme heat required to manufacture cement and steel make them massive carbon sources.</div>
+                    </div>
+
+                    <button class="btn btn-primary check-answers-btn">Check Answers</button>
+                    <div class="quiz-feedback" style="margin-top: 1rem; font-weight: 600;"></div>
+                </div>
+
+                <nav class="chapter-nav">
+                    <a href="chapter-2.html" class="prev-chapter">
+                        <span class="nav-label">Previous Chapter</span>
+                        <span class="nav-title">&larr; System Dynamics</span>
+                    </a>
+                    <a href="chapter-4.html" class="next-chapter">
+                        <span class="nav-label">Next Chapter</span>
+                        <span class="nav-title">Smart Cities Tech &rarr;</span>
+                    </a>
+                </nav>
+
+                <div style="text-align: center; margin-top: 3rem;">
+                    <button class="btn btn-secondary" id="mark-complete-btn" style="width: 100%;">Mark Chapter Complete</button>
+                </div>
+            </div>
+        </main>
+
+        <aside class="right-sidebar sidebar">
+            <div class="takeaways-card">
+                <h4>Key Takeaways</h4>
+                <ul>
+                    <li>Cities generate 70%+ of global emissions despite their small physical footprint.</li>
+                    <li>We cannot algorithm our way out of bad spatial planning and car-dependent sprawl.</li>
+                    <li>Jevons Paradox proves that technological efficiency often increases total consumption unless regulated.</li>
+                    <li>Urban Heat Islands pose immediate, lethal threats that require infrastructure changes alongside tech.</li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/progress.js"></script>
+    <script src="../js/quiz.js"></script>
+</body>
+</html>

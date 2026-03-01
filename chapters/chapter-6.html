@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="chapter" content="6">
+    <title>Chapter 6: AI for Climate & Weather Modeling</title>
+    
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/navigation.css">
+</head>
+<body>
+    <div id="reading-progress"></div>
+
+    <nav class="top-nav">
+        <a href="../index.html" class="top-nav-brand">Climate Tech & Smart Cities</a>
+        <div class="nav-controls">
+            <button class="nav-btn" id="mobile-menu-btn" aria-expanded="false">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+            <a href="../resources.html">Resources</a>
+            <button class="nav-btn" id="search-icon" aria-label="Search">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            </button>
+            <button class="nav-btn" id="dark-mode-toggle" aria-label="Toggle dark mode">
+                <span id="dark-mode-icon">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="chapter-layout">
+        <aside class="left-sidebar sidebar">
+            <nav class="toc-nav">
+                <h3>Chapter Outline</h3>
+                <ul>
+                    <li><a href="#nwp">1. Numerical Weather Prediction (NWP)</a></li>
+                    <li><a href="#ai-revolution">2. The 2023 AI Revolution</a></li>
+                    <li><a href="#graphcast">3. Spotlight: Google GraphCast</a></li>
+                    <li><a href="#downscaling">4. Climate Downscaling</a></li>
+                    <li><a href="#limits">5. The Limits of ML in Climate</a></li>
+                    <li><a href="#quiz">6. Knowledge Check</a></li>
+                </ul>
+                <a href="../index.html" class="chapter-link">&larr; Back to Roadmap</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header>
+                <div style="font-family: 'JetBrains Mono', monospace; color: var(--color-accent-amber); font-weight: 600; margin-bottom: 0.5rem; text-transform: uppercase;">Chapter 6</div>
+                <h1 class="chapter-title">AI for Climate & Weather Modeling</h1>
+                <div style="color: var(--color-text-muted); font-size: 0.9rem; margin-top: 1rem;">
+                    <span id="reading-time">Reading time: calculating...</span> | Machine Learning vs. Physics
+                </div>
+            </header>
+
+            <div class="content">
+                <h2 id="nwp">1. Numerical Weather Prediction (NWP)</h2>
+                <p>
+                    For decades, weather forecasting has relied on <strong>Numerical Weather Prediction (NWP)</strong>. NWP works by dividing the Earth's atmosphere and oceans into a 3D grid consisting of millions of "cells." The state of the fluid in each cell (temperature, pressure, humidity, wind velocity) is simulated forward in time by solving the Navier-Stokes equations of fluid dynamics.
+                </p>
+                <p>
+                    The gold standard for global NWP is the High-Resolution Fisher (HRES) model run by the ECMWF in Europe. It requires some of the largest supercomputers on the planet running continuously to calculate the physics for a 10-day forecast, taking hours to compute.
+                </p>
+
+                <h2 id="ai-revolution">2. The 2023 AI Revolution</h2>
+                <p>
+                    For years, meteorologists believed that purely data-driven AI models could never beat NWP models because AI models lacked an innate understanding of physics. In early 2023, that assumption was shattered simultaneously by several AI labs.
+                </p>
+                <p>
+                    Models like Huawei's <strong>Pangu-Weather</strong> (using a 3D Earth-Specific Transformer architecture) and NVIDIA's <strong>FourCastNet</strong> demonstrated that if you train a massive neural network on 40 years of historical weather data (the ERA5 dataset), it can learn the physical patterns flawlessly—without solving a single differential equation.
+                </p>
+
+                <h2 id="graphcast">3. Spotlight: Google DeepMind GraphCast</h2>
+                <div class="spotlight-box">
+                    <h3 style="margin-top: 0; color: var(--color-primary-ocean);">Graph Neural Networks (GNNs)</h3>
+                    <p>
+                        In late 2023, Google DeepMind published a paper in <em>Science</em> detailing <strong>GraphCast</strong>, arguably the most powerful AI weather model to date.
+                    </p>
+                    <p>
+                        Instead of treating the Earth as a flat 2D image (like standard CNNs do), GraphCast treats the atmosphere as a highly complex graph structure—an icosahedron wrapped around a sphere containing over a million nodes. It uses an "Encode-Process-Decode" GNN architecture.
+                    </p>
+                    <ul>
+                        <li><strong>Accuracy:</strong> GraphCast outperformed the industry-standard HRES NWP model on 90% of verification targets over 1,380 test variables.</li>
+                        <li><strong>Extreme Events:</strong> Even without being explicitly trained to track hurricanes, it predicted the path of Hurricane Lee in 2023 faster and more accurately than traditional models.</li>
+                        <li><strong>Computational Efficiency:</strong> While training took 4 weeks on 32 TPU v4s, <strong>running an inference (a 10-day forecast) takes under 1 minute on a single Google TPU</strong>. This is a million-fold reduction in operational compute cost compared to supercomputer NWP.</li>
+                    </ul>
+                </div>
+
+                <h2 id="downscaling">4. Climate Downscaling</h2>
+                <p>
+                    Global Climate Models (GCMs) used by the IPCC predict long-term changes over decades, but their spatial resolution is very coarse (usually 100km x 100km per grid cell). This is useless for a mayor trying to figure out if specific neighborhoods in a city will flood.
+                </p>
+                <p>
+                    <strong>Downscaling</strong> is the process of taking low-resolution global climate data and generating high-resolution local predictions. This used to require incredibly expensive regional physics models. Today, machine learning (specifically Generative Adversarial Networks, or GANs) is used to perform <em>super-resolution</em> on climate data—the same technique used to upscale blurry photographs into 4K—allowing cities to generate hyper-local, 1km-resolution climate risk maps instantly.
+                </p>
+
+                <h2 id="limits">5. The Limits of ML in Climate</h2>
+                <div class="warning-box">
+                    <strong>Non-Stationarity</strong><br>
+                    The fundamental weakness of pure AI weather models is that they are trained exclusively on past data (ERA5 historical reanalysis). Because of greenhouse gas emissions, our current climate is <em>non-stationary</em> (it is changing rapidly into a state that has never existed in human history).
+                    <br><br>
+                    If the climate shifts into a radically new regime (e.g., an AMOC collapse or unprecedented Arctic heating), models like GraphCast may fail because those patterns do not exist in their training data. Therefore, the future of climate modeling is <strong>hybrid models</strong>—using AI to vastly accelerate the slow parts of NWP physics models, rather than replacing physics entirely.
+                </div>
+
+                <hr style="margin: 3rem 0; border: none; border-top: 1px solid var(--color-border);">
+
+                <h2 id="quiz">6. Knowledge Check</h2>
+                <div class="quiz-container" style="background: var(--color-bg-white); padding: 2rem; border-radius: 0.5rem; border: 1px solid var(--color-border);">
+                    <div class="quiz-question" style="margin-bottom: 2rem;">
+                        <p style="font-weight: 600; margin-bottom: 1rem;">1. What is the defining operational advantage of AI weather models like GraphCast over traditional NWP models?</p>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q1" value="false"> They do not require any historical data to make a prediction.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q1" value="true"> Once trained, they can generate a highly accurate 10-day global forecast in about a minute on a single specialized chip (TPU/GPU).</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q1" value="false"> They explicitly solve the Navier-Stokes equations faster than a supercomputer.</label>
+                        <div class="explanation" style="display: none; font-size: 0.9em;"><strong>Correct!</strong> The ML inference step is computationally trivial compared to solving millions of differential equations dynamically.</div>
+                    </div>
+
+                    <div class="quiz-question" style="margin-bottom: 2rem;">
+                        <p style="font-weight: 600; margin-bottom: 1rem;">2. What does "Climate Downscaling" using ML attempt to achieve?</p>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q2" value="false"> Decreasing the overall carbon footprint of training the AI models.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q2" value="true"> Taking coarse, low-resolution global climate data and generating high-resolution, localized predictions.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q2" value="false"> Slowing down the speed of the winds in simulated hurricane models.</label>
+                        <div class="explanation" style="display: none; font-size: 0.9em;"><strong>Correct!</strong> Using super-resolution tech like GANs allows cities to understand hyper-local risks from global coarse data.</div>
+                    </div>
+
+                    <button class="btn btn-primary check-answers-btn">Check Answers</button>
+                    <div class="quiz-feedback" style="margin-top: 1rem; font-weight: 600;"></div>
+                </div>
+
+                <nav class="chapter-nav">
+                    <a href="chapter-5.html" class="prev-chapter">
+                        <span class="nav-label">Previous Chapter</span>
+                        <span class="nav-title">&larr; AI Fundamentals</span>
+                    </a>
+                    <a href="chapter-7.html" class="next-chapter">
+                        <span class="nav-label">Next Chapter</span>
+                        <span class="nav-title">Smart Grid Optimization &rarr;</span>
+                    </a>
+                </nav>
+
+                <div style="text-align: center; margin-top: 3rem;">
+                    <button class="btn btn-secondary" id="mark-complete-btn" style="width: 100%;">Mark Chapter Complete</button>
+                </div>
+            </div>
+        </main>
+
+        <aside class="right-sidebar sidebar">
+            <div class="takeaways-card">
+                <h4>Key Takeaways</h4>
+                <ul>
+                    <li>Traditional NWP models use supercomputers to solve physics equations dynamically.</li>
+                    <li>Models like GraphCast and Pangu-Weather learn physics purely from data (ERA5 dataset).</li>
+                    <li>AI inference is roughly 1-million times computationally cheaper than NWP forecasting.</li>
+                    <li>GANs are used to "downscale" coarse global data into high-resolution local risk maps.</li>
+                    <li>Pure data models struggle with non-stationarity (climate shifting outside historical bounds).</li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Modals -->
+    <div id="search-modal" style="display: none; position: fixed; inset: 0; background-color: rgba(0,0,0,0.5); z-index: 200; align-items: flex-start; justify-content: center; padding-top: 10vh;">
+        <div style="background-color: var(--color-bg-light); border-radius: 0.5rem; width: 90%; max-width: 600px;">
+            <div style="padding: 1rem; border-bottom: 1px solid var(--color-border); display: flex;">
+                <input type="text" id="search-input" placeholder="Search..." style="flex: 1; border: none; background: transparent; font-size: 1.1rem; outline: none;">
+                <button id="close-search-btn" style="background: none; border: none; cursor: pointer;">ESC</button>
+            </div>
+            <div id="search-results" style="max-height: 60vh; overflow-y: auto;"></div>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/progress.js"></script>
+    <script src="../js/quiz.js"></script>
+    <script src="../js/search.js"></script>
+</body>
+</html>

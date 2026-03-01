@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="chapter" content="11">
+    <title>Chapter 11: Precision Agriculture</title>
+    
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/navigation.css">
+</head>
+<body>
+    <div id="reading-progress"></div>
+
+    <nav class="top-nav">
+        <a href="../index.html" class="top-nav-brand">Climate Tech & Smart Cities</a>
+        <div class="nav-controls">
+            <button class="nav-btn" id="mobile-menu-btn" aria-expanded="false">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+            <a href="../resources.html">Resources</a>
+            <button class="nav-btn" id="search-icon" aria-label="Search">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            </button>
+            <button class="nav-btn" id="dark-mode-toggle" aria-label="Toggle dark mode">
+                <span id="dark-mode-icon">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="chapter-layout">
+        <aside class="left-sidebar sidebar">
+            <nav class="toc-nav">
+                <h3>Chapter Outline</h3>
+                <ul>
+                    <li><a href="#emissions">1. The Agricultural Footprint</a></li>
+                    <li><a href="#precision">2. Hardware: Drones & Sensors</a></li>
+                    <li><a href="#software">3. Software: Yield ML Models</a></li>
+                    <li><a href="#vertical">4. Controlled Environment Ag (CEA)</a></li>
+                    <li><a href="#quiz">5. Knowledge Check</a></li>
+                </ul>
+                <a href="../index.html" class="chapter-link">&larr; Back to Roadmap</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header>
+                <div style="font-family: 'JetBrains Mono', monospace; color: var(--color-accent-amber); font-weight: 600; margin-bottom: 0.5rem; text-transform: uppercase;">Chapter 11</div>
+                <h1 class="chapter-title">Precision Agriculture</h1>
+                <div style="color: var(--color-text-muted); font-size: 0.9rem; margin-top: 1rem;">
+                    <span id="reading-time">Reading time: calculating...</span> | Optimizing the Food System
+                </div>
+            </header>
+
+            <div class="content">
+                <h2 id="emissions">1. The Agricultural Footprint</h2>
+                <p>
+                    Feeding 8 billion people requires immense energy. The agricultural sector is responsible for roughly <strong>25% of global greenhouse gas emissions</strong>. These emissions come from three primary vectors:
+                </p>
+                <ul>
+                    <li><strong>Methane (CH<sub>4</sub>):</strong> Enteric fermentation from ruminant livestock (cow burps) and rice paddies. Methane traps 80x more heat than CO2 over a 20-year timescale.</li>
+                    <li><strong>Nitrous Oxide (N<sub>2</sub>O):</strong> Synthetic nitrogen fertilizers. When applied too heavily to crops, the excess runs off into rivers (causing dead zones) or volatilizes into the air as N2O, a gas 300x more potent than CO2.</li>
+                    <li><strong>Land Use Change:</strong> Deforesting carbon-absorbing jungles (like the Amazon) to create pasture for cattle or fields for soy.</li>
+                </ul>
+
+                <h2 id="precision">2. Hardware: Drones & Soil Sensors</h2>
+                <p>
+                    Historically, farming was a blunt instrument. A farmer would spray an entire 500-acre field with pesticides and synthetic fertilizer equally, regardless of whether a specific square meter actually needed it. 
+                </p>
+                <p>
+                    <strong>Precision Agriculture</strong> turns a farm into a data-rich IoT environment. Instead of uniform spraying, farmers deploy multispectral drones to map the exact chlorophyll content of individual plants. Tractors equipped with computer vision analyze weeds in real-time, firing micro-doses of herbicide <em>only</em> at the weed, cutting chemical usage by up to 80%.
+                </p>
+                <p>
+                    In the soil, low-power LoRaWAN nodes measure NPK (Nitrogen, Phosphorus, Potassium) levels and moisture tension, ensuring that irrigation and fertilization only happen exactly when and where the physics of the soil demand it.
+                </p>
+
+                <h2 id="software">3. Software: Yield Prediction ML</h2>
+                <p>
+                    With thousands of data points streaming from tractors, drones, and soil sensors, agriculture becomes an immense big-data challenge. 
+                </p>
+                <div class="spotlight-box">
+                    <h3 style="margin-top:0; color:var(--color-primary-forest)">Digital Twins of Farms</h3>
+                    <p>
+                        Cloud architectures (like AWS AgData) allow farmers to build digital twins of their fields. By taking historical yield data and cross-referencing it with the AI weather downscaling models discussed in Chapter 6, ML models can predict crop yields months in advance.
+                    </p>
+                    <p>
+                        Furthermore, if a model detects that a specific sub-acre of land is consistently unprofitable despite heavy fertilizer use, the software will automatically ingest carbon credit market APIs and suggest the farmer stop planting there, returning the acre to wild prairie grass and earning guaranteed income via carbon offset payments instead.
+                    </p>
+                </div>
+
+                <h2 id="vertical">4. Controlled Environment Agriculture (CEA)</h2>
+                <p>
+                    As weather becomes more volatile and extreme (floods destroying entire harvests in weeks), there is a push to move agriculture indoors. <strong>Vertical Farming</strong> relies entirely on technology: growing crops in stacked trays under optimized LED lights, using hydroponics or aeroponics (which use 90% less water than traditional farming).
+                </p>
+                <div class="warning-box">
+                    <strong>The Thermodynamics of Sunlight</strong><br>
+                    Computer scientists often love Vertical Farming because it turns biology into pure code (you mathematically program the exact light spectrum and nutrient drip). However, physics intervenes. Replacing free, nuclear-fusion-powered sunlight with electricity is massively energy-intensive. 
+                    <br><br>
+                    Currently, vertical farming only makes economic and carbon-sense for high-margin, highly perishable crops (leafy greens, herbs, strawberries) located deep inside urban centers to eliminate transportation emissions. You cannot vertically farm staple caloric crops like wheat or corn; the energy math completely fails.
+                </div>
+
+                <hr style="margin: 3rem 0; border: none; border-top: 1px solid var(--color-border);">
+
+                <h2 id="quiz">5. Knowledge Check</h2>
+                <div class="quiz-container" style="background: var(--color-bg-white); padding: 2rem; border-radius: 0.5rem; border: 1px solid var(--color-border);">
+                    <div class="quiz-question" style="margin-bottom: 2rem;">
+                        <p style="font-weight: 600; margin-bottom: 1rem;">1. What is the fundamental goal of Precision Agriculture?</p>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q1" value="false"> Replacing all human farm laborers with humanoid robots.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q1" value="true"> Using IoT sensors and computer vision to apply water, fertilizer, and pesticides only exactly where and when they are needed, rather than uniformly spraying an entire field.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q1" value="false"> Deforesting the Amazon efficiently to create more farmland.</label>
+                        <div class="explanation" style="display: none; font-size: 0.9em;"><strong>Correct!</strong> Precision Ag shifts farming from a blunt instrument to a hyper-targeted, data-driven operation.</div>
+                    </div>
+
+                    <div class="quiz-question" style="margin-bottom: 2rem;">
+                        <p style="font-weight: 600; margin-bottom: 1rem;">2. What is the primary barrier to scaling Vertical Farming to replace all traditional agriculture?</p>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q2" value="false"> Plants refuse to grow under LED lights.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q2" value="false"> It uses 90% more fresh water than traditional farming.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q2" value="true"> Providing thousands of acres of artificial LED sunlight requires an absolutely massive amount of electricity, making staple crops financially non-viable.</label>
+                        <div class="explanation" style="display: none; font-size: 0.9em;"><strong>Correct!</strong> Free sunlight is hard to compete with. Vertical farming only works for high-value greens.</div>
+                    </div>
+
+                    <button class="btn btn-primary check-answers-btn">Check Answers</button>
+                    <div class="quiz-feedback" style="margin-top: 1rem; font-weight: 600;"></div>
+                </div>
+
+                <nav class="chapter-nav">
+                    <a href="chapter-10.html" class="prev-chapter">
+                        <span class="nav-label">Previous Chapter</span>
+                        <span class="nav-title">&larr; Disaster Resilience</span>
+                    </a>
+                    <a href="chapter-12.html" class="next-chapter">
+                        <span class="nav-label">Next Chapter</span>
+                        <span class="nav-title">Water & Ocean Tech &rarr;</span>
+                    </a>
+                </nav>
+
+                <div style="text-align: center; margin-top: 3rem;">
+                    <button class="btn btn-secondary" id="mark-complete-btn" style="width: 100%;">Mark Chapter Complete</button>
+                </div>
+            </div>
+        </main>
+        
+        <aside class="right-sidebar sidebar">
+            <div class="takeaways-card">
+                <h4>Key Takeaways</h4>
+                <ul>
+                    <li>Agriculture accounts for a massive chunk of global emissions, particularly via Methane (cows) and N2O (fertilizer).</li>
+                    <li>Precision agriculture uses drones and CV to micro-target chemicals, cutting waste by up to 80%.</li>
+                    <li>Digital twins of fields allow farmers to simulate crop yields against extreme weather predictions.</li>
+                    <li>Vertical farming is great for urban water efficiency, but its energy intensity restricts it to high-margin leafy greens.</li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Modals -->
+    <div id="search-modal" style="display: none; position: fixed; inset: 0; background-color: rgba(0,0,0,0.5); z-index: 200; align-items: flex-start; justify-content: center; padding-top: 10vh;">
+        <div style="background-color: var(--color-bg-light); border-radius: 0.5rem; width: 90%; max-width: 600px;">
+            <div style="padding: 1rem; border-bottom: 1px solid var(--color-border); display: flex;">
+                <input type="text" id="search-input" placeholder="Search..." style="flex: 1; border: none; background: transparent; font-size: 1.1rem; outline: none;">
+                <button id="close-search-btn" style="background: none; border: none; cursor: pointer;">ESC</button>
+            </div>
+            <div id="search-results" style="max-height: 60vh; overflow-y: auto;"></div>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/progress.js"></script>
+    <script src="../js/quiz.js"></script>
+    <script src="../js/search.js"></script>
+</body>
+</html>

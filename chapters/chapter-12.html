@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="chapter" content="12">
+    <title>Chapter 12: Water Strategy & Ocean Tech</title>
+    
+    <link rel="stylesheet" href="../css/global.css">
+    <link rel="stylesheet" href="../css/typography.css">
+    <link rel="stylesheet" href="../css/navigation.css">
+</head>
+<body>
+    <div id="reading-progress"></div>
+
+    <nav class="top-nav">
+        <a href="../index.html" class="top-nav-brand">Climate Tech & Smart Cities</a>
+        <div class="nav-controls">
+            <button class="nav-btn" id="mobile-menu-btn" aria-expanded="false">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            </button>
+            <a href="../resources.html">Resources</a>
+            <button class="nav-btn" id="search-icon" aria-label="Search">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            </button>
+            <button class="nav-btn" id="dark-mode-toggle" aria-label="Toggle dark mode">
+                <span id="dark-mode-icon">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                </span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="chapter-layout">
+        <aside class="left-sidebar sidebar">
+            <nav class="toc-nav">
+                <h3>Chapter Outline</h3>
+                <ul>
+                    <li><a href="#nwl">1. Non-Revenue Water (NRW)</a></li>
+                    <li><a href="#leak-detection">2. Acoustic Leak Detection</a></li>
+                    <li><a href="#desalination">3. The Bounds of Desalination</a></li>
+                    <li><a href="#blue-carbon">4. Blue Carbon & Oceans</a></li>
+                    <li><a href="#quiz">5. Knowledge Check</a></li>
+                </ul>
+                <a href="../index.html" class="chapter-link">&larr; Back to Roadmap</a>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <header>
+                <div style="font-family: 'JetBrains Mono', monospace; color: var(--color-accent-amber); font-weight: 600; margin-bottom: 0.5rem; text-transform: uppercase;">Chapter 12</div>
+                <h1 class="chapter-title">Water Strategy & Ocean Tech</h1>
+                <div style="color: var(--color-text-muted); font-size: 0.9rem; margin-top: 1rem;">
+                    <span id="reading-time">Reading time: calculating...</span> | Hydrology & Blue Tech
+                </div>
+            </header>
+
+            <div class="content">
+                <h2 id="nwl">1. Non-Revenue Water (NRW)</h2>
+                <p>
+                    Water is heavy. Pumping water from reservoirs, processing it through treatment plants, and pushing it through hundreds of miles of urban pipes requires an immense amount of electricity (the "Water-Energy Nexus"). 
+                </p>
+                <p>
+                    Yet, globally, over 30% of all treated drinking water is lost to leaks in the pipe network before it ever reaches a consumer. This is known as <strong>Non-Revenue Water (NRW)</strong>. Not only is this a massive waste of an increasingly scarce natural resource, but it also represents millions of kilowatt-hours of wasted electricity and associated carbon emissions.
+                </p>
+
+                <h2 id="leak-detection">2. Acoustic Leak Detection & Digital Twins</h2>
+                <p>
+                    Finding a leak in a 100-year-old cast-iron pipe buried ten feet beneath a concrete intersection is incredibly difficult. Historically, cities only fixed pipes when they catastrophically ruptured and flooded the street.
+                </p>
+                <p>
+                    Smart Cities now deploy <strong>Acoustic IoT Sensors</strong> magnetically attached to hydrants and valves across the network. These sensors "listen" to the high-frequency hiss of pressurized water escaping a tiny microscopic crack. 
+                </p>
+                <p>
+                    Because water acoustic signatures change depending on pipe material and diameter, the audio files are sent to the cloud where ML models separate the sound of a leak from the background noise of traffic overhead. By analyzing the microsecond difference in when two different sensors hear the same hiss, the software can triangulate the exact location of the leak down to a few feet, allowing targeted, preventative digging.
+                </p>
+
+                <h2 id="desalination">3. The Thermodynamic Bounds of Desalination</h2>
+                <p>
+                    As freshwater aquifers dry up, coastal cities increasingly turn to desalination—removing salt from ocean water. The most common modern method is <strong>Reverse Osmosis (RO)</strong>, which uses massive high-pressure pumps to force seawater through micro-membranes.
+                </p>
+                <div class="warning-box">
+                    <strong>The Energy Trap of Desalination</strong><br>
+                    Water is an incredibly stable molecule. Ripping dissolved salt out of water requires a baseline minimum amount of thermodynamic energy. Even with perfectly optimized AI pumps and state-of-the-art graphene membranes, desalination will <em>always</em> be incredibly energy-intensive. 
+                    <br><br>
+                    If a city builds a massive RO plant and powers it with a coal power plant, they are accelerating the very climate crisis that caused their drought in the first place. Desalination infrastructure must be strictly coupled with massive, dedicated renewable energy grids (like pairing it with excess midday solar generation based on the Duck Curve).
+                </div>
+
+                <h2 id="blue-carbon">4. Ocean Tech and Blue Carbon</h2>
+                <p>
+                    The ocean has absorbed over 90% of the excess heat generated by anthropogenic greenhouse gases, and about 30% of the raw CO2 itself, making the water acidic and threatening marine ecosystems.
+                </p>
+                <p>
+                    <strong>Blue Tech</strong> refers to technology deployed in marine environments to accelerate decarbonization.
+                </p>
+                <ul>
+                    <li><strong>Blue Carbon:</strong> Coastal ecosystems like mangroves, seagrasses, and salt marshes sequester carbon at a rate up to 10 times faster than terrestrial forests. Drones and underwater autonomous vehicles (AUVs) are used to map and monitor these massive carbon sinks to verify carbon credits.</li>
+                    <li><strong>Ocean Alkalinity Enhancement (OAE):</strong> Experimental climate tech startups are researching ways to safely deposit pulverized alkaline rocks (like olivine) into ocean wakes. This reduces ocean acidification while locking atmospheric CO2 into stable bicarbonates for thousands of years.</li>
+                </ul>
+
+                <hr style="margin: 3rem 0; border: none; border-top: 1px solid var(--color-border);">
+
+                <h2 id="quiz">5. Knowledge Check</h2>
+                <div class="quiz-container" style="background: var(--color-bg-white); padding: 2rem; border-radius: 0.5rem; border: 1px solid var(--color-border);">
+                    <div class="quiz-question" style="margin-bottom: 2rem;">
+                        <p style="font-weight: 600; margin-bottom: 1rem;">1. What does "Non-Revenue Water" (NRW) signify in the context of urban infrastructure?</p>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q1" value="false"> Water that is given away for free to public parks.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q1" value="false"> Water generated by atmospheric condensation.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q1" value="true"> Clean, treated drinking water that is lost to pipe leaks before it ever reaches a paying consumer, wasting the massive energy used to pump it.</label>
+                        <div class="explanation" style="display: none; font-size: 0.9em;"><strong>Correct!</strong> Leaks are a massive drain on municipal budgets and grid electricity.</div>
+                    </div>
+
+                    <div class="quiz-question" style="margin-bottom: 2rem;">
+                        <p style="font-weight: 600; margin-bottom: 1rem;">2. Why shouldn't a city view Desalination as a simple, unlimited "silver bullet" for water scarcity?</p>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q2" value="true"> Desalination is strictly bound by thermodynamics and is massively energy-intensive; if powered by fossil fuels, it worsens the underlying climate crisis.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q2" value="false"> It removes the "heavy water" necessary for nuclear reactors.</label>
+                        <label style="display: block; margin-bottom: 0.5rem; cursor: pointer;"><input type="radio" name="q2" value="false"> Because AI models cannot optimize fluid dynamics.</label>
+                        <div class="explanation" style="display: none; font-size: 0.9em;"><strong>Correct!</strong> Desalination must be coupled with zero-carbon energy to be truly sustainable.</div>
+                    </div>
+
+                    <button class="btn btn-primary check-answers-btn">Check Answers</button>
+                    <div class="quiz-feedback" style="margin-top: 1rem; font-weight: 600;"></div>
+                </div>
+
+                <nav class="chapter-nav">
+                    <a href="chapter-11.html" class="prev-chapter">
+                        <span class="nav-label">Previous Chapter</span>
+                        <span class="nav-title">&larr; Precision Agriculture</span>
+                    </a>
+                    <a href="chapter-13.html" class="next-chapter">
+                        <span class="nav-label">Next Chapter</span>
+                        <span class="nav-title">Circular Economy &rarr;</span>
+                    </a>
+                </nav>
+
+                <div style="text-align: center; margin-top: 3rem;">
+                    <button class="btn btn-secondary" id="mark-complete-btn" style="width: 100%;">Mark Chapter Complete</button>
+                </div>
+            </div>
+        </main>
+        
+        <aside class="right-sidebar sidebar">
+            <div class="takeaways-card">
+                <h4>Key Takeaways</h4>
+                <ul>
+                    <li>The Water-Energy Nexus means wasting water intrinsically wastes massive amounts of carbon-intensive electricity.</li>
+                    <li>IoT acoustic sensors and ML triangulation allow cities to fix leaks before catastrophic ruptures occur.</li>
+                    <li>Because of thermodynamic limits, Desalination must only be deployed alongside renewable grid over-generation.</li>
+                    <li>Coastal "Blue Carbon" (mangroves) absorbs carbon up to 10x faster than terrestrial forests and requires digital mapping to protect.</li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <!-- Modals -->
+    <div id="search-modal" style="display: none; position: fixed; inset: 0; background-color: rgba(0,0,0,0.5); z-index: 200; align-items: flex-start; justify-content: center; padding-top: 10vh;">
+        <div style="background-color: var(--color-bg-light); border-radius: 0.5rem; width: 90%; max-width: 600px;">
+            <div style="padding: 1rem; border-bottom: 1px solid var(--color-border); display: flex;">
+                <input type="text" id="search-input" placeholder="Search..." style="flex: 1; border: none; background: transparent; font-size: 1.1rem; outline: none;">
+                <button id="close-search-btn" style="background: none; border: none; cursor: pointer;">ESC</button>
+            </div>
+            <div id="search-results" style="max-height: 60vh; overflow-y: auto;"></div>
+        </div>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/progress.js"></script>
+    <script src="../js/quiz.js"></script>
+    <script src="../js/search.js"></script>
+</body>
+</html>
